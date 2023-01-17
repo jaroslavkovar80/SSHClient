@@ -3,7 +3,7 @@ import time
 
 import paramiko
 from PyQt5 import QtWidgets
-from GUI.appSSHViewerGUI import viewerGUIWindow
+from GUI.TCMonitorGUI import TCMonitorMainWindow
 
 host = "10.0.0.73"
 port = 22
@@ -28,7 +28,7 @@ def call_me():
 while True:
     app = QtWidgets.QApplication(sys.argv)
     mainWindow = QtWidgets.QMainWindow()
-    ui = viewerGUIWindow(mainWindow)
+    ui = TCMonitorMainWindow(mainWindow)
     mainWindow.show()
     sys.exit(app.exec_())
 

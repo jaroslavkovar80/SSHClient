@@ -1,6 +1,6 @@
-from GUI.qt5MainWindow import Ui_MainWindow
+from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 
-class viewerGUIWindow(Ui_MainWindow):
+class TCMonitorMainWindow(Ui_MainWindow):
     def __init__(self, window):
         self.setupUi(window)
 
