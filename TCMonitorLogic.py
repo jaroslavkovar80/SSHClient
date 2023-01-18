@@ -16,7 +16,8 @@ class PUViewer:
         self._ssh = paramiko.SSHClient()
         self._ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         self._connected = False
-        self._connStatus = 'PUViewer class was initalized'
+        self._connStatus = 'Client was initalized'
+        self._host = ''
 
 
     def _connect(self,host='127.0.0.1',port='22',username='root', password='root'):
@@ -27,6 +28,7 @@ class PUViewer:
         try:
             self._ssh.connect(host, port, username, password)
             self._connected = True
+            self._host = host
         except:
             print("_connect: Exception was catched")
 
@@ -37,6 +39,7 @@ class PUViewer:
         disconnection
         """
         self._connected = False
+        self._connStatus = f'Connection to target {self._host} was closed'
 
         try:
             self._ssh.close()
@@ -51,6 +54,8 @@ class PUViewer:
 
         return lines
 
+    def disconnect(self):
+        self._disconnect()
 
     def getConnection(self, host='127.0.0.1',port='22',username='root', password='root'):
         """
@@ -65,10 +70,10 @@ class PUViewer:
                 self._connStatus = 'Connection is ok'
                 self._connected = True
             else:
-                self._connStatus = 'Connection to target is not possible'
+                self._connStatus = f'Connection to target {host} is not possible'
 
         else:
-            self._connStatus = 'IPaddress format is invalid'
+            self._connStatus = (f'IPaddress {host} format is invalid')
 
         return self._connStatus
 

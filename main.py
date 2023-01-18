@@ -30,7 +30,6 @@ while True:
     mainWindow = QtWidgets.QMainWindow()
     ui = TCMonitorMainWindow(mainWindow)
     mainWindow.show()
-    ui.addRowToMemoryTable({'hello', 'bye', 'test'})
     sys.exit(app.exec_())
 
 

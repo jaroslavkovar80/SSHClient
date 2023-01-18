@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem)
 from PyQt5.QtCore import Qt
 import time
 
+from TCMonitorLogic import PUViewer
+
 class TCMonitorMainWindow(Ui_MainWindow):
     def __init__(self, window):
 
@@ -18,6 +20,25 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnAddRecordToMemoryTable.clicked.connect(self.addOneRowToMemoryTable)
         self.btnDelRecordFromMemoryTable.clicked.connect(self.delRowFromMemoryTable)
         self.btnClearMemoryTable.clicked.connect(self.clearMemoryTable)
+
+        #create instace of logic class
+        self.viewerLogic = PUViewer()
+
+        #estabilish connection logic
+        self.btnCheckConnection.clicked.connect(self._connectToTarget)
+
+        #update status
+        self._updateStatus()
+
+    def _connectToTarget(self):
+        if self.viewerLogic.isConnected():
+            self.viewerLogic.disconnect()
+        else:
+            self.viewerLogic.getConnection(host=self.edTargetHost.text())
+            self._updateStatus()
+
+    def _updateStatus(self):
+        self.lbStatus.setText(self.viewerLogic.getConnectionStatus())
 
     def nav_to_tab0(self):
         self.tabWidget.setCurrentIndex(0)
