@@ -91,7 +91,7 @@
            <bool>false</bool>
           </property>
           <property name="text">
-           <string>255.255.255.255</string>
+           <string>10.0.0.73</string>
           </property>
           <property name="maxLength">
            <number>15</number>
@@ -217,7 +217,7 @@
           <item>
            <widget class="QTabWidget" name="tabWidget">
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
             <property name="usesScrollButtons">
              <bool>true</bool>
@@ -352,7 +352,7 @@
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout" stretch=""/>
+               <layout class="QHBoxLayout" name="horizontalLayout"/>
               </item>
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -379,7 +379,7 @@
                    <bool>true</bool>
                   </property>
                   <attribute name="horizontalHeaderVisible">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </attribute>
                   <attribute name="horizontalHeaderMinimumSectionSize">
                    <number>50</number>
@@ -505,6 +505,26 @@
                   </column>
                   <column>
                    <property name="text">
+                    <string>buff/cache</string>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>8</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="background">
+                    <color>
+                     <red>85</red>
+                     <green>170</green>
+                     <blue>255</blue>
+                    </color>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
                     <string>availabe</string>
                    </property>
                    <property name="font">
@@ -529,6 +549,26 @@
                    <property name="font">
                     <font>
                      <family>Calibri</family>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="background">
+                    <color>
+                     <red>85</red>
+                     <green>170</green>
+                     <blue>255</blue>
+                    </color>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>swap used</string>
+                   </property>
+                   <property name="font">
+                    <font>
+                     <family>Calibri</family>
+                     <pointsize>8</pointsize>
                      <weight>75</weight>
                      <bold>true</bold>
                     </font>
@@ -581,6 +621,32 @@
               </property>
               <property name="text">
                <string>tab2</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="btnCallCmd">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>20</y>
+                <width>75</width>
+                <height>23</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>PushButton</string>
+              </property>
+             </widget>
+             <widget class="QLineEdit" name="lineEdit">
+              <property name="geometry">
+               <rect>
+                <x>40</x>
+                <y>120</y>
+                <width>113</width>
+                <height>20</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>journalctl</string>
               </property>
              </widget>
             </widget>

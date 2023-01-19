@@ -1,6 +1,6 @@
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem)
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QTimer
 import time
 
 from TCMonitorLogic import PUViewer
@@ -9,6 +9,10 @@ class TCMonitorMainWindow(Ui_MainWindow):
     def __init__(self, window):
 
         self.setupUi(window)
+
+        #create instace of logic class
+        self.viewerLogic = PUViewer()
+        self._timerMemoryLogging = QTimer()
 
         #buttons to change index of current tab
         self.btnTab1.clicked.connect(self.nav_to_tab0)
@@ -20,25 +24,41 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnAddRecordToMemoryTable.clicked.connect(self.addOneRowToMemoryTable)
         self.btnDelRecordFromMemoryTable.clicked.connect(self.delRowFromMemoryTable)
         self.btnClearMemoryTable.clicked.connect(self.clearMemoryTable)
-
-        #create instace of logic class
-        self.viewerLogic = PUViewer()
+        self.btnStartMemoryLogging.clicked.connect(self._memoryLoggingManagement)
 
         #estabilish connection logic
         self.btnCheckConnection.clicked.connect(self._connectToTarget)
 
+        self.btnCallCmd.clicked.connect(self._callCommand)
+
         #update status
         self._updateStatus()
+
 
     def _connectToTarget(self):
         if self.viewerLogic.isConnected():
             self.viewerLogic.disconnect()
         else:
             self.viewerLogic.getConnection(host=self.edTargetHost.text())
-            self._updateStatus()
+        self._updateStatus()
 
     def _updateStatus(self):
+
         self.lbStatus.setText(self.viewerLogic.getConnectionStatus())
+        self._updateGUI()
+
+    def _updateGUI(self):
+        self.lbStatus.setText(self.viewerLogic.getConnectionStatus())
+
+        if self.viewerLogic.isConnected():
+            self.btnCheckConnection.setText('disconnect')
+        else:
+            self.btnCheckConnection.setText('connect')
+
+        if self._timerMemoryLogging.isActive():
+            self.btnStartMemoryLogging.setText('stop logging')
+        else:
+            self.btnStartMemoryLogging.setText('start logging')
 
     def nav_to_tab0(self):
         self.tabWidget.setCurrentIndex(0)
@@ -54,8 +74,19 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
     def addOneRowToMemoryTable(self):
 
-        #TODO
-        self.addRowToMemoryTable(["apple", "banana", "cherry","apple", "banana2", "cherry","apple", "banana3", "cherry"])
+        list = self.viewerLogic.getMemory()
+
+        print(list[1])
+
+        if list[1] != "-1":
+            self.addRowToMemoryTable(list)
+        elif self._timerMemoryLogging.isActive():
+            self._timerMemoryLogging.stop()
+            self._updateGUI()
+
+    def _callCommand(self):
+        self.viewerLogic.getJournalCtl(self.lineEdit.text())
+        print(self.lineEdit.text())
 
     def addRowToMemoryTable(self, parList):
 
@@ -78,6 +109,10 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self.tablewMemoryOverview.setItem(rowCount,columnIdx,rowItem)
             columnIdx += 1
 
+            #in visu there is only 10 column available, if more items in list -> break it
+            if (columnIdx == 10):
+                break
+
     def delRowFromMemoryTable(self):
 
         # if row is selected remove selected row
@@ -96,3 +131,28 @@ class TCMonitorMainWindow(Ui_MainWindow):
     def clearMemoryTable(self):
 
         self.tablewMemoryOverview.setRowCount(0)
+
+    def _memoryLoggingManagement(self):
+
+        #loggingTime = int(self.spinBoxLoggingTime.value,default=1)
+
+        loggingTime = self.spinBoxLoggingTime.value()
+
+        #print(loggingTime)
+        if self._timerMemoryLogging.isActive():
+            self._timerMemoryLogging.stop()
+        elif self.viewerLogic.isConnected():
+            self._timerMemoryLogging.timeout.connect(self.cyclicLogic)
+            self._timerMemoryLogging.start(loggingTime*60*1000)
+            self.addOneRowToMemoryTable()
+
+        self._updateGUI()
+
+
+    def cyclicLogic(self):
+        #print("tick:" + str(time.strftime('%X %x %Z')))
+        #time.sleep(60.0 - ((time.time() - self._startTime) % 60.0))
+        #if (60.0 - ((time.time() - self._startTime) % 60.0)) == 0:
+        #print("tick:" + str(time.strftime('%X %x %Z')))
+        # time.sleep(30)
+        self.addOneRowToMemoryTable()
