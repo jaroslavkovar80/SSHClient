@@ -1,17 +1,17 @@
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_Dialog
-from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem)
+from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDialog)
 from PyQt5.QtCore import QTimer
 import time
 
 from TCMonitorLogic import PUViewer
 
 
-class TCMonitorAboutWindow(Ui_Dialog):
-    def __init__(self,window):
-        self.setupUi(window)
-        super().__init__()
-        #self.resize(300, 300)
+class TCMonitorAboutWindow(QDialog):
+    def __init__(self,parent=None):
+        super().__init__(parent)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
 
 
 class TCMonitorMainWindow(Ui_MainWindow):
@@ -24,7 +24,11 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self._timerMemoryLogging = QTimer()
 
         # create instace of another windows
-        self._aboutWindow = TCMonitorAboutWindow(window)
+        #self._aboutWindow = TCMonitorAboutWindow()
+
+
+        self._dlgAbout = TCMonitorAboutWindow()
+
 
         # buttons to change index of current tab
         self.btnTab1.clicked.connect(self.nav_to_tab0)
@@ -39,8 +43,9 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnStartMemoryLogging.clicked.connect(self._memoryLoggingManagement)
 
         # estabilish connection logic
-        # self.btnCheckConnection.clicked.connect(self._connectToTarget)
-        self.btnCheckConnection.clicked.connect(self._showAbout)
+        self.btnCheckConnection.clicked.connect(self._connectToTarget)
+
+        self.actionAbout.triggered.connect(self._showAbout)
 
         self.btnCallCmd.clicked.connect(self._callCommand)
 
@@ -48,7 +53,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self._updateStatus()
 
     def _showAbout(self):
-        self._aboutWindow.show()
+        self._dlgAbout.exec()
 
     def _connectToTarget(self):
         if self.viewerLogic.isConnected():
@@ -59,11 +64,13 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
     def _updateStatus(self):
 
-        self.lbStatus.setText(self.viewerLogic.getConnectionStatus())
+
+        self.statusbar.showMessage(self.viewerLogic.getConnectionStatus())
         self._updateGUI()
 
+
     def _updateGUI(self):
-        self.lbStatus.setText(self.viewerLogic.getConnectionStatus())
+        self.statusbar.showMessage(self.viewerLogic.getConnectionStatus())
 
         if self.viewerLogic.isConnected():
             self.btnCheckConnection.setText('disconnect')
