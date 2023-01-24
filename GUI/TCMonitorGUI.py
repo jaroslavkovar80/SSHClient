@@ -2,6 +2,7 @@ from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_Dialog
 from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDialog)
 from PyQt5.QtCore import QTimer
+from PyQt5.QtCore import Qt
 import time
 
 from TCMonitorLogic import PUViewer
@@ -12,6 +13,7 @@ class TCMonitorAboutWindow(QDialog):
         super().__init__(parent)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.setWindowFlag(Qt.SplashScreen)
 
 
 class TCMonitorMainWindow(Ui_MainWindow):
@@ -24,9 +26,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self._timerMemoryLogging = QTimer()
 
         # create instace of another windows
-        #self._aboutWindow = TCMonitorAboutWindow()
-
-
         self._dlgAbout = TCMonitorAboutWindow()
 
 

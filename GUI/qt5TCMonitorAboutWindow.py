@@ -16,15 +16,50 @@ class Ui_Dialog(object):
         Dialog.setObjectName("Dialog")
         Dialog.setWindowModality(QtCore.Qt.NonModal)
         Dialog.setEnabled(True)
-        Dialog.resize(413, 391)
+        Dialog.resize(510, 379)
+        Dialog.setWindowOpacity(1.0)
         Dialog.setStyleSheet("#Dialog{\n"
-"    border-style:none;\n"
+"  border-style: solid;\n"
+"  border-width: 2px;\n"
 "}\n"
 "#frame{\n"
-"    background-color:#16191d;\n"
+"    background-color:#FFFFFF;\n"
+"  border-style: solid;\n"
+"  border-width: 2px;;\n"
+"}\n"
+"\n"
+"#frame_2{\n"
+"    background-color:#FFFFFF;\n"
+"  border-style: none;\n"
+"  border-width: 1px;\n"
+"    border-radius: 8px;\n"
+"}\n"
+"\n"
+"#frame_4{\n"
+"    background-color:#FFFFFF;;\n"
+"  border-style: none;\n"
+"  border-width: 1px;\n"
+"    border-radius: 8px;\n"
+"}\n"
+"#btnLogo{\n"
+"    background-color:#FFFFFF;\n"
+"    border-style:none;\n"
+"\n"
+"}\n"
+"#infoButton{\n"
+"    background-color:#FFFFFF;\n"
+"    border-style:none;\n"
+"\n"
+"}\n"
+"\n"
+"#btnClose{\n"
+"    background-color:#FFFFFF;\n"
 "    border-style:none;\n"
 "}\n"
-"")
+"#btnClose:pressed{\n"
+"    background-color: rgba(255,151,64,0.8);\n"
+"    border-radius: 4px;\n"
+"}")
         Dialog.setModal(True)
         self.gridLayout = QtWidgets.QGridLayout(Dialog)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -34,13 +69,134 @@ class Ui_Dialog(object):
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.btnClose = QtWidgets.QPushButton(self.frame)
-        self.btnClose.setGeometry(QtCore.QRect(200, 160, 75, 23))
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout.setSpacing(6)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.frame_3 = QtWidgets.QFrame(self.frame)
+        self.frame_3.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_3)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.lbAbout = QtWidgets.QLabel(self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbAbout.setFont(font)
+        self.lbAbout.setText("")
+        self.lbAbout.setObjectName("lbAbout")
+        self.horizontalLayout.addWidget(self.lbAbout)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.btnClose = QtWidgets.QPushButton(self.frame_3)
+        self.btnClose.setMinimumSize(QtCore.QSize(24, 24))
+        self.btnClose.setMaximumSize(QtCore.QSize(24, 24))
+        self.btnClose.setStyleSheet("")
+        self.btnClose.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/test/pictures/activity.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/test/pictures/x-square.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.btnClose.setIcon(icon)
         self.btnClose.setIconSize(QtCore.QSize(24, 24))
+        self.btnClose.setFlat(True)
         self.btnClose.setObjectName("btnClose")
+        self.horizontalLayout.addWidget(self.btnClose)
+        self.verticalLayout.addWidget(self.frame_3)
+        self.frame_4 = QtWidgets.QFrame(self.frame)
+        self.frame_4.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame_4)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.infoButton = QtWidgets.QPushButton(self.frame_4)
+        self.infoButton.setMinimumSize(QtCore.QSize(64, 64))
+        self.infoButton.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/test/pictures/info.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.infoButton.setIcon(icon1)
+        self.infoButton.setIconSize(QtCore.QSize(64, 64))
+        self.infoButton.setObjectName("infoButton")
+        self.verticalLayout_2.addWidget(self.infoButton)
+        self.verticalLayout.addWidget(self.frame_4)
+        self.frame_2 = QtWidgets.QFrame(self.frame)
+        self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_2.setObjectName("frame_2")
+        self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_2)
+        self.gridLayout_2.setObjectName("gridLayout_2")
+        self.label = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setObjectName("label")
+        self.gridLayout_2.addWidget(self.label, 1, 0, 1, 1)
+        self.lbAbout_4 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.lbAbout_4.setFont(font)
+        self.lbAbout_4.setObjectName("lbAbout_4")
+        self.gridLayout_2.addWidget(self.lbAbout_4, 2, 1, 1, 1)
+        self.label_3 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        self.label_3.setFont(font)
+        self.label_3.setObjectName("label_3")
+        self.gridLayout_2.addWidget(self.label_3, 0, 1, 1, 1)
+        self.lbAbout_3 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lbAbout_3.setFont(font)
+        self.lbAbout_3.setObjectName("lbAbout_3")
+        self.gridLayout_2.addWidget(self.lbAbout_3, 0, 0, 1, 1)
+        self.label_2 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout_2.addWidget(self.label_2, 2, 0, 1, 1)
+        self.lbAbout_2 = QtWidgets.QLabel(self.frame_2)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.lbAbout_2.setFont(font)
+        self.lbAbout_2.setObjectName("lbAbout_2")
+        self.gridLayout_2.addWidget(self.lbAbout_2, 1, 1, 1, 1)
+        self.verticalLayout.addWidget(self.frame_2)
+        self.frame_5 = QtWidgets.QFrame(self.frame)
+        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.frame_5)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem1)
+        self.btnLogo = QtWidgets.QPushButton(self.frame_5)
+        self.btnLogo.setAutoFillBackground(False)
+        self.btnLogo.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/test/pictures/BRLogo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnLogo.setIcon(icon2)
+        self.btnLogo.setIconSize(QtCore.QSize(70, 30))
+        self.btnLogo.setObjectName("btnLogo")
+        self.horizontalLayout_2.addWidget(self.btnLogo)
+        self.verticalLayout.addWidget(self.frame_5)
+        self.verticalLayout.setStretch(2, 6)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
 
         self.retranslateUi(Dialog)
@@ -50,5 +206,10 @@ class Ui_Dialog(object):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "About"))
-        self.btnClose.setText(_translate("Dialog", "PushButton"))
+        self.label.setText(_translate("Dialog", "GITHub link:"))
+        self.lbAbout_4.setText(_translate("Dialog", "V 0.0.2"))
+        self.label_3.setText(_translate("Dialog", "jaroslav.kovar@br-automation"))
+        self.lbAbout_3.setText(_translate("Dialog", "Contact:"))
+        self.label_2.setText(_translate("Dialog", "Version:"))
+        self.lbAbout_2.setText(_translate("Dialog", "<html><head/><body><p><a href=\"https://github.com/jaroslavkovar80/30_TCMonitor\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/jaroslavkovar80/30_TCMonitor</span></a></p></body></html>"))
 import GUI.test
