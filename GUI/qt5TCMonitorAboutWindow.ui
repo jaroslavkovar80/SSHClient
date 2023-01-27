@@ -156,7 +156,7 @@
            </property>
            <property name="icon">
             <iconset resource="test.qrc">
-             <normaloff>:/test/pictures/x-square.svg</normaloff>:/test/pictures/x-square.svg</iconset>
+             <normaloff>:test/pictures/x-square.svg</normaloff>:test/pictures/x-square.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -194,7 +194,7 @@
            </property>
            <property name="icon">
             <iconset resource="test.qrc">
-             <normaloff>:/test/pictures/info.svg</normaloff>:/test/pictures/info.svg</iconset>
+             <normaloff>:test/pictures/info.svg</normaloff>:test/pictures/info.svg</iconset>
            </property>
            <property name="iconSize">
             <size>
@@ -339,7 +339,7 @@
            </property>
            <property name="icon">
             <iconset resource="test.qrc">
-             <normaloff>:/test/pictures/BRLogo.png</normaloff>:/test/pictures/BRLogo.png</iconset>
+             <normaloff>:test/pictures/BRLogo.png</normaloff>:test/pictures/BRLogo.png</iconset>
            </property>
            <property name="iconSize">
             <size>
