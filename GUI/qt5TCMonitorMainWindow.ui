@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1264</width>
-    <height>908</height>
+    <width>1280</width>
+    <height>800</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
-    <height>486</height>
+    <width>800</width>
+    <height>600</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -41,7 +41,7 @@ QStackedWidget{
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="hlayout2Top" stretch="0,1,0,0">
+     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,0,1,0,0,0,0,0">
       <property name="spacing">
        <number>10</number>
       </property>
@@ -58,31 +58,69 @@ QStackedWidget{
        <number>5</number>
       </property>
       <item>
+       <spacer name="horizontalSpacer_14">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>130</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="lbHostIcon">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="test.qrc">:/test/pictures/globe.svg</pixmap>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QLabel" name="lbTargetHostAddress">
         <property name="font">
          <font>
-          <family>Calibri</family>
-          <pointsize>14</pointsize>
+          <family>Roboto</family>
+          <pointsize>12</pointsize>
           <kerning>true</kerning>
          </font>
         </property>
         <property name="text">
-         <string>Target IP adress:</string>
+         <string>host IP address</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::PlainText</enum>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="test.qrc">:/test/pictures/home.svg</pixmap>
         </property>
        </widget>
       </item>
       <item>
        <widget class="QLineEdit" name="edTargetHost">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>30</height>
+         </size>
+        </property>
         <property name="maximumSize">
          <size>
-          <width>300</width>
-          <height>16777215</height>
+          <width>120</width>
+          <height>30</height>
          </size>
         </property>
         <property name="font">
          <font>
-          <family>Calibri</family>
-          <pointsize>14</pointsize>
+          <family>Roboto</family>
+          <pointsize>12</pointsize>
           <kerning>true</kerning>
          </font>
         </property>
@@ -117,7 +155,7 @@ QStackedWidget{
         <property name="font">
          <font>
           <family>Roboto</family>
-          <pointsize>14</pointsize>
+          <pointsize>12</pointsize>
           <weight>50</weight>
           <bold>false</bold>
           <kerning>false</kerning>
@@ -126,13 +164,23 @@ QStackedWidget{
         <property name="text">
          <string>Check connection</string>
         </property>
+        <property name="icon">
+         <iconset resource="test.qrc">
+          <normaloff>:/test/pictures/activity.svg</normaloff>:/test/pictures/activity.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
         <property name="checkable">
          <bool>false</bool>
         </property>
        </widget>
       </item>
       <item>
-       <spacer name="horizontalSpacer">
+       <spacer name="horizontalSpacer_6">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -144,138 +192,613 @@ QStackedWidget{
         </property>
        </spacer>
       </item>
-     </layout>
-    </item>
-    <item row="1" column="0" colspan="2">
-     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+       <widget class="QLabel" name="lbAutomaticlogging">
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>12</pointsize>
+          <kerning>true</kerning>
+         </font>
+        </property>
+        <property name="text">
+         <string>time [min]</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSpinBox" name="spinBoxLoggingTime">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>60</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>120</number>
+        </property>
+        <property name="value">
+         <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnStartMemoryLogging">
+        <property name="minimumSize">
+         <size>
+          <width>120</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>120</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>start logging</string>
+        </property>
+        <property name="icon">
+         <iconset resource="test.qrc">
+          <normaloff>:/test/pictures/clock.svg</normaloff>:/test/pictures/clock.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
      </layout>
     </item>
     <item row="2" column="0">
-     <layout class="QVBoxLayout" name="vlayout3Left">
+     <layout class="QVBoxLayout" name="vlayoutLeft">
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
       <item>
-       <widget class="QPushButton" name="btnTab1">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Roboto</family>
-          <pointsize>14</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-          <kerning>false</kerning>
-         </font>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="layoutBtnTab1">
+        <item>
+         <widget class="QPushButton" name="btnTab1">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="cursor">
+           <cursorShape>ArrowCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btnTab1{
+	background-color: rgb(245, 245, 245, 0);
+	border: solid;
+	border-radius: 0px;
+}
+
+#btnTab1:pressed{
+	background-color: #f5f5f5; 
+	border: solid;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="text">
+           <string>memory</string>
+          </property>
+          <property name="icon">
+           <iconset resource="test.qrc">
+            <normaloff>:/test/pictures/grid.svg</normaloff>:/test/pictures/grid.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lnTab1">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab1{background-color: rgb(188, 220, 244);}</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="btnTab2">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Roboto</family>
-          <pointsize>14</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-          <kerning>false</kerning>
-         </font>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="layoutBtnTab2">
+        <item>
+         <widget class="QPushButton" name="btnTab2">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btnTab2{
+	background-color: rgb(245, 245, 245, 0);
+	border: solid;
+	border-radius: 0px;
+}
+
+#btnTab2:pressed{
+	background-color: #f5f5f5; 
+	border: solid;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="text">
+           <string>disk usage</string>
+          </property>
+          <property name="icon">
+           <iconset resource="test.qrc">
+            <normaloff>:/test/pictures/hard-drive.svg</normaloff>:/test/pictures/hard-drive.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lnTab2">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab2{
+	background-color: rgb(188, 220, 244);
+}
+</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
-       <widget class="QPushButton" name="btnTab3">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Roboto</family>
-          <pointsize>14</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-          <kerning>false</kerning>
-         </font>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="btnTab4">
-        <property name="minimumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>120</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Roboto</family>
-          <pointsize>14</pointsize>
-          <weight>50</weight>
-          <bold>false</bold>
-          <kerning>false</kerning>
-         </font>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="layoutBtnTab3">
+        <item>
+         <widget class="QPushButton" name="btnTab3">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btnTab3{
+	background-color: rgb(245, 245, 245, 0);
+	border: solid;
+	border-radius: 0px;
+}
+
+#btnTab3:pressed{
+	background-color: #f5f5f5; 
+	border: solid;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="text">
+           <string>processes</string>
+          </property>
+          <property name="icon">
+           <iconset resource="test.qrc">
+            <normaloff>:/test/pictures/cpu.svg</normaloff>:/test/pictures/cpu.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lnTab3">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="baseSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab3{
+	background-color: rgb(188, 220, 244);
+}
+</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layoutBtnTab4">
+        <item>
+         <widget class="QPushButton" name="btnTab4">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btnTab4{
+	background-color: rgb(245, 245, 245, 0);
+	border: solid;
+	border-radius: 0px;
+}
+
+#btnTab4:pressed{
+	background-color: #f5f5f5; 
+	border: solid;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="text">
+           <string>dmesg</string>
+          </property>
+          <property name="icon">
+           <iconset resource="test.qrc">
+            <normaloff>:/test/pictures/clipboard.svg</normaloff>:/test/pictures/clipboard.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lnTab4">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab4{background-color: rgb(188, 220, 244);}</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layoutBtnTab5">
+        <item>
+         <widget class="QPushButton" name="btnTab5">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>12</pointsize>
+            <weight>50</weight>
+            <bold>false</bold>
+            <kerning>false</kerning>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btnTab5{
+	background-color: rgb(245, 245, 245, 0);
+	border: solid;
+	border-radius: 0px;
+}
+
+#btnTab5:pressed{
+	background-color: #f5f5f5; 
+	border: solid;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="text">
+           <string>journal</string>
+          </property>
+          <property name="icon">
+           <iconset resource="test.qrc">
+            <normaloff>:/test/pictures/clipboard.svg</normaloff>:/test/pictures/clipboard.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lnTab5">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab5{background-color: rgb(188, 220, 244);}</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layoutBtnTab6">
+        <item>
+         <widget class="QPushButton" name="btnTab6">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btnTab6{
+	background-color: rgb(245, 245, 245, 0);
+	border: solid;
+	border-radius: 0px;
+}
+
+#btnTab6:pressed{
+	background-color: #f5f5f5; 
+	border: solid;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="text">
+           <string>command</string>
+          </property>
+          <property name="icon">
+           <iconset resource="test.qrc">
+            <normaloff>:/test/pictures/edit.svg</normaloff>:/test/pictures/edit.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lnTab6">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab6{
+	background-color: rgb(188, 220, 244);
+}
+</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_3">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
         </property>
@@ -286,6 +809,80 @@ QStackedWidget{
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layoutBtnTab7">
+        <item>
+         <widget class="QPushButton" name="btnTab7">
+          <property name="minimumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>120</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#btnTab7{
+	background-color: rgb(245, 245, 245, 0);
+	border: solid;
+	border-radius: 0px;
+}
+
+#btnTab7:pressed{
+	background-color: #f5f5f5; 
+	border: solid;
+	border-radius: 0px;
+}</string>
+          </property>
+          <property name="text">
+           <string>settings</string>
+          </property>
+          <property name="icon">
+           <iconset resource="test.qrc">
+            <normaloff>:/test/pictures/settings.svg</normaloff>:/test/pictures/settings.svg</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="lnTab7">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab7{background-color: rgb(188, 220, 244);}</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>
@@ -320,10 +917,451 @@ QStackedWidget{
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="page">
+      <widget class="QWidget" name="pgMemory">
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tablewMemoryOverview">
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="textElideMode">
+           <enum>Qt::ElideMiddle</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>50</number>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>95</number>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>time</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="textAlignment">
+            <set>AlignHCenter|AlignTop</set>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>total</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="textAlignment">
+            <set>AlignCenter</set>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+           <property name="foreground">
+            <brush brushstyle="NoBrush">
+             <color alpha="255">
+              <red>0</red>
+              <green>0</green>
+              <blue>0</blue>
+             </color>
+            </brush>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>used</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>free</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>shared</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>buff/cache</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>8</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>availabe</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>swap total</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>swap used</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <pointsize>8</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>swap free</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Calibri</family>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="background">
+            <color>
+             <red>85</red>
+             <green>170</green>
+             <blue>255</blue>
+            </color>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnAddRecordToMemoryTable">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>add</string>
+            </property>
+            <property name="icon">
+             <iconset resource="test.qrc">
+              <normaloff>:/test/pictures/plus-circle.svg</normaloff>:/test/pictures/plus-circle.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDelRecordFromMemoryTable">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>remove</string>
+            </property>
+            <property name="icon">
+             <iconset resource="test.qrc">
+              <normaloff>:/test/pictures/minus-circle.svg</normaloff>:/test/pictures/minus-circle.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnClearMemoryTable">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>clear all</string>
+            </property>
+            <property name="icon">
+             <iconset resource="test.qrc">
+              <normaloff>:/test/pictures/trash-2.svg</normaloff>:/test/pictures/trash-2.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_9">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>3</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pgDiskUsage">
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tableDiskUsage">
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
@@ -364,7 +1402,7 @@ QStackedWidget{
              <string>add</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset>
               <normaloff>:test/pictures/plus-circle.svg</normaloff>:test/pictures/plus-circle.svg</iconset>
             </property>
             <property name="iconSize">
@@ -402,7 +1440,7 @@ QStackedWidget{
              <string>remove</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset>
               <normaloff>:test/pictures/minus-circle.svg</normaloff>:test/pictures/minus-circle.svg</iconset>
             </property>
             <property name="iconSize">
@@ -440,7 +1478,7 @@ QStackedWidget{
              <string>clear all</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset>
               <normaloff>:test/pictures/trash-2.svg</normaloff>:test/pictures/trash-2.svg</iconset>
             </property>
             <property name="iconSize">
@@ -454,17 +1492,311 @@ QStackedWidget{
             </property>
            </widget>
           </item>
+          <item>
+           <spacer name="horizontalSpacer_10">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Minimum</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>3</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
          </layout>
         </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pgProcesses">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
         <item>
-         <widget class="Line" name="line_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>processes</string>
           </property>
          </widget>
         </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pgDmesg">
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
         <item>
-         <widget class="QTableWidget" name="tableDiskUsage">
+         <widget class="QTableWidget" name="tableDmesgList">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>1100</number>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>overview</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+            </font>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnLoadDmesg">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>add</string>
+            </property>
+            <property name="icon">
+             <iconset resource="test.qrc">
+              <normaloff>:/test/pictures/plus-circle.svg</normaloff>:/test/pictures/plus-circle.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_11">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>3</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pgJournal">
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tableJournalList">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>10</pointsize>
+           </font>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>1000</number>
+          </attribute>
+          <column>
+           <property name="text">
+            <string>overview</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnLoadJournal">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>add</string>
+            </property>
+            <property name="icon">
+             <iconset resource="test.qrc">
+              <normaloff>:/test/pictures/plus-circle.svg</normaloff>:/test/pictures/plus-circle.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_12">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>3</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pgCommand">
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="QTableWidget" name="tableCommand">
           <property name="font">
            <font>
             <family>Roboto</family>
@@ -483,322 +1815,50 @@ QStackedWidget{
           <property name="sortingEnabled">
            <bool>true</bool>
           </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_3">
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <widget class="QPushButton" name="btnLoadDmesg">
-          <property name="minimumSize">
-           <size>
-            <width>102</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>102</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Roboto</family>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTableWidget" name="tableDmesgList">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="midLineWidth">
-           <number>0</number>
-          </property>
-          <property name="sizeAdjustPolicy">
-           <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
-          </property>
-          <property name="alternatingRowColors">
-           <bool>true</bool>
-          </property>
           <attribute name="horizontalHeaderDefaultSectionSize">
-           <number>1000</number>
+           <number>1100</number>
           </attribute>
           <column>
            <property name="text">
-            <string>overview</string>
+            <string>lines</string>
            </property>
           </column>
          </widget>
         </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_4">
-       <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
-         <widget class="QPushButton" name="btnLoadJournal">
-          <property name="minimumSize">
-           <size>
-            <width>102</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>102</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Roboto</family>
-            <pointsize>14</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>PushButton</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTableWidget" name="tableJournalList">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="midLineWidth">
-           <number>0</number>
-          </property>
-          <property name="sizeAdjustPolicy">
-           <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
-          </property>
-          <property name="alternatingRowColors">
-           <bool>true</bool>
-          </property>
-          <attribute name="horizontalHeaderDefaultSectionSize">
-           <number>1000</number>
-          </attribute>
-          <column>
-           <property name="text">
-            <string>overview</string>
-           </property>
-          </column>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="page_5">
-       <widget class="QPushButton" name="btnCallCmd">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>80</y>
-          <width>75</width>
-          <height>23</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="geometry">
-         <rect>
-          <x>110</x>
-          <y>180</y>
-          <width>113</width>
-          <height>20</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>journalctl</string>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="page_2">
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_8"/>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QPushButton" name="btnAddRecordToMemoryTable">
+           <widget class="QLineEdit" name="edCommand">
             <property name="minimumSize">
              <size>
-              <width>102</width>
-              <height>40</height>
+              <width>20</width>
+              <height>30</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>102</width>
-              <height>40</height>
+              <width>16777215</width>
+              <height>30</height>
              </size>
             </property>
             <property name="font">
              <font>
               <family>Roboto</family>
-              <pointsize>14</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
-             <string>get</string>
+             <string>journalctl</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="btnDelRecordFromMemoryTable">
-            <property name="minimumSize">
-             <size>
-              <width>102</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>102</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>remove</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnClearMemoryTable">
-            <property name="minimumSize">
-             <size>
-              <width>102</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>102</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>clear all</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_6">
+           <spacer name="horizontalSpacer_8">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeType">
              <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>80</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QLabel" name="lbAutomaticlogging">
-            <property name="font">
-             <font>
-              <family>Calibri</family>
-              <pointsize>9</pointsize>
-              <kerning>true</kerning>
-             </font>
-            </property>
-            <property name="text">
-             <string>Time [min]</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBoxLoggingTime">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>50</width>
-              <height>0</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>50</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>120</number>
-            </property>
-            <property name="value">
-             <number>10</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnStartMemoryLogging">
-            <property name="minimumSize">
-             <size>
-              <width>120</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>120</width>
-              <height>40</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Roboto</family>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>start logging</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -808,261 +1868,88 @@ QStackedWidget{
             </property>
            </spacer>
           </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
-           <widget class="QTableWidget" name="tablewMemoryOverview">
+           <widget class="QPushButton" name="btnCallCmd">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>40</height>
+             </size>
+            </property>
             <property name="font">
              <font>
-              <family>Calibri</family>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
              </font>
             </property>
-            <property name="sizeAdjustPolicy">
-             <enum>QAbstractScrollArea::AdjustToContents</enum>
+            <property name="text">
+             <string>execute</string>
             </property>
-            <property name="editTriggers">
-             <set>QAbstractItemView::NoEditTriggers</set>
+            <property name="icon">
+             <iconset resource="test.qrc">
+              <normaloff>:/test/pictures/play.svg</normaloff>:/test/pictures/play.svg</iconset>
             </property>
-            <property name="alternatingRowColors">
-             <bool>true</bool>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
             </property>
-            <property name="textElideMode">
-             <enum>Qt::ElideMiddle</enum>
-            </property>
-            <property name="sortingEnabled">
-             <bool>true</bool>
-            </property>
-            <attribute name="horizontalHeaderVisible">
-             <bool>false</bool>
-            </attribute>
-            <attribute name="horizontalHeaderMinimumSectionSize">
-             <number>50</number>
-            </attribute>
-            <attribute name="horizontalHeaderDefaultSectionSize">
-             <number>95</number>
-            </attribute>
-            <attribute name="horizontalHeaderHighlightSections">
-             <bool>true</bool>
-            </attribute>
-            <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-             <bool>true</bool>
-            </attribute>
-            <column>
-             <property name="text">
-              <string>time</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="textAlignment">
-              <set>AlignHCenter|AlignTop</set>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>total</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="textAlignment">
-              <set>AlignCenter</set>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-             <property name="foreground">
-              <brush brushstyle="NoBrush">
-               <color alpha="255">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-              </brush>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>used</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>free</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>shared</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>buff/cache</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>8</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>availabe</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>swap total</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>swap used</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <pointsize>8</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
-            <column>
-             <property name="text">
-              <string>swap free</string>
-             </property>
-             <property name="font">
-              <font>
-               <family>Calibri</family>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="background">
-              <color>
-               <red>85</red>
-               <green>170</green>
-               <blue>255</blue>
-              </color>
-             </property>
-            </column>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_13">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>3</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="pgSettings">
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>140</y>
+          <width>47</width>
+          <height>13</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>settings </string>
+        </property>
+       </widget>
+      </widget>
      </widget>
+    </item>
+    <item row="1" column="0" colspan="2">
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -1071,7 +1958,7 @@ QStackedWidget{
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1264</width>
+     <width>1280</width>
      <height>21</height>
     </rect>
    </property>
@@ -1118,5 +2005,790 @@ QStackedWidget{
  <resources>
   <include location="test.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>btnTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab2</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab5</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab4</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab7</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab3</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab2</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab6</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab1</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab1</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab1</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab1</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab5</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab1</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab4</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab1</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab7</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab1</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab3</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab1</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab6</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab5</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab5</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab5</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab5</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab5</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab4</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab5</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab7</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab5</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab3</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab5</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab6</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab4</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab4</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab4</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab5</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab4</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab4</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab4</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab7</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab4</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab3</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab4</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab6</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab7</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab7</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab7</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab5</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab7</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab4</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab7</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab7</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab7</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab3</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab7</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab6</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab3</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab3</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab3</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab5</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab3</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab4</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab3</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab7</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab3</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab3</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab3</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab6</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab6</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab2</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab6</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab1</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>166</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab6</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab5</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab6</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab4</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab6</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab7</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab6</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab3</receiver>
+   <slot>hide()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnTab6</sender>
+   <signal>clicked()</signal>
+   <receiver>lnTab6</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>70</x>
+     <y>118</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>139</x>
+     <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
