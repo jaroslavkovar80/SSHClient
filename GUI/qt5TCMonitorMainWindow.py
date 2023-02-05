@@ -967,4 +967,4 @@ class Ui_MainWindow(object):
         self.actionExport.setText(_translate("MainWindow", "Export"))
         self.actionImport.setText(_translate("MainWindow", "Import"))
         self.actionClose.setText(_translate("MainWindow", "Close"))
-import GUI.test
+import GUI.resources

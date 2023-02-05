@@ -5,7 +5,7 @@ from PyQt5.QtCore import QTimer
 from PyQt5.QtCore import Qt
 import time
 
-from TCMonitorLogic import SSHConnector,CMD_GET_DISK_USAGE,CMD_GET_MEMORY
+from SSHConnectorLogic import SSHConnector,CMD_GET_DISK_USAGE,CMD_GET_MEMORY
 
 
 class TCMonitorAboutWindow(QDialog):
