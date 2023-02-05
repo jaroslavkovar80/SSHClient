@@ -11,14 +11,14 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Dialog(object):
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.setWindowModality(QtCore.Qt.NonModal)
-        Dialog.setEnabled(True)
-        Dialog.resize(510, 379)
-        Dialog.setWindowOpacity(1.0)
-        Dialog.setStyleSheet("#Dialog{\n"
+class Ui_About(object):
+    def setupUi(self, About):
+        About.setObjectName("About")
+        About.setWindowModality(QtCore.Qt.NonModal)
+        About.setEnabled(True)
+        About.resize(510, 379)
+        About.setWindowOpacity(1.0)
+        About.setStyleSheet("#Dialog{\n"
 "  border-style: solid;\n"
 "  border-width: 2px;\n"
 "}\n"
@@ -60,12 +60,12 @@ class Ui_Dialog(object):
 "    background-color: rgba(255,151,64,0.8);\n"
 "    border-radius: 4px;\n"
 "}")
-        Dialog.setModal(True)
-        self.gridLayout = QtWidgets.QGridLayout(Dialog)
+        About.setModal(True)
+        self.gridLayout = QtWidgets.QGridLayout(About)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
-        self.frame = QtWidgets.QFrame(Dialog)
+        self.frame = QtWidgets.QFrame(About)
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -199,17 +199,17 @@ class Ui_Dialog(object):
         self.verticalLayout.setStretch(2, 6)
         self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
 
-        self.retranslateUi(Dialog)
-        self.btnClose.clicked.connect(Dialog.close)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(About)
+        self.btnClose.clicked.connect(About.close)
+        QtCore.QMetaObject.connectSlotsByName(About)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, About):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "About"))
-        self.label.setText(_translate("Dialog", "GITHub link:"))
-        self.lbAbout_4.setText(_translate("Dialog", "V 0.0.2"))
-        self.label_3.setText(_translate("Dialog", "jaroslav.kovar@br-automation"))
-        self.lbAbout_3.setText(_translate("Dialog", "Contact:"))
-        self.label_2.setText(_translate("Dialog", "Version:"))
-        self.lbAbout_2.setText(_translate("Dialog", "<html><head/><body><p><a href=\"https://github.com/jaroslavkovar80/30_TCMonitor\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/jaroslavkovar80/30_TCMonitor</span></a></p></body></html>"))
-import GUI.resources
+        About.setWindowTitle(_translate("About", "About"))
+        self.label.setText(_translate("About", "GITHub link:"))
+        self.lbAbout_4.setText(_translate("About", "V 0.0.2"))
+        self.label_3.setText(_translate("About", "jaroslav.kovar@br-automation"))
+        self.lbAbout_3.setText(_translate("About", "Contact:"))
+        self.label_2.setText(_translate("About", "Version:"))
+        self.lbAbout_2.setText(_translate("About", "<html><head/><body><p><a href=\"https://github.com/jaroslavkovar80/30_TCMonitor\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/jaroslavkovar80/30_TCMonitor</span></a></p></body></html>"))
+import resources_rc

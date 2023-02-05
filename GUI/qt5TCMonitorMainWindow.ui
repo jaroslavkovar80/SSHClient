@@ -79,7 +79,7 @@ QStackedWidget{
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="test.qrc">:/test/pictures/globe.svg</pixmap>
+         <pixmap resource="resources.qrc">:/test/pictures/globe.svg</pixmap>
         </property>
        </widget>
       </item>
@@ -93,13 +93,13 @@ QStackedWidget{
          </font>
         </property>
         <property name="text">
-         <string>host IP address</string>
+         <string/>
         </property>
         <property name="textFormat">
          <enum>Qt::PlainText</enum>
         </property>
         <property name="pixmap">
-         <pixmap resource="test.qrc">:/test/pictures/home.svg</pixmap>
+         <pixmap resource="resources.qrc">:/test/pictures/home.svg</pixmap>
         </property>
        </widget>
       </item>
@@ -165,7 +165,7 @@ QStackedWidget{
          <string>Check connection</string>
         </property>
         <property name="icon">
-         <iconset resource="test.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/test/pictures/activity.svg</normaloff>:/test/pictures/activity.svg</iconset>
         </property>
         <property name="iconSize">
@@ -267,7 +267,7 @@ QStackedWidget{
          <string>start logging</string>
         </property>
         <property name="icon">
-         <iconset resource="test.qrc">
+         <iconset resource="resources.qrc">
           <normaloff>:/test/pictures/clock.svg</normaloff>:/test/pictures/clock.svg</iconset>
         </property>
         <property name="iconSize">
@@ -330,7 +330,7 @@ QStackedWidget{
            <string>memory</string>
           </property>
           <property name="icon">
-           <iconset resource="test.qrc">
+           <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/grid.svg</normaloff>:/test/pictures/grid.svg</iconset>
           </property>
          </widget>
@@ -407,7 +407,7 @@ QStackedWidget{
            <string>disk usage</string>
           </property>
           <property name="icon">
-           <iconset resource="test.qrc">
+           <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/hard-drive.svg</normaloff>:/test/pictures/hard-drive.svg</iconset>
           </property>
          </widget>
@@ -490,7 +490,7 @@ QStackedWidget{
            <string>processes</string>
           </property>
           <property name="icon">
-           <iconset resource="test.qrc">
+           <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/cpu.svg</normaloff>:/test/pictures/cpu.svg</iconset>
           </property>
          </widget>
@@ -592,7 +592,7 @@ QStackedWidget{
            <string>dmesg</string>
           </property>
           <property name="icon">
-           <iconset resource="test.qrc">
+           <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/clipboard.svg</normaloff>:/test/pictures/clipboard.svg</iconset>
           </property>
          </widget>
@@ -669,7 +669,7 @@ QStackedWidget{
            <string>journal</string>
           </property>
           <property name="icon">
-           <iconset resource="test.qrc">
+           <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/clipboard.svg</normaloff>:/test/pictures/clipboard.svg</iconset>
           </property>
          </widget>
@@ -759,7 +759,7 @@ QStackedWidget{
            <string>command</string>
           </property>
           <property name="icon">
-           <iconset resource="test.qrc">
+           <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/edit.svg</normaloff>:/test/pictures/edit.svg</iconset>
           </property>
          </widget>
@@ -849,7 +849,7 @@ QStackedWidget{
            <string>settings</string>
           </property>
           <property name="icon">
-           <iconset resource="test.qrc">
+           <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/settings.svg</normaloff>:/test/pictures/settings.svg</iconset>
           </property>
          </widget>
@@ -1225,7 +1225,7 @@ QStackedWidget{
              <string>add</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/test/pictures/plus-circle.svg</normaloff>:/test/pictures/plus-circle.svg</iconset>
             </property>
             <property name="iconSize">
@@ -1260,7 +1260,7 @@ QStackedWidget{
              <string>remove</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/test/pictures/minus-circle.svg</normaloff>:/test/pictures/minus-circle.svg</iconset>
             </property>
             <property name="iconSize">
@@ -1295,7 +1295,7 @@ QStackedWidget{
              <string>clear all</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/test/pictures/trash-2.svg</normaloff>:/test/pictures/trash-2.svg</iconset>
             </property>
             <property name="iconSize">
@@ -1630,7 +1630,7 @@ QStackedWidget{
              <string>add</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/test/pictures/plus-circle.svg</normaloff>:/test/pictures/plus-circle.svg</iconset>
             </property>
             <property name="iconSize">
@@ -1750,7 +1750,7 @@ QStackedWidget{
              <string>add</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/test/pictures/plus-circle.svg</normaloff>:/test/pictures/plus-circle.svg</iconset>
             </property>
             <property name="iconSize">
@@ -1892,7 +1892,7 @@ QStackedWidget{
              <string>execute</string>
             </property>
             <property name="icon">
-             <iconset resource="test.qrc">
+             <iconset resource="resources.qrc">
               <normaloff>:/test/pictures/play.svg</normaloff>:/test/pictures/play.svg</iconset>
             </property>
             <property name="iconSize">
@@ -2003,6 +2003,7 @@ QStackedWidget{
   </action>
  </widget>
  <resources>
+  <include location="resources.qrc"/>
   <include location="test.qrc"/>
  </resources>
  <connections>

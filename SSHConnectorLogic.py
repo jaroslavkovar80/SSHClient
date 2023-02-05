@@ -65,9 +65,7 @@ class SSHConnector:
 
         return lines
 
-
-
-    def disconnect(self):
+    def closeConnection(self):
         self._disconnect()
 
     def getConnection(self, host='127.0.0.1',port='22',username='root', password='root'):
@@ -102,7 +100,7 @@ class SSHConnector:
         """
         return self._connStatus
 
-    def getMemory(self):
+    def getMemorySnapshot(self):
         """
         getMemory
         """

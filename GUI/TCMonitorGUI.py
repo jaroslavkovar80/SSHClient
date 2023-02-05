@@ -1,3 +1,5 @@
+import sys
+
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_Dialog
 from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDialog)
@@ -54,6 +56,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         # menu-About window
         self.actionAbout.triggered.connect(self._showAbout)
+        self.actionClose.triggered.connect(self._exit)
 
         self.btnCallCmd.clicked.connect(self._callCommand)
 
@@ -101,7 +104,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
     def getAndAddMemorySnapshotToTable(self):
 
-        list = self._linuxSSHConnector.getMemory()
+        list = self._linuxSSHConnector.getMemorySnapshot()
 
         print(list[1])
 
@@ -258,6 +261,9 @@ class TCMonitorMainWindow(Ui_MainWindow):
     #----------------------
     # MENU/NAVIGATION METHODS
     #----------------------
+    def _exit(self):
+        sys.exit()
+
     def _showAbout(self):
         self._dlgAbout.exec()
 
@@ -287,7 +293,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
     #----------------------
     def _connectToTarget(self):
         if self._linuxSSHConnector.isConnected():
-            self._linuxSSHConnector.disconnect()
+            self._linuxSSHConnector.closeConnection()
         else:
             self._linuxSSHConnector.getConnection(host=self.edTargetHost.text())
 
