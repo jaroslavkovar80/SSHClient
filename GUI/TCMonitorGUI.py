@@ -1,7 +1,7 @@
 import sys
 
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
-from GUI.qt5TCMonitorAboutWindow import Ui_Dialog
+from GUI.qt5TCMonitorAboutWindow import Ui_About
 from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDialog)
 from PyQt5.QtCore import QTimer
 from PyQt5.QtCore import Qt
@@ -13,7 +13,7 @@ from SSHConnectorLogic import SSHConnector,CMD_GET_DISK_USAGE,CMD_GET_MEMORY
 class TCMonitorAboutWindow(QDialog):
     def __init__(self,parent=None):
         super().__init__(parent)
-        self.ui = Ui_Dialog()
+        self.ui = Ui_About()
         self.ui.setupUi(self)
         self.setWindowFlag(Qt.SplashScreen)
 

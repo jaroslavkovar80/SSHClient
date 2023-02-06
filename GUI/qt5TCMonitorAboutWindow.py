@@ -212,4 +212,4 @@ class Ui_About(object):
         self.lbAbout_3.setText(_translate("About", "Contact:"))
         self.label_2.setText(_translate("About", "Version:"))
         self.lbAbout_2.setText(_translate("About", "<html><head/><body><p><a href=\"https://github.com/jaroslavkovar80/30_TCMonitor\"><span style=\" text-decoration: underline; color:#0000ff;\">https://github.com/jaroslavkovar80/30_TCMonitor</span></a></p></body></html>"))
-import resources_rc
+import GUI.resources
