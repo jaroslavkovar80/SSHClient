@@ -140,6 +140,14 @@ class TCMonitorMainWindow(Ui_MainWindow):
                 break
 
     #----------------------
+    # TAB CALL COMMAND
+    #----------------------
+    def _callCommand(self):
+        list = self._linuxSSHConnector.getCmdByLines(self.edCommand.text())
+        print(list)
+        self._addRowsToTable(list, self.tableCommand)
+
+    #----------------------
     # TAB JOURNAL LOG OVERVIEW
     #----------------------
     def addJournalToTable(self):
@@ -298,10 +306,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self._linuxSSHConnector.getConnection(host=self.edTargetHost.text())
 
         self._updateStatusBar()
-
-    def _callCommand(self):
-        self._linuxSSHConnector.getCmdByLines(self.lineEdit.text())
-        print(self.lineEdit.text())
 
     def _cyclicLogicHandler(self):
 
