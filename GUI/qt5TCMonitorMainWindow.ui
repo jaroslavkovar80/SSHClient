@@ -41,7 +41,7 @@ QStackedWidget{
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,0,1,0,0,0,0,0">
+     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,1,0,0,0,0,0">
       <property name="spacing">
        <number>10</number>
       </property>
@@ -80,26 +80,6 @@ QStackedWidget{
         </property>
         <property name="pixmap">
          <pixmap resource="resources.qrc">:/test/pictures/globe.svg</pixmap>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLabel" name="lbTargetHostAddress">
-        <property name="font">
-         <font>
-          <family>Roboto</family>
-          <pointsize>12</pointsize>
-          <kerning>true</kerning>
-         </font>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="textFormat">
-         <enum>Qt::PlainText</enum>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="resources.qrc">:/test/pictures/home.svg</pixmap>
         </property>
        </widget>
       </item>
@@ -939,6 +919,7 @@ QStackedWidget{
            <font>
             <family>Roboto</family>
             <pointsize>10</pointsize>
+            <kerning>false</kerning>
            </font>
           </property>
           <property name="frameShape">
@@ -963,13 +944,16 @@ QStackedWidget{
            <bool>true</bool>
           </property>
           <attribute name="horizontalHeaderVisible">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
            <bool>false</bool>
           </attribute>
           <attribute name="horizontalHeaderMinimumSectionSize">
            <number>50</number>
           </attribute>
           <attribute name="horizontalHeaderDefaultSectionSize">
-           <number>95</number>
+           <number>120</number>
           </attribute>
           <attribute name="horizontalHeaderHighlightSections">
            <bool>true</bool>
@@ -983,9 +967,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="textAlignment">
@@ -1005,9 +990,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="textAlignment">
@@ -1036,9 +1022,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1055,9 +1042,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1074,9 +1062,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1093,10 +1082,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>8</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1113,9 +1102,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1132,9 +1122,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1151,10 +1142,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <pointsize>8</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1171,9 +1162,10 @@ QStackedWidget{
            </property>
            <property name="font">
             <font>
-             <family>Calibri</family>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="background">
@@ -1820,25 +1812,28 @@ QStackedWidget{
           </attribute>
           <column>
            <property name="text">
-            <string>lines</string>
+            <string>output</string>
            </property>
           </column>
          </widget>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLineEdit" name="edCommand">
+          <property name="leftMargin">
+           <number>6</number>
+          </property>
+          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+           <widget class="QComboBox" name="cboxCommand">
             <property name="minimumSize">
              <size>
-              <width>20</width>
-              <height>30</height>
+              <width>200</width>
+              <height>40</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
-              <width>16777215</width>
-              <height>30</height>
+              <width>200</width>
+              <height>40</height>
              </size>
             </property>
             <property name="font">
@@ -1847,8 +1842,64 @@ QStackedWidget{
               <pointsize>12</pointsize>
              </font>
             </property>
+            <property name="styleSheet">
+             <string notr="true">	background-color: rgb(188, 220, 244);
+	border: solid;</string>
+            </property>
+            <property name="editable">
+             <bool>false</bool>
+            </property>
+            <property name="frame">
+             <bool>false</bool>
+            </property>
+            <item>
+             <property name="text">
+              <string>select command</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>restart target</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="edCommand">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>800000</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	border: solid;
+	border-radius: 6px;
+    border-color: red;
+}</string>
+            </property>
             <property name="text">
              <string>journalctl</string>
+            </property>
+            <property name="frame">
+             <bool>true</bool>
+            </property>
+            <property name="clearButtonEnabled">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -1904,6 +1955,41 @@ QStackedWidget{
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="btnCommandClear">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>clear all</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/test/pictures/trash-2.svg</normaloff>:/test/pictures/trash-2.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="horizontalSpacer_13">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
@@ -1913,7 +1999,7 @@ QStackedWidget{
             </property>
             <property name="sizeHint" stdset="0">
              <size>
-              <width>3</width>
+              <width>13</width>
               <height>20</height>
              </size>
             </property>
@@ -2004,7 +2090,7 @@ QStackedWidget{
  </widget>
  <resources>
   <include location="resources.qrc"/>
-  <include location="test.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -2788,6 +2874,22 @@ QStackedWidget{
     <hint type="destinationlabel">
      <x>139</x>
      <y>214</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cboxCommand</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>cboxCommand</receiver>
+   <slot>setEditText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>743</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>743</y>
     </hint>
    </hints>
   </connection>

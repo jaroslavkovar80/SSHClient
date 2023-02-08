@@ -58,7 +58,14 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.actionAbout.triggered.connect(self._showAbout)
         self.actionClose.triggered.connect(self._exit)
 
+        # TAB manual command
         self.btnCallCmd.clicked.connect(self._callCommand)
+        self.cboxCommand.currentIndexChanged.connect(self._copyCommand)
+        self.btnCommandClear.clicked.connect(self._clearCommandTable)
+
+        #self.cboxCommand.setEditable(True)
+        #line_edit = self.cboxCommand.lineEdit()
+        #line_edit.setAlignment(Qt.AlignCenter)
 
         #disk usage tab
         self.btnAddDiskUsage.clicked.connect(self._updateDiskUsageTable)
@@ -146,6 +153,17 @@ class TCMonitorMainWindow(Ui_MainWindow):
         list = self._linuxSSHConnector.getCmdByLines(self.edCommand.text())
         print(list)
         self._addRowsToTable(list, self.tableCommand)
+
+    def _copyCommand(self):
+        index = self.cboxCommand.currentIndex()
+
+        if index == 0:
+            self.edCommand.setText('')
+        elif index == 1:
+            self.edCommand.setText('/sbin/shutdown -r now')
+
+    def _clearCommandTable(self):
+        self._clearTableWidget(self.tableCommand)
 
     #----------------------
     # TAB JOURNAL LOG OVERVIEW
