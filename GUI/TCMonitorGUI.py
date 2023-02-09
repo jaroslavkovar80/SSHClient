@@ -307,16 +307,42 @@ class TCMonitorMainWindow(Ui_MainWindow):
     def _updateGUI(self):
         self.statusbar.showMessage(self._linuxSSHConnector.getConnectionStatus())
 
-        if self._linuxSSHConnector.isConnected():
+        isConnected = self._linuxSSHConnector.isConnected()
+
+        if isConnected:
             self.btnCheckConnection.setText('disconnect')
+            self.btnCheckConnection.setStyleSheet("background-color: rgb(85, 255, 127)")
         else:
             self.btnCheckConnection.setText('connect')
+            self.btnCheckConnection.setStyleSheet("background-color: rgb(188, 220, 244)")
 
         if self._timerMemoryLogging.isActive():
             self.btnStartMemoryLogging.setText('stop logging')
         else:
             self.btnStartMemoryLogging.setText('start logging')
 
+        self.btnAddRecordToProcessTable.setEnabled(isConnected)
+        self.btnDelRecordFromProcessTable.setEnabled(isConnected)
+        self.btnClearProcessTable.setEnabled(isConnected)
+
+        self.btnAddDiskUsage.setEnabled(isConnected)
+        self.btnRemoveDiskUsage.setEnabled(isConnected)
+        self.btnClearDiskUsage.setEnabled(isConnected)
+
+        self.btnCallCmd.setEnabled(isConnected)
+        self.cboxCommand.setEnabled(isConnected)
+        self.btnCommandClear.setEnabled(isConnected)
+
+        self.btnTakeSnapshot.setEnabled(isConnected)
+
+        self.btnAddRecordToMemoryTable.setEnabled(isConnected)
+        self.btnDelRecordFromMemoryTable.setEnabled(isConnected)
+        self.btnClearMemoryTable.setEnabled(isConnected)
+        self.btnStartMemoryLogging.setEnabled(isConnected)
+
+        # loggers
+        self.btnLoadDmesg.setEnabled(isConnected)
+        self.btnLoadJournal.setEnabled(isConnected)
     #----------------------
     # MENU/NAVIGATION METHODS
     #----------------------
