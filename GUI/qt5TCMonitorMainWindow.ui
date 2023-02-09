@@ -41,7 +41,7 @@ QStackedWidget{
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,1,0,0,0,0,0">
+     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,1,0,0,0,0,0,0">
       <property name="spacing">
        <number>10</number>
       </property>
@@ -122,7 +122,7 @@ QStackedWidget{
        <widget class="QPushButton" name="btnCheckConnection">
         <property name="minimumSize">
          <size>
-          <width>200</width>
+          <width>170</width>
           <height>40</height>
          </size>
         </property>
@@ -142,7 +142,7 @@ QStackedWidget{
          </font>
         </property>
         <property name="text">
-         <string>Check connection</string>
+         <string>check connection</string>
         </property>
         <property name="icon">
          <iconset resource="resources.qrc">
@@ -156,6 +156,35 @@ QStackedWidget{
         </property>
         <property name="checkable">
          <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnTakeSnapshot">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>take snapshot</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/test/pictures/camera.svg</normaloff>:/test/pictures/camera.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -467,7 +496,7 @@ QStackedWidget{
 }</string>
           </property>
           <property name="text">
-           <string>processes</string>
+           <string>cpu/tasks</string>
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
@@ -947,7 +976,7 @@ QStackedWidget{
            <bool>true</bool>
           </attribute>
           <attribute name="horizontalHeaderCascadingSectionResizes">
-           <bool>false</bool>
+           <bool>true</bool>
           </attribute>
           <attribute name="horizontalHeaderMinimumSectionSize">
            <number>50</number>
@@ -1510,7 +1539,7 @@ QStackedWidget{
          <number>6</number>
         </property>
         <property name="topMargin">
-         <number>6</number>
+         <number>0</number>
         </property>
         <property name="rightMargin">
          <number>0</number>
@@ -1519,11 +1548,192 @@ QStackedWidget{
          <number>6</number>
         </property>
         <item>
-         <widget class="QLabel" name="label_2">
-          <property name="text">
-           <string>processes</string>
+         <widget class="QTableWidget" name="tableProcessOverview">
+          <property name="font">
+           <font>
+            <family>Roboto</family>
+            <pointsize>10</pointsize>
+            <kerning>false</kerning>
+           </font>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::AdjustToContents</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>true</bool>
+          </property>
+          <property name="textElideMode">
+           <enum>Qt::ElideMiddle</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderCascadingSectionResizes">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>50</number>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>120</number>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
          </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_8">
+          <item>
+           <spacer name="horizontalSpacer_7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnAddRecordToProcessTable">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>add</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/test/pictures/plus-circle.svg</normaloff>:/test/pictures/plus-circle.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnDelRecordFromProcessTable">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>remove</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/test/pictures/minus-circle.svg</normaloff>:/test/pictures/minus-circle.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnClearProcessTable">
+            <property name="minimumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>102</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>clear all</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/test/pictures/trash-2.svg</normaloff>:/test/pictures/trash-2.svg</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_15">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Fixed</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>3</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -1572,12 +1782,15 @@ QStackedWidget{
           </attribute>
           <column>
            <property name="text">
-            <string>overview</string>
+            <string>dmesg output</string>
            </property>
            <property name="font">
             <font>
              <family>Roboto</family>
              <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+             <kerning>false</kerning>
             </font>
            </property>
           </column>
@@ -1694,11 +1907,19 @@ QStackedWidget{
            <bool>true</bool>
           </property>
           <attribute name="horizontalHeaderDefaultSectionSize">
-           <number>1000</number>
+           <number>1100</number>
           </attribute>
           <column>
            <property name="text">
-            <string>overview</string>
+            <string>journal output</string>
+           </property>
+           <property name="font">
+            <font>
+             <family>Roboto</family>
+             <pointsize>10</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
            </property>
           </column>
          </widget>
