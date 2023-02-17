@@ -93,6 +93,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self._dlgAbout = TCMonitorAboutWindow()
 
 
+
         # buttons to change index of current tab
         self.btnTab1.click()
         self.btnTab1.clicked.connect(self.nav_to_tab0)
@@ -109,6 +110,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnDelRecordFromMemoryTable.clicked.connect(self._removeRowFromMemoryTable)
         self.btnClearMemoryTable.clicked.connect(self._clearMemoryTable)
         self.btnStartMemoryLogging.clicked.connect(self._cyclicLogicHandler)
+        self.btnCopyMemorySelection.clicked.connect(self._copyTableSelection)
 
         # loggers
         self.btnLoadDmesg.clicked.connect(self.getAndAddDmesgToTable)
@@ -286,6 +288,22 @@ class TCMonitorMainWindow(Ui_MainWindow):
     #----------------------
     # GENERAL GUI METHODS
     #----------------------
+
+    def _copyTableSelection(self):
+        cb = QApplication.clipboard()
+        cb.clear(mode=0)
+        #cb.setText(self.tablewMemoryOverview.selectedItems(),mode=0)
+        rowList = self.tablewMemoryOverview.selectionModel().selectedIndexes()#selectedRows(column=)
+
+        temp = ''
+        for row in rowList:
+            print(str(row.row()))
+            print(str(self.tablewMemoryOverview.model().data(row)))
+            temp += self.tablewMemoryOverview.model().data(row) + ','
+
+        cb.setText(temp , mode=0)
+
+
     def _updateTableWidget(self, header, rows, table):
 
         #table is empty? -> add all columns with labels

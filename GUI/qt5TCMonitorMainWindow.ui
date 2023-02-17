@@ -966,6 +966,12 @@ QStackedWidget{
           <property name="alternatingRowColors">
            <bool>true</bool>
           </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::MultiSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
           <property name="textElideMode">
            <enum>Qt::ElideMiddle</enum>
           </property>
@@ -1223,6 +1229,13 @@ QStackedWidget{
            </spacer>
           </item>
           <item>
+           <widget class="QPushButton" name="btnCopyMemorySelection">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="btnAddRecordToMemoryTable">
             <property name="minimumSize">
              <size>
@@ -1377,6 +1390,12 @@ QStackedWidget{
           </property>
           <property name="alternatingRowColors">
            <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::MultiSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <property name="sortingEnabled">
            <bool>true</bool>
@@ -1570,6 +1589,12 @@ QStackedWidget{
           </property>
           <property name="alternatingRowColors">
            <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::MultiSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <property name="textElideMode">
            <enum>Qt::ElideMiddle</enum>
@@ -1777,6 +1802,12 @@ QStackedWidget{
           <property name="alternatingRowColors">
            <bool>true</bool>
           </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::MultiSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
+          </property>
           <attribute name="horizontalHeaderDefaultSectionSize">
            <number>1100</number>
           </attribute>
@@ -1905,6 +1936,12 @@ QStackedWidget{
           </property>
           <property name="alternatingRowColors">
            <bool>true</bool>
+          </property>
+          <property name="selectionMode">
+           <enum>QAbstractItemView::MultiSelection</enum>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <attribute name="horizontalHeaderDefaultSectionSize">
            <number>1100</number>
@@ -2335,6 +2372,7 @@ QStackedWidget{
  <resources>
   <include location="resources.qrc"/>
   <include location="resources.qrc"/>
+  <include location="../../../../../Users/kovarj/.designer/backup/resources.qrc"/>
  </resources>
  <connections>
   <connection>
