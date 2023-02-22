@@ -110,7 +110,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnDelRecordFromMemoryTable.clicked.connect(self._removeRowFromMemoryTable)
         self.btnClearMemoryTable.clicked.connect(self._clearMemoryTable)
         self.btnStartMemoryLogging.clicked.connect(self._cyclicLogicHandler)
-        self.btnCopyMemorySelection.clicked.connect(self._copyTableSelection)
+        self.btnCopyMemorySelection.clicked.connect(self._test)
 
         # loggers
         self.btnLoadDmesg.clicked.connect(self.getAndAddDmesgToTable)
@@ -303,6 +303,39 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         cb.setText(temp , mode=0)
 
+    def _test(self):
+        theItem = QTableWidgetItem('tt')
+        theItem = self.tableWidget.item(0,0)
+
+
+
+        columnCount = self.tableWidget.columnCount()
+        rowCount = self.tableWidget.rowCount()
+
+        listRow = []
+        listData = []
+        listHeader = []
+
+        for colIdx in range(columnCount):
+            theHeaderItem = self.tableWidget.horizontalHeaderItem(colIdx)
+            listHeader.append(theHeaderItem.text())
+
+        for rowIdx in range(rowCount):
+            listRow = []
+            for colIdx in range(columnCount):
+                theItem = self.tableWidget.item(rowIdx,colIdx)
+
+                if theItem != None:
+                    #print(str(theItem.text()))
+                    listRow.append(theItem.text())
+                else:
+                    print('none')
+
+            listData.append(listRow)
+
+
+        print(listHeader)
+        print(listData)
 
     def _updateTableWidget(self, header, rows, table):
 
@@ -387,6 +420,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
             table.insertRow(rowCount)
             table.setItem(rowCount, columnIdx, rowItem)
             rowCount += 1
+
 
     def _updateStatusBar(self):
         self.statusbar.showMessage(self._linuxSSHConnector.getConnectionStatus())
