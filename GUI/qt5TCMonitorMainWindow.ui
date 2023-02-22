@@ -926,7 +926,7 @@ QStackedWidget{
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pgMemory">
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -2267,44 +2267,7 @@ QStackedWidget{
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="pgSettings">
-       <widget class="QLabel" name="label">
-        <property name="geometry">
-         <rect>
-          <x>190</x>
-          <y>140</y>
-          <width>47</width>
-          <height>13</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>settings </string>
-        </property>
-       </widget>
-       <widget class="QGraphicsView" name="graphicsView">
-        <property name="geometry">
-         <rect>
-          <x>240</x>
-          <y>240</y>
-          <width>361</width>
-          <height>241</height>
-         </rect>
-        </property>
-        <property name="cacheMode">
-         <set>QGraphicsView::CacheBackground</set>
-        </property>
-       </widget>
-       <widget class="QWidget" name="widget" native="true">
-        <property name="geometry">
-         <rect>
-          <x>370</x>
-          <y>100</y>
-          <width>120</width>
-          <height>80</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
+      <widget class="QWidget" name="pgSettings"/>
      </widget>
     </item>
     <item row="1" column="0" colspan="2">
@@ -2372,7 +2335,7 @@ QStackedWidget{
  <resources>
   <include location="resources.qrc"/>
   <include location="resources.qrc"/>
-  <include location="../../../../../Users/kovarj/.designer/backup/resources.qrc"/>
+  <include location="resources.qrc"/>
  </resources>
  <connections>
   <connection>

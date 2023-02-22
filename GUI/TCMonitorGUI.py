@@ -146,7 +146,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         # update status
         self._updateStatusBar()
 
-        self._chartExample()
+        #self._chartExample()
 
     def _chartExample(self):
         self.window = TestChart()
@@ -489,7 +489,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         elif self._linuxSSHConnector.isConnected():
             self._timerMemoryLogging.timeout.connect(self._cyclicLogicActions)
             self._timerMemoryLogging.start(loggingTime * 60 * 1000)
-            self.getAndAddMemorySnapshotToTable()
+            self.takeSystemSnapshot()
 
         self._updateGUI()
 
