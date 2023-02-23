@@ -2,6 +2,7 @@ import paramiko
 import time
 import re
 import string
+import socket
 
 IP_ADDRESS_REGEX='^(([01]?\d{1,2}|2[0-4]\d|25[0-5])\.){3}([01]?\d{1,2}|2[0-4]\d|25[0-5])$'
 CMD_GET_MEMORY = "free -h"
@@ -63,6 +64,11 @@ class SSHConnector:
             stdin, stdout, stderr = self._ssh.exec_command(command)
 
             lines = stdout.readlines()
+        except socket.error:
+            print('socket error')
+            self._connected = False
+            self._connStatus = f'Connection to host was closed, socket error'
+
         except:
             self._connStatus = f'Invalid command {command} was called'
 
@@ -110,15 +116,17 @@ class SSHConnector:
         value = ['-1', '-1', '-1', '-1', '-1', '-1', '-1']
 
         if (self._connected == True):
+
             lines = self._executeCmd(CMD_GET_MEMORY)
 
-            line1 = lines[1].split()
-            line2 = lines[2].split()
+            if len(lines) > 0 :
+                line1 = lines[1].split()
+                line2 = lines[2].split()
 
-            line1.remove('Mem:')
-            line2.remove('Swap:')
+                line1.remove('Mem:')
+                line2.remove('Swap:')
 
-            value = line1+line2
+                value = line1+line2
             #print(value)
 
         return value

@@ -219,7 +219,8 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self._addRowToMemoryTable(list)
         elif self._timerMemoryLogging.isActive():
             self._timerMemoryLogging.stop()
-            self._updateGUI()
+
+        self._updateGUI()
 
     def _addRowToMemoryTable(self, parList):
 
