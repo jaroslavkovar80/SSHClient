@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>TC - SSH Client</string>
+   <string>BnR SSH Client</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton{
@@ -297,6 +297,34 @@ QStackedWidget{
       <item>
        <layout class="QHBoxLayout" name="layoutBtnTab1">
         <item>
+         <widget class="Line" name="lnTab1">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab1{background-color: rgb(188, 220, 244);}</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QPushButton" name="btnTab1">
           <property name="minimumSize">
            <size>
@@ -344,8 +372,12 @@ QStackedWidget{
           </property>
          </widget>
         </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layoutBtnTab2">
         <item>
-         <widget class="Line" name="lnTab1">
+         <widget class="Line" name="lnTab2">
           <property name="minimumSize">
            <size>
             <width>5</width>
@@ -358,8 +390,17 @@ QStackedWidget{
             <height>16777215</height>
            </size>
           </property>
+          <property name="baseSize">
+           <size>
+            <width>0</width>
+            <height>0</height>
+           </size>
+          </property>
           <property name="styleSheet">
-           <string notr="true">#lnTab1{background-color: rgb(188, 220, 244);}</string>
+           <string notr="true">#lnTab2{
+	background-color: rgb(188, 220, 244);
+}
+</string>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
@@ -372,10 +413,6 @@ QStackedWidget{
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="layoutBtnTab2">
         <item>
          <widget class="QPushButton" name="btnTab2">
           <property name="minimumSize">
@@ -421,8 +458,12 @@ QStackedWidget{
           </property>
          </widget>
         </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layoutBtnTab3">
         <item>
-         <widget class="Line" name="lnTab2">
+         <widget class="Line" name="lnTab3">
           <property name="minimumSize">
            <size>
             <width>5</width>
@@ -437,12 +478,12 @@ QStackedWidget{
           </property>
           <property name="baseSize">
            <size>
-            <width>0</width>
+            <width>5</width>
             <height>0</height>
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">#lnTab2{
+           <string notr="true">#lnTab3{
 	background-color: rgb(188, 220, 244);
 }
 </string>
@@ -458,10 +499,6 @@ QStackedWidget{
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="layoutBtnTab3">
         <item>
          <widget class="QPushButton" name="btnTab3">
           <property name="minimumSize">
@@ -504,43 +541,6 @@ QStackedWidget{
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="Line" name="lnTab3">
-          <property name="minimumSize">
-           <size>
-            <width>5</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>5</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>5</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#lnTab3{
-	background-color: rgb(188, 220, 244);
-}
-</string>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item>
@@ -561,6 +561,34 @@ QStackedWidget{
       </item>
       <item>
        <layout class="QHBoxLayout" name="layoutBtnTab4">
+        <item>
+         <widget class="Line" name="lnTab4">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab4{background-color: rgb(188, 220, 244);}</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QPushButton" name="btnTab4">
           <property name="minimumSize">
@@ -606,8 +634,12 @@ QStackedWidget{
           </property>
          </widget>
         </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="layoutBtnTab5">
         <item>
-         <widget class="Line" name="lnTab4">
+         <widget class="Line" name="lnTab5">
           <property name="minimumSize">
            <size>
             <width>5</width>
@@ -621,7 +653,7 @@ QStackedWidget{
            </size>
           </property>
           <property name="styleSheet">
-           <string notr="true">#lnTab4{background-color: rgb(188, 220, 244);}</string>
+           <string notr="true">#lnTab5{background-color: rgb(188, 220, 244);}</string>
           </property>
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
@@ -634,10 +666,6 @@ QStackedWidget{
           </property>
          </widget>
         </item>
-       </layout>
-      </item>
-      <item>
-       <layout class="QHBoxLayout" name="layoutBtnTab5">
         <item>
          <widget class="QPushButton" name="btnTab5">
           <property name="minimumSize">
@@ -683,34 +711,6 @@ QStackedWidget{
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="Line" name="lnTab5">
-          <property name="minimumSize">
-           <size>
-            <width>5</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>5</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#lnTab5{background-color: rgb(188, 220, 244);}</string>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item>
@@ -731,6 +731,37 @@ QStackedWidget{
       </item>
       <item>
        <layout class="QHBoxLayout" name="layoutBtnTab6">
+        <item>
+         <widget class="Line" name="lnTab6">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab6{
+	background-color: rgb(188, 220, 244);
+}
+</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QPushButton" name="btnTab6">
           <property name="minimumSize">
@@ -773,37 +804,6 @@ QStackedWidget{
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="Line" name="lnTab6">
-          <property name="minimumSize">
-           <size>
-            <width>5</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>5</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#lnTab6{
-	background-color: rgb(188, 220, 244);
-}
-</string>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-         </widget>
-        </item>
        </layout>
       </item>
       <item>
@@ -821,6 +821,34 @@ QStackedWidget{
       </item>
       <item>
        <layout class="QHBoxLayout" name="layoutBtnTab7">
+        <item>
+         <widget class="Line" name="lnTab7">
+          <property name="minimumSize">
+           <size>
+            <width>5</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>5</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">#lnTab7{background-color: rgb(188, 220, 244);}</string>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="lineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QPushButton" name="btnTab7">
           <property name="minimumSize">
@@ -860,34 +888,6 @@ QStackedWidget{
           <property name="icon">
            <iconset resource="resources.qrc">
             <normaloff>:/test/pictures/settings.svg</normaloff>:/test/pictures/settings.svg</iconset>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="Line" name="lnTab7">
-          <property name="minimumSize">
-           <size>
-            <width>5</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>5</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">#lnTab7{background-color: rgb(188, 220, 244);}</string>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
-          <property name="lineWidth">
-           <number>0</number>
-          </property>
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
           </property>
          </widget>
         </item>
@@ -979,7 +979,7 @@ QStackedWidget{
            <bool>true</bool>
           </property>
           <attribute name="horizontalHeaderVisible">
-           <bool>false</bool>
+           <bool>true</bool>
           </attribute>
           <attribute name="horizontalHeaderCascadingSectionResizes">
            <bool>true</bool>
@@ -994,6 +994,12 @@ QStackedWidget{
            <bool>true</bool>
           </attribute>
           <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="horizontalHeaderStretchLastSection">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
            <bool>true</bool>
           </attribute>
           <column>
@@ -1021,7 +1027,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>total</string>
+            <string notr="true">total</string>
            </property>
            <property name="font">
             <font>
@@ -1053,7 +1059,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>used</string>
+            <string notr="true">used</string>
            </property>
            <property name="font">
             <font>
@@ -1073,7 +1079,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>free</string>
+            <string notr="true">free</string>
            </property>
            <property name="font">
             <font>
@@ -1093,7 +1099,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>shared</string>
+            <string notr="true">shared</string>
            </property>
            <property name="font">
             <font>
@@ -1113,7 +1119,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>buff/cache</string>
+            <string notr="true">buff/cache</string>
            </property>
            <property name="font">
             <font>
@@ -1133,7 +1139,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>availabe</string>
+            <string notr="true">availabe</string>
            </property>
            <property name="font">
             <font>
@@ -1153,7 +1159,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>swap total</string>
+            <string notr="true">swap total</string>
            </property>
            <property name="font">
             <font>
@@ -1173,7 +1179,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>swap used</string>
+            <string notr="true">swap used</string>
            </property>
            <property name="font">
             <font>
@@ -1193,7 +1199,7 @@ QStackedWidget{
           </column>
           <column>
            <property name="text">
-            <string>swap free</string>
+            <string notr="true">swap free</string>
            </property>
            <property name="font">
             <font>
@@ -1227,13 +1233,6 @@ QStackedWidget{
              </size>
             </property>
            </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="btnCopyMemorySelection">
-            <property name="text">
-             <string>PushButton</string>
-            </property>
-           </widget>
           </item>
           <item>
            <widget class="QPushButton" name="btnAddRecordToMemoryTable">
@@ -2268,70 +2267,18 @@ QStackedWidget{
        </layout>
       </widget>
       <widget class="QWidget" name="pgSettings">
-       <widget class="QTableWidget" name="tableWidget">
+       <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>170</x>
-          <y>130</y>
-          <width>521</width>
-          <height>192</height>
+          <x>190</x>
+          <y>140</y>
+          <width>47</width>
+          <height>13</height>
          </rect>
         </property>
-        <row>
-         <property name="text">
-          <string>Nový řádek</string>
-         </property>
-        </row>
-        <row>
-         <property name="text">
-          <string>Nový řádek</string>
-         </property>
-        </row>
-        <column>
-         <property name="text">
-          <string>Nový sloupec</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Nový sloupec</string>
-         </property>
-        </column>
-        <column>
-         <property name="text">
-          <string>Nový sloupec</string>
-         </property>
-        </column>
-        <item row="0" column="0">
-         <property name="text">
-          <string>1</string>
-         </property>
-        </item>
-        <item row="0" column="1">
-         <property name="text">
-          <string>2</string>
-         </property>
-        </item>
-        <item row="0" column="2">
-         <property name="text">
-          <string>3</string>
-         </property>
-        </item>
-        <item row="1" column="0">
-         <property name="text">
-          <string>4</string>
-         </property>
-        </item>
-        <item row="1" column="1">
-         <property name="text">
-          <string>5</string>
-         </property>
-        </item>
-        <item row="1" column="2">
-         <property name="text">
-          <string>6</string>
-         </property>
-        </item>
+        <property name="text">
+         <string>settings </string>
+        </property>
        </widget>
       </widget>
      </widget>
@@ -2402,7 +2349,8 @@ QStackedWidget{
   <include location="resources.qrc"/>
   <include location="resources.qrc"/>
   <include location="resources.qrc"/>
-  <include location="../../../../Users/kovarj/.designer/backup/resources.qrc"/>
+  <include location="resources.qrc"/>
+  <include location="../../../../../Users/kovarj/.designer/backup/resources.qrc"/>
  </resources>
  <connections>
   <connection>

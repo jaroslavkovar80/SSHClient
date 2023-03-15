@@ -2,6 +2,7 @@ import sys
 import csv
 import numpy as np
 import pandas as pd
+import openpyxl
 
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_About
@@ -11,6 +12,9 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QChart,QChartView, QLineSeries, QValueAxis)
 from PyQt5.QtGui import QPainter
 import time
+from datetime import datetime
+import subprocess
+import os
 
 from SSHConnectorLogic import SSHConnector,CMD_GET_DISK_USAGE,CMD_GET_DMESG,CMD_GET_JOURNAL,CMD_GET_PROCESS
 
@@ -95,8 +99,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
         # create instace of another windows
         self._dlgAbout = TCMonitorAboutWindow()
 
-
-
         # buttons to change index of current tab
         self.btnTab1.click()
         self.btnTab1.clicked.connect(self.nav_to_tab0)
@@ -113,7 +115,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnDelRecordFromMemoryTable.clicked.connect(self._removeRowFromMemoryTable)
         self.btnClearMemoryTable.clicked.connect(self._clearMemoryTable)
         self.btnStartMemoryLogging.clicked.connect(self._cyclicLogicHandler)
-        self.btnCopyMemorySelection.clicked.connect(self._test)
 
         # loggers
         self.btnLoadDmesg.clicked.connect(self.getAndAddDmesgToTable)
@@ -126,6 +127,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         # menu-About window
         self.actionAbout.triggered.connect(self._showAbout)
         self.actionClose.triggered.connect(self._exit)
+        self.actionExport.triggered.connect(self._exportToExcel)
 
         # TAB manual command
         self.btnCallCmd.clicked.connect(self._callCommand)
@@ -164,7 +166,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
         # get data from Linux server
         processUsageHeader, processUsageRows = self._linuxSSHConnector.getCmdByLinesHeader(CMD_GET_PROCESS)
 
-        print(processUsageHeader)
         # add them to GUI
         self._updateTableWidget(processUsageHeader, processUsageRows, self.tableProcessOverview)
 
@@ -216,8 +217,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         list = self._linuxSSHConnector.getMemorySnapshot()
 
-        print(list[1])
-
         if list[1] != "-1":
             self._addRowToMemoryTable(list)
         elif self._timerMemoryLogging.isActive():
@@ -255,7 +254,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
     #----------------------
     def _callCommand(self):
         list = self._linuxSSHConnector.getCmdByLines(self.edCommand.text())
-        print(list)
         self._addRowsToTable(list, self.tableCommand)
 
     def _copyCommand(self):
@@ -301,26 +299,42 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         temp = ''
         for row in rowList:
-            print(str(row.row()))
-            print(str(self.tablewMemoryOverview.model().data(row)))
             temp += self.tablewMemoryOverview.model().data(row) + ','
 
         cb.setText(temp , mode=0)
 
-    def _test(self):
+    def _exportToExcel(self):
 
-        self._exportDataFromTable(self.tablewMemoryOverview)
-        #self._exportDataFromTable(self.tableDiskUsage)
-        #self._exportDataFromTable(self.tableProcessOverview)
-        #self._exportDataFromTable(self.tableDmesgList)
-        #self._exportDataFromTable(self.tableJournalList)
-        #self._exportDataFromTable(self.tableCommand)
+        #create pandas dataframe from each table
+        df1 = self._createDataFrame(self.tablewMemoryOverview)
+        df2 = self._createDataFrame(self.tableDiskUsage)
+        df3 = self._createDataFrame(self.tableProcessOverview)
+        df4 = self._createDataFrame(self.tableDmesgList)
+        df5 = self._createDataFrame(self.tableJournalList)
+        df6 = self._createDataFrame(self.tableCommand)
 
+        #generate file name - e.g. 15_03_17_14_22_ssh.xlsx
+        fileName = datetime.now().strftime('%d_%m_%H_%M_%S')+"_ssh.xlsx"
 
+        #write data frames to excel, each table has its own tab in excel
+        try:
+            with pd.ExcelWriter(fileName) as writer:
+                df1.to_excel(writer, sheet_name=self.tablewMemoryOverview.objectName())
+                df2.to_excel(writer, sheet_name=self.tableDiskUsage.objectName())
+                df3.to_excel(writer, sheet_name=self.tableProcessOverview.objectName())
+                df4.to_excel(writer, sheet_name=self.tableDmesgList.objectName())
+                df5.to_excel(writer, sheet_name=self.tableJournalList.objectName())
+                df6.to_excel(writer, sheet_name=self.tableCommand.objectName())
+        except Exception as e:
+            self._connStatus = f"Export to excel failed: {e}"
 
-    def _exportDataFromTable(self, table):
+        #open directory where exported file is stored
+        directory = os.getcwd()
+        subprocess.Popen(fr'explorer /open,{directory}')
 
-        #get size of table
+    def _createDataFrame(self, table):
+
+        #get size of table - columns x rows
         columnCount = table.columnCount()
         rowCount = table.rowCount()
 
@@ -328,14 +342,14 @@ class TCMonitorMainWindow(Ui_MainWindow):
         listRows = []
         listHeader = []
 
-        #get header content
+        #get header content and create list from it
         for colIdx in range(columnCount):
             theHeaderItem = table.horizontalHeaderItem(colIdx)
 
             if theHeaderItem != None:
                 listHeader.append(theHeaderItem.text())
 
-        #get table content
+        #get table content a create list of it
         for rowIdx in range(rowCount):
             listRow = []
             for colIdx in range(columnCount):
@@ -343,55 +357,13 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
                 if theItem != None:
                     listRow.append(theItem.text())
+                else:
+                    listRow.append('-')
 
             listRows.append(listRow)
-        if len(listRows) > 0:
-            self._storeinExcel(listHeader,listRows,table.objectName())
-            #self._storeInCSVfile(listHeader,listRows,table.objectName())
-            #self._storeInCSVfile(['par1','par2'], ['0','1'], table.objectName())
 
-        #self._storeinExcel(listHeader, listRows, table.objectName())
-
-    def _storeinExcel(self,fields,rows,fileName):
-
-        #df = pd.DataFrame([[11, 21, 31], [12, 22, 32], [31, 32, 33]],index=['one', 'two', 'three'], columns=['a', 'b', 'c'])
-
-        #row=[[11, 21, 31,0,0,0,0,0,0,10], [12, 22, 32,0,0,0,0,0,0,10], [31, 32, 33,0,0,0,0,0,0,10]]
-
-        df1 = pd.DataFrame(data=rows, columns=fields)
-        print(df1)
-
-        #print(df)
-
-        #df.to_excel('pandas_to_excel.xlsx', sheet_name='new_sheet_name')
-        df1.to_excel('export.xlsx', sheet_name=fileName)
-
-    def _storeInCSVfile(self,fields,rows,fileName):
-
-       # with open(fileName+'.xls', 'w') as f:
-            # using csv.writer method from CSV package
-          #  write = csv.writer(f)
-
-          #  write.writerow(fields)
-
-          #  for row in rows:
-           #     write.writerow(row)
-
-        file = open(fileName+'.txt', 'w')
-        file.writelines(fields)
-        for row in rows:
-            try:
-                file.writelines(row)
-            except Exception as e:
-                print(e)
-
-        file.close()
-
-        print('txt file is exported')
-
-        np.savetxt(fileName+'.csv', rows, delimiter='\t', fmt='% s')
-
-        print('csv file is exported')
+        #create pandas dataframe and return it
+        return pd.DataFrame(data=listRows, columns=listHeader)
 
     def _updateTableWidget(self, header, rows, table):
 
@@ -400,7 +372,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
             #clean list from spaces
             tmpHeader = header[0].split(' ')
             headerItems = [value for value in tmpHeader if value != '']
-            print(headerItems)
 
             #first column is hardcoded for time span
             table.setColumnCount(len(headerItems)+1)
@@ -412,7 +383,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
             for headerItem in headerItems:
                 table.setColumnWidth(columnIdx,150)
                 table.setHorizontalHeaderItem(columnIdx,QTableWidgetItem(headerItem))
-                print(str(headerItem))
+
                 columnIdx += 1
 
         # add all rows to table

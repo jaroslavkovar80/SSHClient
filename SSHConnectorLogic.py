@@ -33,7 +33,6 @@ class SSHConnector:
         self._connected = False
         try:
             self._ssh.connect(host, port, username, password, timeout=3.1)
-            print(username)
             self._connected = True
             self._host = host
         except paramiko.ssh_exception.AuthenticationException as ae:
@@ -65,7 +64,6 @@ class SSHConnector:
 
             lines = stdout.readlines()
         except socket.error:
-            print('socket error')
             self._connected = False
             self._connStatus = f'Connection to host was closed, socket error'
 
@@ -140,8 +138,6 @@ class SSHConnector:
 
         if (self._connected == True):
             lines = self._executeCmd(command)
-
-            print(lines)
 
         return lines
 
