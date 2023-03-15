@@ -1,6 +1,7 @@
 import sys
 import csv
 import numpy as np
+import pandas as pd
 
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_About
@@ -309,11 +310,12 @@ class TCMonitorMainWindow(Ui_MainWindow):
     def _test(self):
 
         self._exportDataFromTable(self.tablewMemoryOverview)
-        self._exportDataFromTable(self.tableDiskUsage)
-        self._exportDataFromTable(self.tableProcessOverview)
-        self._exportDataFromTable(self.tableDmesgList)
-        self._exportDataFromTable(self.tableJournalList)
-        self._exportDataFromTable(self.tableCommand)
+        #self._exportDataFromTable(self.tableDiskUsage)
+        #self._exportDataFromTable(self.tableProcessOverview)
+        #self._exportDataFromTable(self.tableDmesgList)
+        #self._exportDataFromTable(self.tableJournalList)
+        #self._exportDataFromTable(self.tableCommand)
+
 
 
     def _exportDataFromTable(self, table):
@@ -344,8 +346,26 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
             listRows.append(listRow)
         if len(listRows) > 0:
-            self._storeInCSVfile(listHeader,listRows,table.objectName())
+            self._storeinExcel(listHeader,listRows,table.objectName())
+            #self._storeInCSVfile(listHeader,listRows,table.objectName())
             #self._storeInCSVfile(['par1','par2'], ['0','1'], table.objectName())
+
+        #self._storeinExcel(listHeader, listRows, table.objectName())
+
+    def _storeinExcel(self,fields,rows,fileName):
+
+        #df = pd.DataFrame([[11, 21, 31], [12, 22, 32], [31, 32, 33]],index=['one', 'two', 'three'], columns=['a', 'b', 'c'])
+
+        #row=[[11, 21, 31,0,0,0,0,0,0,10], [12, 22, 32,0,0,0,0,0,0,10], [31, 32, 33,0,0,0,0,0,0,10]]
+
+        df1 = pd.DataFrame(data=rows, columns=fields)
+        print(df1)
+
+        #print(df)
+
+        #df.to_excel('pandas_to_excel.xlsx', sheet_name='new_sheet_name')
+        df1.to_excel('export.xlsx', sheet_name=fileName)
+
     def _storeInCSVfile(self,fields,rows,fileName):
 
        # with open(fileName+'.xls', 'w') as f:
