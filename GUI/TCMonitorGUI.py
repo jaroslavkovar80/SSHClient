@@ -1,4 +1,6 @@
 import sys
+import csv
+import numpy as np
 
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_About
@@ -305,38 +307,71 @@ class TCMonitorMainWindow(Ui_MainWindow):
         cb.setText(temp , mode=0)
 
     def _test(self):
-        theItem = QTableWidgetItem('tt')
-        theItem = self.tableWidget.item(0,0)
+
+        self._exportDataFromTable(self.tablewMemoryOverview)
+        self._exportDataFromTable(self.tableDiskUsage)
+        self._exportDataFromTable(self.tableProcessOverview)
+        self._exportDataFromTable(self.tableDmesgList)
+        self._exportDataFromTable(self.tableJournalList)
+        self._exportDataFromTable(self.tableCommand)
 
 
+    def _exportDataFromTable(self, table):
 
-        columnCount = self.tableWidget.columnCount()
-        rowCount = self.tableWidget.rowCount()
+        #get size of table
+        columnCount = table.columnCount()
+        rowCount = table.rowCount()
 
-        listRow = []
-        listData = []
+        #prepare empty list
+        listRows = []
         listHeader = []
 
+        #get header content
         for colIdx in range(columnCount):
-            theHeaderItem = self.tableWidget.horizontalHeaderItem(colIdx)
-            listHeader.append(theHeaderItem.text())
+            theHeaderItem = table.horizontalHeaderItem(colIdx)
 
+            if theHeaderItem != None:
+                listHeader.append(theHeaderItem.text())
+
+        #get table content
         for rowIdx in range(rowCount):
             listRow = []
             for colIdx in range(columnCount):
-                theItem = self.tableWidget.item(rowIdx,colIdx)
+                theItem = table.item(rowIdx,colIdx)
 
                 if theItem != None:
-                    #print(str(theItem.text()))
                     listRow.append(theItem.text())
-                else:
-                    print('none')
 
-            listData.append(listRow)
+            listRows.append(listRow)
+        if len(listRows) > 0:
+            self._storeInCSVfile(listHeader,listRows,table.objectName())
+            #self._storeInCSVfile(['par1','par2'], ['0','1'], table.objectName())
+    def _storeInCSVfile(self,fields,rows,fileName):
 
+       # with open(fileName+'.xls', 'w') as f:
+            # using csv.writer method from CSV package
+          #  write = csv.writer(f)
 
-        print(listHeader)
-        print(listData)
+          #  write.writerow(fields)
+
+          #  for row in rows:
+           #     write.writerow(row)
+
+        file = open(fileName+'.txt', 'w')
+        file.writelines(fields)
+        for row in rows:
+            try:
+                file.writelines(row)
+            except Exception as e:
+                print(e)
+
+        file.close()
+
+        print('txt file is exported')
+
+        np.savetxt(fileName+'.csv', rows, delimiter='\t', fmt='% s')
+
+        print('csv file is exported')
 
     def _updateTableWidget(self, header, rows, table):
 
