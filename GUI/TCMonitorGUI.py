@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDial
 from PyQt5.QtCore import QTimer,QPoint
 from PyQt5.QtCore import Qt
 from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QChart,QChartView, QLineSeries, QValueAxis)
-from PyQt5.QtGui import QPainter
+from PyQt5.QtGui import QPainter,QFont
 import time
 from datetime import datetime
 import subprocess
@@ -109,6 +109,8 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnTab6.clicked.connect(self.nav_to_tab5)
         self.btnTab7.clicked.connect(self.nav_to_tab6)
 
+        #set GUI from code
+        self._setGUI()
 
         # butttons of memory table
         self.btnAddRecordToMemoryTable.clicked.connect(self.getAndAddMemorySnapshotToTable)
@@ -453,6 +455,27 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.statusbar.showMessage(self._linuxSSHConnector.getConnectionStatus())
         self._updateGUI()
 
+    def _setGUI(self):
+
+        # commands list
+        cmd_list = ["select command", "restart target"]
+
+        # making it editable
+        self.cboxCommand.setEditable(True)
+
+        # adding list of items to combo box
+        self.cboxCommand.addItems(cmd_list)
+
+        # getting the line edit of combo box
+        line_edit = self.cboxCommand.lineEdit()
+
+        # setting line edit alignment to the center
+        line_edit.setAlignment(Qt.AlignCenter)
+        line_edit.setFont(QFont("Roboto", 12))
+
+        # setting line edit to read only
+        line_edit.setReadOnly(True)
+
     def _updateGUI(self):
         self.statusbar.showMessage(self._linuxSSHConnector.getConnectionStatus())
 
@@ -466,9 +489,13 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self.btnCheckConnection.setStyleSheet("background-color: rgb(188, 220, 244)")
 
         if self._timerMemoryLogging.isActive():
-            self.btnStartMemoryLogging.setText('stop logging')
+            self.btnStartMemoryLogging.setText('stop timer')
+            self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(85, 255, 127)")
         else:
-            self.btnStartMemoryLogging.setText('start logging')
+            self.btnStartMemoryLogging.setText('start timer')
+            self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(188, 220, 244)")
+
+        self.cboxCommand.setStyleSheet("text-align:right;align-content: center;align-items: center;align-self: center;")
 
         self.btnAddRecordToProcessTable.setEnabled(isConnected)
         self.btnDelRecordFromProcessTable.setEnabled(isConnected)

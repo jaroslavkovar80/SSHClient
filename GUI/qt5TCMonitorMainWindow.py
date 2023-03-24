@@ -14,124 +14,45 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1280, 800)
+        MainWindow.resize(1280, 801)
         MainWindow.setMinimumSize(QtCore.QSize(800, 600))
         MainWindow.setStyleSheet("QPushButton{\n"
 "    background-color: rgb(188, 220, 244);\n"
 "    border: solid;\n"
-"    border-radius: 6px;\n"
+"    border-radius: 2px;\n"
 "}\n"
 "\n"
 "QPushButton:pressed{\n"
 "    background-color: #f5f5f5; \n"
 "    border: solid;\n"
-"    border-radius: 6px;\n"
+"    border-radius: 2px;\n"
 "}\n"
 "\n"
 "QTableWidget::item{ selection-background-color: rgb(188, 220, 244)}\n"
 "\n"
 "QStackedWidget{\n"
 "    background-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QHeaderView::section {\n"
+"    height: 24px;\n"
+"    border: none;\n"
+"    border-radius: 6px;\n"
+"}\n"
+"QHeaderView {\n"
+"\n"
+"    height: 24px;\n"
+"    font-family: Roboto;\n"
+"    font-size: 12px;\n"
+"    border: none;\n"
+"    border-radius: 6px;\n"
 "}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setContentsMargins(3, 3, 3, 3)
+        self.gridLayout.setSpacing(3)
         self.gridLayout.setObjectName("gridLayout")
-        self.hlayoutTop = QtWidgets.QHBoxLayout()
-        self.hlayoutTop.setContentsMargins(5, 5, 5, 5)
-        self.hlayoutTop.setSpacing(10)
-        self.hlayoutTop.setObjectName("hlayoutTop")
-        spacerItem = QtWidgets.QSpacerItem(130, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.hlayoutTop.addItem(spacerItem)
-        self.lbHostIcon = QtWidgets.QLabel(self.centralwidget)
-        self.lbHostIcon.setText("")
-        self.lbHostIcon.setPixmap(QtGui.QPixmap(":/test/pictures/globe.svg"))
-        self.lbHostIcon.setObjectName("lbHostIcon")
-        self.hlayoutTop.addWidget(self.lbHostIcon)
-        self.edTargetHost = QtWidgets.QLineEdit(self.centralwidget)
-        self.edTargetHost.setMinimumSize(QtCore.QSize(120, 30))
-        self.edTargetHost.setMaximumSize(QtCore.QSize(120, 30))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(12)
-        font.setKerning(True)
-        self.edTargetHost.setFont(font)
-        self.edTargetHost.setAutoFillBackground(False)
-        self.edTargetHost.setMaxLength(15)
-        self.edTargetHost.setAlignment(QtCore.Qt.AlignCenter)
-        self.edTargetHost.setObjectName("edTargetHost")
-        self.hlayoutTop.addWidget(self.edTargetHost)
-        self.btnCheckConnection = QtWidgets.QPushButton(self.centralwidget)
-        self.btnCheckConnection.setMinimumSize(QtCore.QSize(170, 40))
-        self.btnCheckConnection.setMaximumSize(QtCore.QSize(200, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setKerning(False)
-        self.btnCheckConnection.setFont(font)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/test/pictures/activity.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnCheckConnection.setIcon(icon)
-        self.btnCheckConnection.setIconSize(QtCore.QSize(20, 20))
-        self.btnCheckConnection.setCheckable(False)
-        self.btnCheckConnection.setObjectName("btnCheckConnection")
-        self.hlayoutTop.addWidget(self.btnCheckConnection)
-        self.btnTakeSnapshot = QtWidgets.QPushButton(self.centralwidget)
-        self.btnTakeSnapshot.setMinimumSize(QtCore.QSize(170, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(12)
-        self.btnTakeSnapshot.setFont(font)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/test/pictures/camera.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnTakeSnapshot.setIcon(icon1)
-        self.btnTakeSnapshot.setIconSize(QtCore.QSize(20, 20))
-        self.btnTakeSnapshot.setObjectName("btnTakeSnapshot")
-        self.hlayoutTop.addWidget(self.btnTakeSnapshot)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.hlayoutTop.addItem(spacerItem1)
-        self.lbAutomaticlogging = QtWidgets.QLabel(self.centralwidget)
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(12)
-        font.setKerning(True)
-        self.lbAutomaticlogging.setFont(font)
-        self.lbAutomaticlogging.setObjectName("lbAutomaticlogging")
-        self.hlayoutTop.addWidget(self.lbAutomaticlogging)
-        self.spinBoxLoggingTime = QtWidgets.QSpinBox(self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.spinBoxLoggingTime.sizePolicy().hasHeightForWidth())
-        self.spinBoxLoggingTime.setSizePolicy(sizePolicy)
-        self.spinBoxLoggingTime.setMinimumSize(QtCore.QSize(60, 30))
-        self.spinBoxLoggingTime.setMaximumSize(QtCore.QSize(60, 30))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(12)
-        self.spinBoxLoggingTime.setFont(font)
-        self.spinBoxLoggingTime.setMinimum(1)
-        self.spinBoxLoggingTime.setMaximum(120)
-        self.spinBoxLoggingTime.setProperty("value", 10)
-        self.spinBoxLoggingTime.setObjectName("spinBoxLoggingTime")
-        self.hlayoutTop.addWidget(self.spinBoxLoggingTime)
-        self.btnStartMemoryLogging = QtWidgets.QPushButton(self.centralwidget)
-        self.btnStartMemoryLogging.setMinimumSize(QtCore.QSize(120, 40))
-        self.btnStartMemoryLogging.setMaximumSize(QtCore.QSize(120, 40))
-        font = QtGui.QFont()
-        font.setFamily("Roboto")
-        font.setPointSize(12)
-        self.btnStartMemoryLogging.setFont(font)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/test/pictures/clock.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnStartMemoryLogging.setIcon(icon2)
-        self.btnStartMemoryLogging.setIconSize(QtCore.QSize(20, 20))
-        self.btnStartMemoryLogging.setObjectName("btnStartMemoryLogging")
-        self.hlayoutTop.addWidget(self.btnStartMemoryLogging)
-        self.hlayoutTop.setStretch(2, 1)
-        self.gridLayout.addLayout(self.hlayoutTop, 0, 0, 1, 2)
         self.vlayoutLeft = QtWidgets.QVBoxLayout()
         self.vlayoutLeft.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.vlayoutLeft.setObjectName("vlayoutLeft")
@@ -168,9 +89,9 @@ class Ui_MainWindow(object):
 "    border: solid;\n"
 "    border-radius: 0px;\n"
 "}")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/test/pictures/grid.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnTab1.setIcon(icon3)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/test/pictures/grid.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnTab1.setIcon(icon)
         self.btnTab1.setObjectName("btnTab1")
         self.layoutBtnTab1.addWidget(self.btnTab1)
         self.vlayoutLeft.addLayout(self.layoutBtnTab1)
@@ -210,9 +131,9 @@ class Ui_MainWindow(object):
 "    border: solid;\n"
 "    border-radius: 0px;\n"
 "}")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/test/pictures/hard-drive.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnTab2.setIcon(icon4)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/test/pictures/hard-drive.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnTab2.setIcon(icon1)
         self.btnTab2.setObjectName("btnTab2")
         self.layoutBtnTab2.addWidget(self.btnTab2)
         self.vlayoutLeft.addLayout(self.layoutBtnTab2)
@@ -249,14 +170,14 @@ class Ui_MainWindow(object):
 "    border: solid;\n"
 "    border-radius: 0px;\n"
 "}")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/test/pictures/cpu.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnTab3.setIcon(icon5)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/test/pictures/cpu.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnTab3.setIcon(icon2)
         self.btnTab3.setObjectName("btnTab3")
         self.layoutBtnTab3.addWidget(self.btnTab3)
         self.vlayoutLeft.addLayout(self.layoutBtnTab3)
-        spacerItem2 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.vlayoutLeft.addItem(spacerItem2)
+        spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.vlayoutLeft.addItem(spacerItem)
         self.layoutBtnTab4 = QtWidgets.QHBoxLayout()
         self.layoutBtnTab4.setObjectName("layoutBtnTab4")
         self.lnTab4 = QtWidgets.QFrame(self.centralwidget)
@@ -289,9 +210,9 @@ class Ui_MainWindow(object):
 "    border: solid;\n"
 "    border-radius: 0px;\n"
 "}")
-        icon6 = QtGui.QIcon()
-        icon6.addPixmap(QtGui.QPixmap(":/test/pictures/clipboard.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnTab4.setIcon(icon6)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/test/pictures/clipboard.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnTab4.setIcon(icon3)
         self.btnTab4.setObjectName("btnTab4")
         self.layoutBtnTab4.addWidget(self.btnTab4)
         self.vlayoutLeft.addLayout(self.layoutBtnTab4)
@@ -327,12 +248,12 @@ class Ui_MainWindow(object):
 "    border: solid;\n"
 "    border-radius: 0px;\n"
 "}")
-        self.btnTab5.setIcon(icon6)
+        self.btnTab5.setIcon(icon3)
         self.btnTab5.setObjectName("btnTab5")
         self.layoutBtnTab5.addWidget(self.btnTab5)
         self.vlayoutLeft.addLayout(self.layoutBtnTab5)
-        spacerItem3 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.vlayoutLeft.addItem(spacerItem3)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.vlayoutLeft.addItem(spacerItem1)
         self.layoutBtnTab6 = QtWidgets.QHBoxLayout()
         self.layoutBtnTab6.setObjectName("layoutBtnTab6")
         self.lnTab6 = QtWidgets.QFrame(self.centralwidget)
@@ -365,14 +286,14 @@ class Ui_MainWindow(object):
 "    border: solid;\n"
 "    border-radius: 0px;\n"
 "}")
-        icon7 = QtGui.QIcon()
-        icon7.addPixmap(QtGui.QPixmap(":/test/pictures/edit.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnTab6.setIcon(icon7)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/test/pictures/edit.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnTab6.setIcon(icon4)
         self.btnTab6.setObjectName("btnTab6")
         self.layoutBtnTab6.addWidget(self.btnTab6)
         self.vlayoutLeft.addLayout(self.layoutBtnTab6)
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.vlayoutLeft.addItem(spacerItem4)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.vlayoutLeft.addItem(spacerItem2)
         self.layoutBtnTab7 = QtWidgets.QHBoxLayout()
         self.layoutBtnTab7.setObjectName("layoutBtnTab7")
         self.lnTab7 = QtWidgets.QFrame(self.centralwidget)
@@ -402,31 +323,110 @@ class Ui_MainWindow(object):
 "    border: solid;\n"
 "    border-radius: 0px;\n"
 "}")
-        icon8 = QtGui.QIcon()
-        icon8.addPixmap(QtGui.QPixmap(":/test/pictures/settings.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.btnTab7.setIcon(icon8)
+        icon5 = QtGui.QIcon()
+        icon5.addPixmap(QtGui.QPixmap(":/test/pictures/settings.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnTab7.setIcon(icon5)
         self.btnTab7.setObjectName("btnTab7")
         self.layoutBtnTab7.addWidget(self.btnTab7)
         self.vlayoutLeft.addLayout(self.layoutBtnTab7)
-        self.gridLayout.addLayout(self.vlayoutLeft, 2, 0, 1, 1)
+        self.gridLayout.addLayout(self.vlayoutLeft, 1, 0, 1, 1)
+        self.hlayoutTop = QtWidgets.QHBoxLayout()
+        self.hlayoutTop.setContentsMargins(1, 1, 1, 1)
+        self.hlayoutTop.setSpacing(6)
+        self.hlayoutTop.setObjectName("hlayoutTop")
+        spacerItem3 = QtWidgets.QSpacerItem(130, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.hlayoutTop.addItem(spacerItem3)
+        self.lbHostIcon = QtWidgets.QLabel(self.centralwidget)
+        self.lbHostIcon.setText("")
+        self.lbHostIcon.setPixmap(QtGui.QPixmap(":/test/pictures/globe.svg"))
+        self.lbHostIcon.setObjectName("lbHostIcon")
+        self.hlayoutTop.addWidget(self.lbHostIcon)
+        self.edTargetHost = QtWidgets.QLineEdit(self.centralwidget)
+        self.edTargetHost.setMinimumSize(QtCore.QSize(120, 30))
+        self.edTargetHost.setMaximumSize(QtCore.QSize(120, 30))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setKerning(True)
+        self.edTargetHost.setFont(font)
+        self.edTargetHost.setAutoFillBackground(False)
+        self.edTargetHost.setMaxLength(15)
+        self.edTargetHost.setAlignment(QtCore.Qt.AlignCenter)
+        self.edTargetHost.setObjectName("edTargetHost")
+        self.hlayoutTop.addWidget(self.edTargetHost)
+        self.btnCheckConnection = QtWidgets.QPushButton(self.centralwidget)
+        self.btnCheckConnection.setMinimumSize(QtCore.QSize(140, 40))
+        self.btnCheckConnection.setMaximumSize(QtCore.QSize(200, 40))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setKerning(False)
+        self.btnCheckConnection.setFont(font)
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap(":/test/pictures/activity.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnCheckConnection.setIcon(icon6)
+        self.btnCheckConnection.setIconSize(QtCore.QSize(20, 20))
+        self.btnCheckConnection.setCheckable(False)
+        self.btnCheckConnection.setObjectName("btnCheckConnection")
+        self.hlayoutTop.addWidget(self.btnCheckConnection)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.hlayoutTop.addItem(spacerItem4)
+        self.btnTakeSnapshot = QtWidgets.QPushButton(self.centralwidget)
+        self.btnTakeSnapshot.setMinimumSize(QtCore.QSize(140, 40))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        self.btnTakeSnapshot.setFont(font)
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap(":/test/pictures/camera.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnTakeSnapshot.setIcon(icon7)
+        self.btnTakeSnapshot.setIconSize(QtCore.QSize(20, 20))
+        self.btnTakeSnapshot.setObjectName("btnTakeSnapshot")
+        self.hlayoutTop.addWidget(self.btnTakeSnapshot)
+        self.btnStartMemoryLogging = QtWidgets.QPushButton(self.centralwidget)
+        self.btnStartMemoryLogging.setMinimumSize(QtCore.QSize(140, 40))
+        self.btnStartMemoryLogging.setMaximumSize(QtCore.QSize(120, 40))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        self.btnStartMemoryLogging.setFont(font)
+        icon8 = QtGui.QIcon()
+        icon8.addPixmap(QtGui.QPixmap(":/test/pictures/clock.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.btnStartMemoryLogging.setIcon(icon8)
+        self.btnStartMemoryLogging.setIconSize(QtCore.QSize(20, 20))
+        self.btnStartMemoryLogging.setObjectName("btnStartMemoryLogging")
+        self.hlayoutTop.addWidget(self.btnStartMemoryLogging)
+        self.lbAutomaticlogging = QtWidgets.QLabel(self.centralwidget)
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        font.setKerning(True)
+        self.lbAutomaticlogging.setFont(font)
+        self.lbAutomaticlogging.setObjectName("lbAutomaticlogging")
+        self.hlayoutTop.addWidget(self.lbAutomaticlogging)
+        self.spinBoxLoggingTime = QtWidgets.QSpinBox(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.spinBoxLoggingTime.sizePolicy().hasHeightForWidth())
+        self.spinBoxLoggingTime.setSizePolicy(sizePolicy)
+        self.spinBoxLoggingTime.setMinimumSize(QtCore.QSize(60, 30))
+        self.spinBoxLoggingTime.setMaximumSize(QtCore.QSize(60, 30))
+        font = QtGui.QFont()
+        font.setFamily("Roboto")
+        font.setPointSize(12)
+        self.spinBoxLoggingTime.setFont(font)
+        self.spinBoxLoggingTime.setMinimum(1)
+        self.spinBoxLoggingTime.setMaximum(120)
+        self.spinBoxLoggingTime.setProperty("value", 10)
+        self.spinBoxLoggingTime.setObjectName("spinBoxLoggingTime")
+        self.hlayoutTop.addWidget(self.spinBoxLoggingTime)
+        self.hlayoutTop.setStretch(2, 1)
+        self.gridLayout.addLayout(self.hlayoutTop, 0, 0, 1, 2)
         self.stackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
-        self.stackedWidget.setStyleSheet("QPushButton{\n"
-"    background-color: rgb(188, 220, 244);\n"
-"    border: solid;\n"
-"    border-radius: 6px;\n"
-"}\n"
-"\n"
-"QPushButton:pressed{\n"
-"    background-color: #f5f5f5; \n"
-"    border: solid;\n"
-"    border-radius: 6px;\n"
-"}\n"
-"\n"
-"QTableWidget::item{ selection-background-color: rgb(188, 220, 244)}\n"
-"\n"
-"QStackedWidget{\n"
-"    background-color: rgb(255, 255, 255);\n"
-"}")
+        self.stackedWidget.setStyleSheet("")
         self.stackedWidget.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.stackedWidget.setFrameShadow(QtWidgets.QFrame.Plain)
         self.stackedWidget.setMidLineWidth(1)
@@ -557,14 +557,14 @@ class Ui_MainWindow(object):
         item.setFont(font)
         item.setBackground(QtGui.QColor(85, 170, 255))
         self.tablewMemoryOverview.setHorizontalHeaderItem(9, item)
-        self.tablewMemoryOverview.horizontalHeader().setVisible(True)
+        self.tablewMemoryOverview.horizontalHeader().setVisible(False)
         self.tablewMemoryOverview.horizontalHeader().setCascadingSectionResizes(True)
         self.tablewMemoryOverview.horizontalHeader().setDefaultSectionSize(120)
         self.tablewMemoryOverview.horizontalHeader().setHighlightSections(True)
         self.tablewMemoryOverview.horizontalHeader().setMinimumSectionSize(50)
         self.tablewMemoryOverview.horizontalHeader().setSortIndicatorShown(True)
         self.tablewMemoryOverview.horizontalHeader().setStretchLastSection(False)
-        self.tablewMemoryOverview.verticalHeader().setVisible(True)
+        self.tablewMemoryOverview.verticalHeader().setVisible(False)
         self.verticalLayout_3.addWidget(self.tablewMemoryOverview)
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
@@ -822,6 +822,16 @@ class Ui_MainWindow(object):
         font.setFamily("Roboto")
         font.setPointSize(10)
         self.tableJournalList.setFont(font)
+        self.tableJournalList.setStyleSheet("QHeaderView::section {\n"
+"    background-color: rgb(188, 220, 244);\n"
+"    border: none;\n"
+"    height: 32px;\n"
+"}\n"
+"QHeaderView {\n"
+"    background-color: rgb(188, 220, 244);\n"
+"    border: none;\n"
+"    height: 32px;\n"
+"}")
         self.tableJournalList.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.tableJournalList.setMidLineWidth(0)
         self.tableJournalList.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustToContentsOnFirstShow)
@@ -834,10 +844,11 @@ class Ui_MainWindow(object):
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
         font.setFamily("Roboto")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
         item.setFont(font)
+        item.setBackground(QtGui.QColor(0, 255, 255, 0))
         self.tableJournalList.setHorizontalHeaderItem(0, item)
         self.tableJournalList.horizontalHeader().setDefaultSectionSize(1100)
         self.verticalLayout_5.addWidget(self.tableJournalList)
@@ -863,7 +874,8 @@ class Ui_MainWindow(object):
         self.pgCommand = QtWidgets.QWidget()
         self.pgCommand.setObjectName("pgCommand")
         self.verticalLayout_7 = QtWidgets.QVBoxLayout(self.pgCommand)
-        self.verticalLayout_7.setContentsMargins(6, 6, 0, 6)
+        self.verticalLayout_7.setContentsMargins(1, 1, 1, 1)
+        self.verticalLayout_7.setSpacing(1)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
         self.tableCommand = QtWidgets.QTableWidget(self.pgCommand)
         font = QtGui.QFont()
@@ -880,8 +892,14 @@ class Ui_MainWindow(object):
         self.tableCommand.setHorizontalHeaderItem(0, item)
         self.tableCommand.horizontalHeader().setDefaultSectionSize(1100)
         self.verticalLayout_7.addWidget(self.tableCommand)
+        self.line_2 = QtWidgets.QFrame(self.pgCommand)
+        self.line_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
+        self.line_2.setObjectName("line_2")
+        self.verticalLayout_7.addWidget(self.line_2)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_3.setContentsMargins(6, -1, -1, -1)
+        self.horizontalLayout_3.setContentsMargins(0, -1, 0, -1)
+        self.horizontalLayout_3.setSpacing(6)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.cboxCommand = QtWidgets.QComboBox(self.pgCommand)
         self.cboxCommand.setMinimumSize(QtCore.QSize(200, 40))
@@ -890,13 +908,14 @@ class Ui_MainWindow(object):
         font.setFamily("Roboto")
         font.setPointSize(12)
         self.cboxCommand.setFont(font)
-        self.cboxCommand.setStyleSheet("    background-color: rgb(188, 220, 244);\n"
-"    border: solid;")
+        self.cboxCommand.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.cboxCommand.setAutoFillBackground(False)
+        self.cboxCommand.setStyleSheet("align-content: center;\n"
+"align-items: center;\n"
+"align-self: center;")
         self.cboxCommand.setEditable(False)
-        self.cboxCommand.setFrame(False)
+        self.cboxCommand.setFrame(True)
         self.cboxCommand.setObjectName("cboxCommand")
-        self.cboxCommand.addItem("")
-        self.cboxCommand.addItem("")
         self.horizontalLayout_3.addWidget(self.cboxCommand, 0, QtCore.Qt.AlignHCenter|QtCore.Qt.AlignVCenter)
         self.edCommand = QtWidgets.QLineEdit(self.pgCommand)
         self.edCommand.setMinimumSize(QtCore.QSize(300, 40))
@@ -908,7 +927,7 @@ class Ui_MainWindow(object):
         self.edCommand.setStyleSheet("QLineEdit{\n"
 "    background-color: rgb(255, 255, 255);\n"
 "    border: solid;\n"
-"    border-radius: 6px;\n"
+"    border-radius: 2px;\n"
 "    border-color: red;\n"
 "}")
         self.edCommand.setFrame(True)
@@ -941,8 +960,6 @@ class Ui_MainWindow(object):
         self.btnCommandClear.setIconSize(QtCore.QSize(20, 20))
         self.btnCommandClear.setObjectName("btnCommandClear")
         self.horizontalLayout_3.addWidget(self.btnCommandClear)
-        spacerItem16 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem16)
         self.verticalLayout_7.addLayout(self.horizontalLayout_3)
         self.stackedWidget.addWidget(self.pgCommand)
         self.pgSettings = QtWidgets.QWidget()
@@ -951,15 +968,7 @@ class Ui_MainWindow(object):
         self.label.setGeometry(QtCore.QRect(190, 140, 47, 13))
         self.label.setObjectName("label")
         self.stackedWidget.addWidget(self.pgSettings)
-        self.gridLayout.addWidget(self.stackedWidget, 2, 1, 1, 1)
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
-        self.verticalLayout.addWidget(self.line)
-        self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 2)
+        self.gridLayout.addWidget(self.stackedWidget, 1, 1, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1280, 21))
@@ -989,7 +998,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(5)
         self.btnTab2.clicked.connect(self.lnTab2.show) # type: ignore
         self.btnTab2.clicked.connect(self.lnTab1.hide) # type: ignore
         self.btnTab2.clicked.connect(self.lnTab5.hide) # type: ignore
@@ -1045,11 +1054,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "BnR SSH Client"))
-        self.edTargetHost.setText(_translate("MainWindow", "10.0.0.73"))
-        self.btnCheckConnection.setText(_translate("MainWindow", "check connection"))
-        self.btnTakeSnapshot.setText(_translate("MainWindow", "take snapshot"))
-        self.lbAutomaticlogging.setText(_translate("MainWindow", "time [min]"))
-        self.btnStartMemoryLogging.setText(_translate("MainWindow", "start logging"))
         self.btnTab1.setText(_translate("MainWindow", "memory"))
         self.btnTab2.setText(_translate("MainWindow", "disk usage"))
         self.btnTab3.setText(_translate("MainWindow", "cpu/tasks"))
@@ -1057,6 +1061,11 @@ class Ui_MainWindow(object):
         self.btnTab5.setText(_translate("MainWindow", "journal"))
         self.btnTab6.setText(_translate("MainWindow", "command"))
         self.btnTab7.setText(_translate("MainWindow", "settings"))
+        self.edTargetHost.setText(_translate("MainWindow", "10.0.0.73"))
+        self.btnCheckConnection.setText(_translate("MainWindow", "connect"))
+        self.btnTakeSnapshot.setText(_translate("MainWindow", "take snapshot"))
+        self.btnStartMemoryLogging.setText(_translate("MainWindow", "start timer"))
+        self.lbAutomaticlogging.setText(_translate("MainWindow", "time [min]"))
         self.tablewMemoryOverview.setSortingEnabled(True)
         item = self.tablewMemoryOverview.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "time"))
@@ -1079,9 +1088,7 @@ class Ui_MainWindow(object):
         self.btnLoadJournal.setText(_translate("MainWindow", "add"))
         self.tableCommand.setSortingEnabled(True)
         item = self.tableCommand.horizontalHeaderItem(0)
-        item.setText(_translate("MainWindow", "output"))
-        self.cboxCommand.setItemText(0, _translate("MainWindow", "select command"))
-        self.cboxCommand.setItemText(1, _translate("MainWindow", "restart target"))
+        item.setText(_translate("MainWindow", "output window"))
         self.edCommand.setText(_translate("MainWindow", "journalctl"))
         self.btnCallCmd.setText(_translate("MainWindow", "execute"))
         self.btnCommandClear.setText(_translate("MainWindow", "clear all"))
