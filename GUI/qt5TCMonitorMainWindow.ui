@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>BnR SSH Client</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/test/pictures/activity.svg</normaloff>:/test/pictures/activity.svg</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QPushButton{
 	background-color: rgb(188, 220, 244);
@@ -676,7 +680,7 @@ QHeaderView {
      </layout>
     </item>
     <item row="0" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,1,0,0,0,0,0,0">
+     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,0,1,0,0,0,0,0,0">
       <property name="spacing">
        <number>6</number>
       </property>
@@ -693,6 +697,32 @@ QHeaderView {
        <number>1</number>
       </property>
       <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="minimumSize">
+         <size>
+          <width>130</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255,1);</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/test/pictures/BRLogo.png</normaloff>:/test/pictures/BRLogo.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>70</width>
+          <height>30</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="horizontalSpacer_14">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
@@ -702,7 +732,7 @@ QHeaderView {
         </property>
         <property name="sizeHint" stdset="0">
          <size>
-          <width>130</width>
+          <width>5</width>
           <height>20</height>
          </size>
         </property>
@@ -939,21 +969,24 @@ QHeaderView {
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="pgMemory">
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>1</number>
+        </property>
         <property name="leftMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <property name="topMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="bottomMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <item>
          <widget class="QTableWidget" name="tablewMemoryOverview">
@@ -992,7 +1025,7 @@ QHeaderView {
            <bool>true</bool>
           </property>
           <attribute name="horizontalHeaderVisible">
-           <bool>false</bool>
+           <bool>true</bool>
           </attribute>
           <attribute name="horizontalHeaderCascadingSectionResizes">
            <bool>true</bool>
@@ -1019,217 +1052,62 @@ QHeaderView {
            <property name="text">
             <string>time</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="textAlignment">
-            <set>AlignHCenter|AlignTop</set>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
-           </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">total</string>
-           </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="textAlignment">
-            <set>AlignCenter</set>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
-           </property>
-           <property name="foreground">
-            <brush brushstyle="NoBrush">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
            </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">used</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
-           </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">free</string>
-           </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
            </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">shared</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
-           </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">buff/cache</string>
-           </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
            </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">availabe</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
-           </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">swap total</string>
-           </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
            </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">swap used</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
-           </property>
           </column>
           <column>
            <property name="text">
             <string notr="true">swap free</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color>
-             <red>85</red>
-             <green>170</green>
-             <blue>255</blue>
-            </color>
-           </property>
           </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_6">
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
          </widget>
         </item>
         <item>
@@ -1352,39 +1230,26 @@ QHeaderView {
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer_9">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>3</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="pgDiskUsage">
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>1</number>
+        </property>
         <property name="leftMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <property name="topMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="bottomMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <item>
          <widget class="QTableWidget" name="tableDiskUsage">
@@ -1411,6 +1276,16 @@ QHeaderView {
           </property>
           <property name="sortingEnabled">
            <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_5">
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -1544,39 +1419,26 @@ QHeaderView {
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer_10">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Minimum</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>3</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="pgProcesses">
        <layout class="QVBoxLayout" name="verticalLayout_6">
+        <property name="spacing">
+         <number>1</number>
+        </property>
         <property name="leftMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <property name="topMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="bottomMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <item>
          <widget class="QTableWidget" name="tableProcessOverview">
@@ -1632,6 +1494,16 @@ QHeaderView {
           <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
            <bool>true</bool>
           </attribute>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_4">
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
          </widget>
         </item>
         <item>
@@ -1754,39 +1626,26 @@ QHeaderView {
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer_15">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>3</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="pgDmesg">
        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>1</number>
+        </property>
         <property name="leftMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <property name="topMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="bottomMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <item>
          <widget class="QTableWidget" name="tableDmesgList">
@@ -1827,16 +1686,17 @@ QHeaderView {
            <property name="text">
             <string>dmesg output</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-             <kerning>false</kerning>
-            </font>
-           </property>
           </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line_3">
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
          </widget>
         </item>
         <item>
@@ -1889,39 +1749,26 @@ QHeaderView {
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer_11">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>3</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="pgJournal">
        <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="spacing">
+         <number>1</number>
+        </property>
         <property name="leftMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <property name="topMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <property name="rightMargin">
-         <number>0</number>
+         <number>1</number>
         </property>
         <property name="bottomMargin">
-         <number>6</number>
+         <number>1</number>
         </property>
         <item>
          <widget class="QTableWidget" name="tableJournalList">
@@ -1938,16 +1785,7 @@ QHeaderView {
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">QHeaderView::section {
-    background-color: rgb(188, 220, 244);
-    border: none;
-    height: 32px;
-}
-QHeaderView {
-    background-color: rgb(188, 220, 244);
-    border: none;
-    height: 32px;
-}</string>
+           <string notr="true"/>
           </property>
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
@@ -1974,22 +1812,17 @@ QHeaderView {
            <property name="text">
             <string>journal output</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Roboto</family>
-             <pointsize>12</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
-           </property>
-           <property name="background">
-            <color alpha="0">
-             <red>0</red>
-             <green>255</green>
-             <blue>255</blue>
-            </color>
-           </property>
           </column>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line">
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
          </widget>
         </item>
         <item>
@@ -2041,22 +1874,6 @@ QHeaderView {
              </size>
             </property>
            </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_12">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeType">
-             <enum>QSizePolicy::Fixed</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>3</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
           </item>
          </layout>
         </item>
@@ -2356,6 +2173,9 @@ align-self: center;</string>
    </property>
   </action>
   <action name="actionImport">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Import</string>
    </property>

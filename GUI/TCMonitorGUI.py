@@ -481,19 +481,54 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         isConnected = self._linuxSSHConnector.isConnected()
 
-        if isConnected:
-            self.btnCheckConnection.setText('disconnect')
-            self.btnCheckConnection.setStyleSheet("background-color: rgb(85, 255, 127)")
-        else:
-            self.btnCheckConnection.setText('connect')
-            self.btnCheckConnection.setStyleSheet("background-color: rgb(188, 220, 244)")
-
         if self._timerMemoryLogging.isActive():
             self.btnStartMemoryLogging.setText('stop timer')
             self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(85, 255, 127)")
         else:
             self.btnStartMemoryLogging.setText('start timer')
             self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(188, 220, 244)")
+
+        if isConnected:
+            self.btnCheckConnection.setText('disconnect')
+            self.btnCheckConnection.setStyleSheet("background-color: rgb(85, 255, 127)")
+            self.btnAddRecordToProcessTable.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnDelRecordFromProcessTable.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnClearProcessTable.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnAddDiskUsage.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnRemoveDiskUsage.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnClearDiskUsage.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnCallCmd.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.cboxCommand.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnCommandClear.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnTakeSnapshot.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnAddRecordToMemoryTable.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnDelRecordFromMemoryTable.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnClearMemoryTable.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnLoadDmesg.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnLoadJournal.setStyleSheet("background-color: rgb(188, 220, 244)")
+        else:
+            self.btnCheckConnection.setText('connect')
+            self.btnCheckConnection.setStyleSheet("background-color: rgb(188, 220, 244)")
+            self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnAddRecordToProcessTable.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnDelRecordFromProcessTable.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnClearProcessTable.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnAddDiskUsage.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnRemoveDiskUsage.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnClearDiskUsage.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnCallCmd.setStyleSheet("background-color: rgb(232,232,232)")
+            self.cboxCommand.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnCommandClear.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnTakeSnapshot.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnAddRecordToMemoryTable.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnDelRecordFromMemoryTable.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnClearMemoryTable.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnLoadDmesg.setStyleSheet("background-color: rgb(232,232,232)")
+            self.btnLoadJournal.setStyleSheet("background-color: rgb(232,232,232)")
+
+
 
         self.cboxCommand.setStyleSheet("text-align:right;align-content: center;align-items: center;align-self: center;")
 
