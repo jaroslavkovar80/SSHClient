@@ -317,7 +317,7 @@ QHeaderView {
 }</string>
           </property>
           <property name="text">
-           <string>cpu/tasks</string>
+           <string>cpu usage</string>
           </property>
           <property name="icon">
            <iconset resource="resources.qrc">
@@ -635,6 +635,9 @@ QHeaderView {
         </item>
         <item>
          <widget class="QPushButton" name="btnTab7">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="minimumSize">
            <size>
             <width>120</width>

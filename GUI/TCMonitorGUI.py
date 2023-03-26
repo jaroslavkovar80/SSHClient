@@ -476,6 +476,10 @@ class TCMonitorMainWindow(Ui_MainWindow):
         # setting line edit to read only
         line_edit.setReadOnly(True)
 
+        # workaround to be sure that is shown
+        self.tablewMemoryOverview.horizontalHeader().setVisible(True)
+        self.tableProcessOverview.horizontalHeader().setVisible(True)
+
     def _updateGUI(self):
         self.statusbar.showMessage(self._linuxSSHConnector.getConnectionStatus())
 
@@ -504,7 +508,6 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self.btnAddRecordToMemoryTable.setStyleSheet("background-color: rgb(188, 220, 244)")
             self.btnDelRecordFromMemoryTable.setStyleSheet("background-color: rgb(188, 220, 244)")
             self.btnClearMemoryTable.setStyleSheet("background-color: rgb(188, 220, 244)")
-            self.btnStartMemoryLogging.setStyleSheet("background-color: rgb(188, 220, 244)")
             self.btnLoadDmesg.setStyleSheet("background-color: rgb(188, 220, 244)")
             self.btnLoadJournal.setStyleSheet("background-color: rgb(188, 220, 244)")
         else:
