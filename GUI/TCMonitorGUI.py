@@ -1,8 +1,5 @@
 import sys
-import csv
-import numpy as np
 import pandas as pd
-import openpyxl
 
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_About
@@ -18,6 +15,7 @@ import os
 
 from SSHConnectorLogic import SSHConnector,CMD_GET_DISK_USAGE,CMD_GET_DMESG,CMD_GET_JOURNAL,CMD_GET_PROCESS
 
+SW_VERSION = "V 0.0.9"
 
 class TCMonitorAboutWindow(QDialog):
     def __init__(self,parent=None):
@@ -25,6 +23,45 @@ class TCMonitorAboutWindow(QDialog):
         self.ui = Ui_About()
         self.ui.setupUi(self)
         self.setWindowFlag(Qt.SplashScreen)
+        self.ui.lbAbout_4.setText(SW_VERSION)
+
+
+class MyChart(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self._line_series = QLineSeries()
+        self._line_series.setName("trend")
+        self._line_series.append(QPoint(0, 4))
+        self._line_series.append(QPoint(1, 15))
+        self._line_series.append(QPoint(2, 20))
+        self._line_series.append(QPoint(3, 4))
+        self._line_series.append(QPoint(4, 12))
+        self._line_series.append(QPoint(5, 17))
+
+        self.chart = QChart()
+        self.chart.addSeries(self._line_series)
+        self.chart.setTitle("Memory overview")
+
+        self.categories = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
+        self._axis_x = QBarCategoryAxis()
+        self._axis_x.append(self.categories)
+        self.chart.addAxis(self._axis_x, Qt.AlignBottom)
+        self._line_series.attachAxis(self._axis_x)
+        self._axis_x.setRange("13:00", "16:00")
+
+        self._axis_y = QValueAxis()
+        self.chart.addAxis(self._axis_x, Qt.AlignLeft)
+        self._line_series.attachAxis(self._axis_y)
+        self._axis_y.setRange(0, 20)
+
+        self.chart.legend().setVisible(True)
+        self.chart.legend().setAlignment(Qt.AlignBottom)
+
+        self._chart_view = QChartView(self.chart)
+        self._chart_view.setRenderHint(QPainter.Antialiasing)
+
+        self.setCentralWidget(self._chart_view)
 
 
 class TestChart(QMainWindow):
@@ -153,13 +190,18 @@ class TCMonitorMainWindow(Ui_MainWindow):
         # update status
         self._updateStatusBar()
 
+        self.pushButton_2.clicked.connect(self._chartExample)
         #self._chartExample()
 
     def _chartExample(self):
-        self.window = TestChart()
+        #self.window = TestChart()
+        #self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
+        #self.window.show()
+        #self.window.resize(440, 300)
+        self.window = MyChart()
         self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
         self.window.show()
-        self.window.resize(440, 300)
+        self.window.resize(600, 800)
 
     # ----------------------
     # TAB PROCESS USAGE OVERVIEW
