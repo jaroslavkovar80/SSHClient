@@ -331,9 +331,6 @@
          </item>
          <item>
           <widget class="QPushButton" name="btnLogo">
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
            <property name="text">
             <string/>
            </property>

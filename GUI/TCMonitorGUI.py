@@ -1,17 +1,21 @@
 import sys
+
+import PyQt5.QtGui
 import pandas as pd
 
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_About
-from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDialog,QMainWindow)
+from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDialog, QMessageBox, QMainWindow)
 from PyQt5.QtCore import QTimer,QPoint
 from PyQt5.QtCore import Qt
 from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QChart,QChartView, QLineSeries, QValueAxis)
-from PyQt5.QtGui import QPainter,QFont
+from PyQt5.QtGui import QPainter,QFont,QIcon
+
 import time
 from datetime import datetime
 import subprocess
 import os
+import re
 
 from SSHConnectorLogic import SSHConnector,CMD_GET_DISK_USAGE,CMD_GET_DMESG,CMD_GET_JOURNAL,CMD_GET_PROCESS
 
@@ -148,6 +152,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         #set GUI from code
         self._setGUI()
+        self.edTargetHost.textChanged.connect(self._checkHostValue)
 
         # butttons of memory table
         self.btnAddRecordToMemoryTable.clicked.connect(self.getAndAddMemorySnapshotToTable)
@@ -189,6 +194,8 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         # update status
         self._updateStatusBar()
+
+
 
         self.pushButton_2.clicked.connect(self._chartExample)
         #self._chartExample()
@@ -497,6 +504,47 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.statusbar.showMessage(self._linuxSSHConnector.getConnectionStatus())
         self._updateGUI()
 
+    def _showMessage(self,text,msgDetails):
+        msg = QMessageBox()
+        msg.setWindowTitle("BnR SSH client")
+        msg.setWindowFlags(Qt.WindowSystemMenuHint)
+        msg.setWindowIcon(PyQt5.QtGui.QIcon('GUI/pictures/activity.svg'))
+        msg.setIcon(QMessageBox.Critical)
+        msg.setDetailedText(msgDetails)
+        msg.setText(text)
+        msg.exec_()
+
+    def _checkHostValue(self):
+
+        #read value from IPAddress input field and validate it
+        ipAddressIsValid = self.validate_ip_regex(self.edTargetHost.text())
+
+        #red background if address is not valid
+        if ipAddressIsValid  == False:
+            self.edTargetHost.setStyleSheet("background-color: rgb(255, 85, 0);")
+        else:
+            self.edTargetHost.setStyleSheet("background-color: rgb(255, 255, 255);")
+
+
+    def validate_ip_regex(self,ip_address):
+
+        #split IPaddress to bytes
+        bytes = ip_address.split(".")
+
+        #first check format using reqex
+        if not re.search(r"[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}", ip_address):
+            #print(f"The IP address {ip_address} is not valid")
+            return False
+
+        #second check range 1-255
+        for ip_byte in bytes:
+            if int(ip_byte) < 0 or int(ip_byte) > 255:
+                #print(f"The IP address {ip_address} is not valid")
+                return False
+        #print(f"The IP address {ip_address} is valid")
+
+        return True
+
     def _setGUI(self):
 
         # commands list
@@ -636,7 +684,10 @@ class TCMonitorMainWindow(Ui_MainWindow):
         if self._linuxSSHConnector.isConnected():
             self._linuxSSHConnector.closeConnection()
         else:
-            self._linuxSSHConnector.getConnection(host=self.edTargetHost.text())
+            if self.validate_ip_regex(self.edTargetHost.text()):
+                self._linuxSSHConnector.getConnection(host=self.edTargetHost.text())
+            else:
+                self._showMessage("Format of IP address is invalid!","Use numbers in range 1-255 separated by a dot. E.g. 192.168.0.1")
 
         self._updateStatusBar()
 
