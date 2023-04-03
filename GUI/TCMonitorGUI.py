@@ -41,7 +41,7 @@ class MyChart(QMainWindow):
         self._line_series.append(QPoint(2, 20))
         self._line_series.append(QPoint(3, 4))
         self._line_series.append(QPoint(4, 12))
-        self._line_series.append(QPoint(5, 17))
+        self._line_series.append(QPoint(5, 100))
 
         self.chart = QChart()
         self.chart.addSeries(self._line_series)
@@ -504,7 +504,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.statusbar.showMessage(self._linuxSSHConnector.getConnectionStatus())
         self._updateGUI()
 
-    def _showMessage(self,text,msgDetails):
+    def _showGUIMessage(self, text, msgDetails):
         msg = QMessageBox()
         msg.setWindowTitle("BnR SSH client")
         msg.setWindowFlags(Qt.WindowSystemMenuHint)
@@ -517,7 +517,12 @@ class TCMonitorMainWindow(Ui_MainWindow):
     def _checkHostValue(self):
 
         #read value from IPAddress input field and validate it
-        ipAddressIsValid = self.validate_ip_regex(self.edTargetHost.text())
+        ipAddressIsValid = ''
+        try:
+            ipAddressIsValid = self.validate_ip_regex(str(self.edTargetHost.text()))
+        except Exception as e:
+            print(f"Exception: {e}")
+
 
         #red background if address is not valid
         if ipAddressIsValid  == False:
@@ -526,7 +531,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self.edTargetHost.setStyleSheet("background-color: rgb(255, 255, 255);")
 
 
-    def validate_ip_regex(self,ip_address):
+    def validate_ip_regex(self,ip_address=''):
 
         #split IPaddress to bytes
         bytes = ip_address.split(".")
@@ -537,10 +542,14 @@ class TCMonitorMainWindow(Ui_MainWindow):
             return False
 
         #second check range 1-255
-        for ip_byte in bytes:
-            if int(ip_byte) < 0 or int(ip_byte) > 255:
-                #print(f"The IP address {ip_address} is not valid")
-                return False
+        try:
+            for ip_byte in bytes:
+                if int(ip_byte) < 0 or int(ip_byte) > 255:
+                    #print(f"The IP address {ip_address} is not valid")
+                    return False
+        except:
+            return False
+
         #print(f"The IP address {ip_address} is valid")
 
         return True
@@ -686,8 +695,12 @@ class TCMonitorMainWindow(Ui_MainWindow):
         else:
             if self.validate_ip_regex(self.edTargetHost.text()):
                 self._linuxSSHConnector.getConnection(host=self.edTargetHost.text())
+
+                if self._linuxSSHConnector.isConnected() == False:
+                    self._showGUIMessage("Client could not connect to host target", self._linuxSSHConnector.getConnectionStatus())
+
             else:
-                self._showMessage("Format of IP address is invalid!","Use numbers in range 1-255 separated by a dot. E.g. 192.168.0.1")
+                self._showGUIMessage("Format of IP address is invalid!", "Use numbers in range 1-255 separated by a dot. E.g. 192.168.0.1")
 
         self._updateStatusBar()
 
