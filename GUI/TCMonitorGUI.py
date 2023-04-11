@@ -6,9 +6,9 @@ import pandas as pd
 from GUI.qt5TCMonitorMainWindow import Ui_MainWindow
 from GUI.qt5TCMonitorAboutWindow import Ui_About
 from PyQt5.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem, QDialog, QMessageBox, QMainWindow)
-from PyQt5.QtCore import QTimer,QPoint
+from PyQt5.QtCore import QTimer,QPoint, QDateTime
 from PyQt5.QtCore import Qt
-from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QChart,QChartView, QLineSeries, QValueAxis)
+from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QChart,QChartView, QLineSeries, QValueAxis, QDateTimeAxis)
 from PyQt5.QtGui import QPainter,QFont,QIcon
 
 import time
@@ -129,6 +129,62 @@ class MyChart(QMainWindow):
         if( self._axis_x.max() <= self._x):
             self._axis_x.setMax(self._x)
 
+class MyTimeChart(QMainWindow):
+
+    _x = 1
+    _y = 15
+
+
+    def __init__(self, xTitle, yTitle):
+        super().__init__()
+
+
+        self._line_series = QLineSeries()
+        self._line_series.setName("trend")
+
+        self._line_series.append(QDateTime.currentDateTime().toMSecsSinceEpoch(), 4)
+
+        self.chart = QChart()
+        self.chart.addSeries(self._line_series)
+        self.chart.setTitle("Memory overview")
+
+        self._axis_x = QDateTimeAxis()
+        self.chart.addAxis(self._axis_x, Qt.AlignBottom)
+        self._line_series.attachAxis(self._axis_x)
+        self._axis_x.setTitleText(xTitle)
+        self._axis_x.setTitleVisible(True)
+        self._axis_x.setTickCount(10)
+        self._axis_x.setLabelsAngle(70)
+        self._axis_x.setFormat("h:mm:ss")
+        self._axis_x.setTitleText("Date")
+        self._axis_x.setMax(QDateTime.currentDateTime().addSecs(60))
+        self._axis_x.setMin(QDateTime.currentDateTime())
+
+        self._axis_y = QValueAxis()
+        self.chart.addAxis(self._axis_y, Qt.AlignLeft)
+        self._line_series.attachAxis(self._axis_y)
+        self._axis_y.setRange(0, 120)
+        self._axis_y.setTitleText(yTitle)
+        self._axis_y.setTitleVisible(True)
+
+        self.chart.legend().setVisible(True)
+        self.chart.legend().setAlignment(Qt.AlignBottom)
+
+        self._chart_view = QChartView(self.chart)
+        self._chart_view.setRenderHint(QPainter.Antialiasing)
+
+        self.setCentralWidget(self._chart_view)
+
+    def addPoint(self):
+
+        dt = QDateTime.currentDateTime()
+
+        self._line_series.append(dt.toMSecsSinceEpoch(), self._y)
+        t_m, t_M = min(dt, self._axis_x.min()), max(dt, self._axis_x.max())
+        m, M = min(self._y-10, self._axis_y.min()), max(self._y+10, self._axis_y.max())
+        self._axis_x.setRange(t_m, t_M)
+        self._axis_y.setRange(m, M)
+        self._y = self._y + 2
 
 class TestChart(QMainWindow):
     def __init__(self):
@@ -272,7 +328,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         #self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
         #self.window.show()
         #self.window.resize(440, 300)
-        self.window = MyChart("time","unit")
+        self.window = MyTimeChart("time","unit")
         self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
         self.window.show()
         self.window.resize(600, 800)
