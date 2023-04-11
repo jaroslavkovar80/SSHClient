@@ -29,35 +29,37 @@ class TCMonitorAboutWindow(QDialog):
         self.setWindowFlag(Qt.SplashScreen)
         self.ui.lbAbout_4.setText(SW_VERSION)
 
+class MyChartBackup(QMainWindow):
 
-class MyChart(QMainWindow):
-    def __init__(self):
+    _x = 1
+    _y = 15
+
+
+    def __init__(self, xTitle, yTitle):
         super().__init__()
 
         self._line_series = QLineSeries()
         self._line_series.setName("trend")
+
         self._line_series.append(QPoint(0, 4))
-        self._line_series.append(QPoint(1, 15))
-        self._line_series.append(QPoint(2, 20))
-        self._line_series.append(QPoint(3, 4))
-        self._line_series.append(QPoint(4, 12))
-        self._line_series.append(QPoint(5, 100))
 
         self.chart = QChart()
         self.chart.addSeries(self._line_series)
         self.chart.setTitle("Memory overview")
 
-        self.categories = ["12:00", "13:00", "14:00", "15:00", "16:00", "17:00"]
-        self._axis_x = QBarCategoryAxis()
-        self._axis_x.append(self.categories)
+        self._axis_x = QValueAxis()
         self.chart.addAxis(self._axis_x, Qt.AlignBottom)
         self._line_series.attachAxis(self._axis_x)
-        self._axis_x.setRange("13:00", "16:00")
+        self._axis_x.setRange(0, 10)
+        self._axis_x.setTitleText(xTitle)
+        self._axis_x.setTitleVisible(True)
 
         self._axis_y = QValueAxis()
-        self.chart.addAxis(self._axis_x, Qt.AlignLeft)
+        self.chart.addAxis(self._axis_y, Qt.AlignLeft)
         self._line_series.attachAxis(self._axis_y)
-        self._axis_y.setRange(0, 20)
+        self._axis_y.setRange(0, 120)
+        self._axis_y.setTitleText(yTitle)
+        self._axis_y.setTitleVisible(True)
 
         self.chart.legend().setVisible(True)
         self.chart.legend().setAlignment(Qt.AlignBottom)
@@ -66,6 +68,66 @@ class MyChart(QMainWindow):
         self._chart_view.setRenderHint(QPainter.Antialiasing)
 
         self.setCentralWidget(self._chart_view)
+
+    def addPoint(self):
+
+        self._line_series.append(QPoint(self._x, self._y))
+        self._x = self._x + 1
+        self._y = self._y + self._x + 3
+
+        if( self._axis_x.max() <= self._x):
+            self._axis_x.setMax(self._x)
+
+
+
+class MyChart(QMainWindow):
+
+    _x = 1
+    _y = 15
+
+
+    def __init__(self, xTitle, yTitle):
+        super().__init__()
+
+        self._line_series = QLineSeries()
+        self._line_series.setName("trend")
+
+        self._line_series.append(QPoint(0, 4))
+
+        self.chart = QChart()
+        self.chart.addSeries(self._line_series)
+        self.chart.setTitle("Memory overview")
+
+        self._axis_x = QValueAxis()
+        self.chart.addAxis(self._axis_x, Qt.AlignBottom)
+        self._line_series.attachAxis(self._axis_x)
+        self._axis_x.setRange(0, 10)
+        self._axis_x.setTitleText(xTitle)
+        self._axis_x.setTitleVisible(True)
+
+        self._axis_y = QValueAxis()
+        self.chart.addAxis(self._axis_y, Qt.AlignLeft)
+        self._line_series.attachAxis(self._axis_y)
+        self._axis_y.setRange(0, 120)
+        self._axis_y.setTitleText(yTitle)
+        self._axis_y.setTitleVisible(True)
+
+        self.chart.legend().setVisible(True)
+        self.chart.legend().setAlignment(Qt.AlignBottom)
+
+        self._chart_view = QChartView(self.chart)
+        self._chart_view.setRenderHint(QPainter.Antialiasing)
+
+        self.setCentralWidget(self._chart_view)
+
+    def addPoint(self):
+
+        self._line_series.append(QPoint(self._x, self._y))
+        self._x = self._x + 1
+        self._y = self._y + self._x + 3
+
+        if( self._axis_x.max() <= self._x):
+            self._axis_x.setMax(self._x)
 
 
 class TestChart(QMainWindow):
@@ -105,19 +167,23 @@ class TestChart(QMainWindow):
         self.chart.addSeries(self._line_series)
         self.chart.setTitle("Line and barchart example")
 
-        self.categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"]
+        self.categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun2"]
         self._axis_x = QBarCategoryAxis()
         self._axis_x.append(self.categories)
         self.chart.addAxis(self._axis_x, Qt.AlignBottom)
         self._line_series.attachAxis(self._axis_x)
         self._bar_series.attachAxis(self._axis_x)
         self._axis_x.setRange("Jan", "Jun")
+        self._axis_x.setTitleText("x axis")
+        self._axis_x.setTitleVisible(True)
 
         self._axis_y = QValueAxis()
-        self.chart.addAxis(self._axis_x, Qt.AlignLeft)
+        self.chart.addAxis(self._axis_y, Qt.AlignLeft)
         self._line_series.attachAxis(self._axis_y)
         self._bar_series.attachAxis(self._axis_y)
         self._axis_y.setRange(0, 20)
+        self._axis_y.setTitleText("y axis")
+        self._axis_y.setTitleVisible(True)
 
         self.chart.legend().setVisible(True)
         self.chart.legend().setAlignment(Qt.AlignBottom)
@@ -198,6 +264,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
 
         self.pushButton_2.clicked.connect(self._chartExample)
+        self.pushButton.clicked.connect(self._chartExampleAdd)
         #self._chartExample()
 
     def _chartExample(self):
@@ -205,10 +272,13 @@ class TCMonitorMainWindow(Ui_MainWindow):
         #self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
         #self.window.show()
         #self.window.resize(440, 300)
-        self.window = MyChart()
+        self.window = MyChart("time","unit")
         self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
         self.window.show()
         self.window.resize(600, 800)
+
+    def _chartExampleAdd(self):
+        self.window.addPoint()
 
     # ----------------------
     # TAB PROCESS USAGE OVERVIEW
