@@ -12,7 +12,7 @@ from PyQt5.QtChart import (QBarCategoryAxis, QBarSeries, QBarSet, QChart,QChartV
 from PyQt5.QtGui import QPainter,QFont,QIcon
 
 import time
-from datetime import datetime
+from datetime import datetime,timedelta
 import subprocess
 import os
 import re
@@ -135,31 +135,38 @@ class MyTimeChart(QMainWindow):
     _y = 15
 
 
-    def __init__(self, xTitle, yTitle):
+    def __init__(self, graphTitle, seriesTitle, xTitle, yTitle):
         super().__init__()
 
-
+        #Create Line series to present data in line chart
         self._line_series = QLineSeries()
-        self._line_series.setName("trend")
+        self._line_series.setName(seriesTitle)
+        #self._line_series.append(QDateTime.currentDateTime().toMSecsSinceEpoch(), 0)
 
-        self._line_series.append(QDateTime.currentDateTime().toMSecsSinceEpoch(), 4)
 
+        #create and configure Chart and assign series to it
         self.chart = QChart()
         self.chart.addSeries(self._line_series)
-        self.chart.setTitle("Memory overview")
+        self.chart.setTitle(graphTitle)
+        self.chart.setAnimationOptions(QChart.AllAnimations)
+        self.chart.setAnimationDuration(500)
+        self.chart.setTheme(QChart.ChartThemeBlueCerulean)
+        self.chart.legend().setVisible(True)
+        self.chart.legend().setAlignment(Qt.AlignBottom)
 
+        #create axis X - type QDateTimeAxis()
         self._axis_x = QDateTimeAxis()
         self.chart.addAxis(self._axis_x, Qt.AlignBottom)
         self._line_series.attachAxis(self._axis_x)
         self._axis_x.setTitleText(xTitle)
         self._axis_x.setTitleVisible(True)
-        self._axis_x.setTickCount(10)
-        self._axis_x.setLabelsAngle(70)
+        self._axis_x.setTickCount(5)
+        self._axis_x.setLabelsAngle(0)
         self._axis_x.setFormat("h:mm:ss")
-        self._axis_x.setTitleText("Date")
-        self._axis_x.setMax(QDateTime.currentDateTime().addSecs(60))
+        self._axis_x.setMax(QDateTime.currentDateTime().addSecs(120))
         self._axis_x.setMin(QDateTime.currentDateTime())
 
+        # create axis Y - type QDateTimeAxis()
         self._axis_y = QValueAxis()
         self.chart.addAxis(self._axis_y, Qt.AlignLeft)
         self._line_series.attachAxis(self._axis_y)
@@ -167,23 +174,25 @@ class MyTimeChart(QMainWindow):
         self._axis_y.setTitleText(yTitle)
         self._axis_y.setTitleVisible(True)
 
-        self.chart.legend().setVisible(True)
-        self.chart.legend().setAlignment(Qt.AlignBottom)
-
         self._chart_view = QChartView(self.chart)
         self._chart_view.setRenderHint(QPainter.Antialiasing)
 
         self.setCentralWidget(self._chart_view)
 
-    def addPoint(self):
+    def addPoint(self,x_time=0,y_value=0):
 
+        #record current date and time
         dt = QDateTime.currentDateTime()
 
+        #add time and its value to series
         self._line_series.append(dt.toMSecsSinceEpoch(), self._y)
-        t_m, t_M = min(dt, self._axis_x.min()), max(dt, self._axis_x.max())
-        m, M = min(self._y-10, self._axis_y.min()), max(self._y+10, self._axis_y.max())
-        self._axis_x.setRange(t_m, t_M)
-        self._axis_y.setRange(m, M)
+
+        #recalculate max and min value for X/Y axes
+        t_min, t_max = min(dt, self._axis_x.min()), max(dt, (self._axis_x.max()))
+        y_min, y_max = min(self._y-10, self._axis_y.min()), max(self._y+10, self._axis_y.max())
+
+        self._axis_x.setRange(t_min, t_max)
+        self._axis_y.setRange(y_min, y_max)
         self._y = self._y + 2
 
 class TestChart(QMainWindow):
@@ -328,12 +337,17 @@ class TCMonitorMainWindow(Ui_MainWindow):
         #self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
         #self.window.show()
         #self.window.resize(440, 300)
-        self.window = MyTimeChart("time","unit")
+        self.window = MyTimeChart("memory overview","DRAM","time","MBit")
         self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
+        #self.window.show()
+        #self.window.resize(600, 800)
+
+    def _chartExampleAdd(self):
+        #self.window.addPoint()
+
         self.window.show()
         self.window.resize(600, 800)
 
-    def _chartExampleAdd(self):
         self.window.addPoint()
 
     # ----------------------
