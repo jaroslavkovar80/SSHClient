@@ -141,7 +141,7 @@ class MyTimeChart(QMainWindow):
         #Create Line series to present data in line chart
         self._line_series = QLineSeries()
         self._line_series.setName(seriesTitle)
-        #self._line_series.append(QDateTime.currentDateTime().toMSecsSinceEpoch(), 0)
+        self._line_series.append(QDateTime.currentDateTime().toSecsSinceEpoch(), 0)
 
 
         #create and configure Chart and assign series to it
@@ -163,8 +163,13 @@ class MyTimeChart(QMainWindow):
         self._axis_x.setTickCount(5)
         self._axis_x.setLabelsAngle(0)
         self._axis_x.setFormat("h:mm:ss")
-        self._axis_x.setMax(QDateTime.currentDateTime().addSecs(120))
-        self._axis_x.setMin(QDateTime.currentDateTime())
+        #self._axis_x.setMin(QDateTime.currentDateTime())
+        #self._axis_x.setMax(QDateTime.currentDateTime().addSecs(120))
+
+        dt = QDateTime.fromMSecsSinceEpoch(1682082585868)
+
+        self._axis_x.setMin(dt)
+        self._axis_x.setMax(dt.addSecs(1))
 
         # create axis Y - type QDateTimeAxis()
         self._axis_y = QValueAxis()
@@ -184,16 +189,19 @@ class MyTimeChart(QMainWindow):
         #record current date and time
         dt = QDateTime.currentDateTime()
 
+        print(x_time)
         #add time and its value to series
-        self._line_series.append(dt.toMSecsSinceEpoch(), self._y)
+        self._line_series.append(x_time.toMSecsSinceEpoch(), y_value)
 
         #recalculate max and min value for X/Y axes
-        t_min, t_max = min(dt, self._axis_x.min()), max(dt, (self._axis_x.max()))
-        y_min, y_max = min(self._y-10, self._axis_y.min()), max(self._y+10, self._axis_y.max())
+        t_min, t_max = min(x_time, self._axis_x.min()), max(x_time, (self._axis_x.max()))
+        y_min, y_max = min(y_value-10, self._axis_y.min()), max(y_value+10, self._axis_y.max())
 
+        print(t_min)
+        print(t_max)
         self._axis_x.setRange(t_min, t_max)
         self._axis_y.setRange(y_min, y_max)
-        self._y = self._y + 2
+
 
 class TestChart(QMainWindow):
     def __init__(self):
@@ -339,16 +347,31 @@ class TCMonitorMainWindow(Ui_MainWindow):
         #self.window.resize(440, 300)
         self.window = MyTimeChart("memory overview","DRAM","time","MBit")
         self.window.setWindowFlag(Qt.WindowStaysOnTopHint)
-        #self.window.show()
-        #self.window.resize(600, 800)
-
-    def _chartExampleAdd(self):
-        #self.window.addPoint()
-
         self.window.show()
         self.window.resize(600, 800)
 
-        self.window.addPoint()
+    def _chartExampleAdd(self):
+
+        #self.window.show()
+        #self.window.resize(600, 800)
+
+        #self.window.addPoint()
+
+        #print(QDateTime.currentDateTime().toMSecsSinceEpoch())
+        dt = QDateTime.currentDateTime().toMSecsSinceEpoch()
+        print(dt)
+        print(QDateTime.fromMSecsSinceEpoch(dt).toMSecsSinceEpoch())
+
+        data = [[1682082585868,10],[1682082589875,30],[1682082617351,40],[1682082636275,60],[1682082642879,90]]
+
+        for x in data:
+            self.window.addPoint(QDateTime.fromMSecsSinceEpoch(x[0]), x[1])
+        #   print(x[0])
+        #   print(x[1])
+
+        #self.window.addPoint(QDateTime.fromMSecsSinceEpoch(x[0]),x[1])
+
+        #print(data)
 
     # ----------------------
     # TAB PROCESS USAGE OVERVIEW
