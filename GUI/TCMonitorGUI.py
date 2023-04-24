@@ -17,6 +17,8 @@ import subprocess
 import os
 import re
 
+import math
+
 from SSHConnectorLogic import SSHConnector,CMD_GET_DISK_USAGE,CMD_GET_DMESG,CMD_GET_JOURNAL,CMD_GET_PROCESS
 
 SW_VERSION = "V 0.0.9"
@@ -38,7 +40,7 @@ class chartWithTimeAxis(QMainWindow):
         #create and configure Chart and assign series to it
         self.chart = QChart()
         self.chart.setTitle(chartTitle)
-        self.chart.setAnimationOptions(QChart.AllAnimations)
+        self.chart.setAnimationOptions(QChart.NoAnimation)
         self.chart.setAnimationDuration(1000)
         #self.chart.setTheme(QChart.ChartThemeBlueCerulean)
         self.chart.legend().setVisible(True)
@@ -84,6 +86,10 @@ class chartWithTimeAxis(QMainWindow):
         self._lineserie[idx].attachAxis(self._axis_x)
         self._lineserie[idx].attachAxis(self._axis_y)
 
+    def clearSeries(self):
+
+        for x in self._lineserie:
+            x.clear()
 
 
     def addPointToSerie(self,series_idx, x_time,y_value=0):
@@ -180,14 +186,23 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
     def _memoryChartInitalization(self):
 
-        self.windowMemoryChart = chartWithTimeAxis("memory overview", "time", "Mi")
+        self.windowMemoryChart = chartWithTimeAxis("memory overview", "time", "Size [Mi]")
         self.windowMemoryChart.addSeriesToChart("total")
         self.windowMemoryChart.addSeriesToChart("used")
         self.windowMemoryChart.addSeriesToChart("free")
         self.windowMemoryChart.addSeriesToChart("shared")
         self.windowMemoryChart.addSeriesToChart("buff/cache")
         self.windowMemoryChart.addSeriesToChart("available")
+        self.windowMemoryChart.addSeriesToChart("swap total")
+        self.windowMemoryChart.addSeriesToChart("swap used")
+        self.windowMemoryChart.addSeriesToChart("swap free")
+
         self.windowMemoryChart.setWindowFlag(Qt.WindowStaysOnTopHint)
+        self.windowMemoryChart.setWindowTitle("SSH Client - chart")
+        self.windowMemoryChart.setWindowIcon(PyQt5.QtGui.QIcon('GUI/pictures/activity.svg'))
+        #self.windowMemoryChart.setWindowFlag(Qt.FramelessWindowHint or Qt.Dialog)
+
+
 
 
     def _showMemoryCharts(self):
@@ -196,12 +211,21 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.windowMemoryChart.resize(800, 600)
 
 
-    def _chartExampleAdd(self):
+    def _chartExampleAdd(self,idx,raw_value):
+
+        itemWithoutUnit = raw_value.translate({ord(i): None for i in 'GiMiB'})
+        #
+        # print(str(columnIdx) + ":" + itemWithoutUnit)
+        #
+        if idx == 0:
+            value = math.trunc(float(itemWithoutUnit)*1000)
+        else:
+            value = math.trunc(float(itemWithoutUnit))
 
         dt = QDateTime.currentDateTime()
 
-        self.windowMemoryChart.addPointToSerie(0, dt, 10)
-        self.windowMemoryChart.addPointToSerie(1, dt, 33)
+        self.windowMemoryChart.addPointToSerie(idx, dt, int(value))
+        #self.windowMemoryChart.addPointToSerie(1, dt, 33)
 
 
 
@@ -254,6 +278,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
     def _clearMemoryTable(self):
 
         self._clearTableWidget(self.tablewMemoryOverview)
+        self.windowMemoryChart.clearSeries()
 
     def _removeRowFromMemoryTable(self):
 
@@ -289,6 +314,10 @@ class TCMonitorMainWindow(Ui_MainWindow):
             rowItem = QTableWidgetItem(item)
             rowItem.setTextAlignment(0x0080 | 0x0004)
             self.tablewMemoryOverview.setItem(rowCount, columnIdx, rowItem)
+
+            #add value to serie as well
+            self._chartExampleAdd(columnIdx-1, item)
+
             columnIdx += 1
 
             # in visu there is only 10 column available, if more items in list -> break it
