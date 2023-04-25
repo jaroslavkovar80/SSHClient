@@ -1123,6 +1123,35 @@ QHeaderView {
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
+           <widget class="QPushButton" name="btnShowMemoryChart">
+            <property name="minimumSize">
+             <size>
+              <width>120</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>120</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Roboto</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Chart</string>
+            </property>
+            <property name="icon">
+             <iconset resource="resources.qrc">
+              <normaloff>:/test/pictures/bar-chart-2.svg</normaloff>:/test/pictures/bar-chart-2.svg</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
            <spacer name="horizontalSpacer_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
