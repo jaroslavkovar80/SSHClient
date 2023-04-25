@@ -40,6 +40,7 @@ class chartWithTimeAxis(QMainWindow):
         #create and configure Chart and assign series to it
         self.chart = QChart()
         self.chart.setTitle(chartTitle)
+        self.chart.setTitleFont(QFont('Roboroto',14,weight=QFont.Bold ))
         self.chart.setAnimationOptions(QChart.NoAnimation)
         self.chart.setAnimationDuration(1000)
         #self.chart.setTheme(QChart.ChartThemeBlueCerulean)
@@ -180,13 +181,13 @@ class TCMonitorMainWindow(Ui_MainWindow):
         # class for charts initalization
         self._memoryChartInitalization()
 
-        self.pushButton_2.clicked.connect(self._showMemoryCharts)
-        self.pushButton.clicked.connect(self._chartExampleAdd)
+        self.pushButton_2.clicked.connect(self._showMemoryChart)
+        self.pushButton.clicked.connect(self._addToMemoryChart)
         #self._chartExample()
 
     def _memoryChartInitalization(self):
 
-        self.windowMemoryChart = chartWithTimeAxis("memory overview", "time", "Size [Mi]")
+        self.windowMemoryChart = chartWithTimeAxis("Memory overview", "time", "Size [Mi]")
         self.windowMemoryChart.addSeriesToChart("total")
         self.windowMemoryChart.addSeriesToChart("used")
         self.windowMemoryChart.addSeriesToChart("free")
@@ -197,21 +198,21 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.windowMemoryChart.addSeriesToChart("swap used")
         self.windowMemoryChart.addSeriesToChart("swap free")
 
-        self.windowMemoryChart.setWindowFlag(Qt.WindowStaysOnTopHint)
-        self.windowMemoryChart.setWindowTitle("SSH Client - chart")
-        self.windowMemoryChart.setWindowIcon(PyQt5.QtGui.QIcon('GUI/pictures/activity.svg'))
+        #self.windowMemoryChart.setWindowFlag(Qt.WindowStaysOnTopHint)
+        self.windowMemoryChart.setWindowTitle("SSH Client")
+        self.windowMemoryChart.setWindowIcon(PyQt5.QtGui.QIcon('GUI/pictures/bar-chart-2.svg'))
         #self.windowMemoryChart.setWindowFlag(Qt.FramelessWindowHint or Qt.Dialog)
 
 
 
 
-    def _showMemoryCharts(self):
+    def _showMemoryChart(self):
 
         self.windowMemoryChart.show()
         self.windowMemoryChart.resize(800, 600)
 
 
-    def _chartExampleAdd(self,idx,raw_value):
+    def _addToMemoryChart(self, idx, raw_value):
 
         itemWithoutUnit = raw_value.translate({ord(i): None for i in 'GiMiB'})
         #
@@ -316,7 +317,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self.tablewMemoryOverview.setItem(rowCount, columnIdx, rowItem)
 
             #add value to serie as well
-            self._chartExampleAdd(columnIdx-1, item)
+            self._addToMemoryChart(columnIdx - 1, item)
 
             columnIdx += 1
 
