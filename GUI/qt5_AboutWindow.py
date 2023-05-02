@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qt5TCMonitorAboutWindow.ui'
+# Form implementation generated from reading ui file 'qt5_AboutWindow.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -16,7 +16,7 @@ class Ui_About(object):
         About.setObjectName("About")
         About.setWindowModality(QtCore.Qt.NonModal)
         About.setEnabled(True)
-        About.resize(510, 379)
+        About.resize(506, 370)
         About.setWindowOpacity(1.0)
         About.setStyleSheet("#Dialog{\n"
 "  border-style: solid;\n"
@@ -187,7 +187,6 @@ class Ui_About(object):
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem1)
         self.btnLogo = QtWidgets.QPushButton(self.frame_5)
-        self.btnLogo.setAutoFillBackground(False)
         self.btnLogo.setText("")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":test/pictures/BRLogo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
