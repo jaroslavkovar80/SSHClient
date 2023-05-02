@@ -21,7 +21,7 @@ import math
 
 from SSHConnectorLogic import SSHConnector, CMD_GET_DISK_USAGE, CMD_GET_DMESG, CMD_GET_JOURNAL, CMD_GET_PROCESS
 
-SW_VERSION = "V 0.0.9"
+SW_VERSION = "V 0.1.0"
 
 # ---
 # CLASS FOR About dialog
@@ -138,6 +138,11 @@ class chartWithTimeAxis(QMainWindow):
         for x in self._lineserie:
             x.clear()
 
+        # set limits back to default values
+        self._axis_y.setRange(0, 120)
+        self._axis_x.setMin(QDateTime.currentDateTime())
+        self._axis_x.setMax(QDateTime.currentDateTime().addSecs(1))
+
     def addPointToSerie(self, series_idx, x_time, y_value=0):
         """
         add one point time/value to series
@@ -201,10 +206,11 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self.btnCheckConnection.clicked.connect(self._connectToTarget)
         self.btnTakeSnapshot.clicked.connect(self.takeSystemSnapshot)
 
-        # menu-About window
+        # bar menu + logo button
         self.actionAbout.triggered.connect(self._showAbout)
         self.actionClose.triggered.connect(self._exit)
         self.actionExport.triggered.connect(self._exportToExcel)
+        self.btnLogo.clicked.connect(self._showAbout)
 
         # TAB manual command
         self.btnCallCmd.clicked.connect(self._callCommand)
@@ -232,7 +238,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self._memoryChartInitalization()
         self.btnShowMemoryChart.clicked.connect(self._showMemoryChart)
 
-        #self.pushButton.clicked.connect(self._addPointToMemoryChart)
+
 
 
     def _memoryChartInitalization(self):
@@ -272,18 +278,21 @@ class TCMonitorMainWindow(Ui_MainWindow):
 
         """
         Add new point to memory chart series, raw value is string, so value is cleared from units and converted to int
-        -> idx - index of series
+        -> idx - index of series you would like to add point to
         -> raw_value - y value
         """
+
+        # check if series is in Gi or in Mi, racalculate if need it.
+        multipleIndex = 1
+        if raw_value.find('Gi') != -1:
+            multipleIndex = 1024
+
 
         # clear units from string
         itemWithoutUnit = raw_value.translate({ord(i): None for i in 'GiMiB'})
 
-        # first series is in Gi, racalculate to Mi
-        if idx == 0:
-            value = math.trunc(float(itemWithoutUnit) * 1000)
-        else:
-            value = math.trunc(float(itemWithoutUnit))
+        # recalculate it
+        value = math.trunc(float(itemWithoutUnit) * multipleIndex)
 
         # get current time
         dt = QDateTime.currentDateTime()
@@ -399,6 +408,12 @@ class TCMonitorMainWindow(Ui_MainWindow):
             self.edCommand.setText('')
         elif index == 1:
             self.edCommand.setText('/sbin/shutdown -r now')
+        elif index == 2:
+            self.edCommand.setText('free -h')
+        elif index == 3:
+            self.edCommand.setText('df -h')
+        elif index == 4:
+            self.edCommand.setText('ps aux')
 
     def _clearCommandTable(self):
         self._clearTableWidget(self.tableCommand)
@@ -639,7 +654,7 @@ class TCMonitorMainWindow(Ui_MainWindow):
     def _setGUI(self):
 
         # commands list
-        cmd_list = ["select command", "restart target"]
+        cmd_list = ["select command", "restart target", "get memory usage", "get disk usage", "get process overview"]
 
         # making it editable
         self.cboxCommand.setEditable(True)
@@ -812,4 +827,4 @@ class TCMonitorMainWindow(Ui_MainWindow):
         self._updateGUI()
 
     def _cyclicLogicActions(self):
-        self.getAndAddMemorySnapshotToTable()
+        self.takeSystemSnapshot()

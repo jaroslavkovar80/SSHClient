@@ -683,7 +683,7 @@ QHeaderView {
      </layout>
     </item>
     <item row="0" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,0,1,0,0,0,0,0,0,0">
+     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,0,1,0,0,0,0,0,0">
       <property name="spacing">
        <number>6</number>
       </property>
@@ -700,7 +700,7 @@ QHeaderView {
        <number>1</number>
       </property>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="btnLogo">
         <property name="minimumSize">
          <size>
           <width>130</width>
@@ -824,13 +824,6 @@ QHeaderView {
         </property>
         <property name="checkable">
          <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="pushButton">
-        <property name="text">
-         <string>PushButton</string>
         </property>
        </widget>
       </item>

@@ -67,9 +67,14 @@ class SSHConnector:
             self._connected = False
             self._connStatus = f'Connection to host was closed, socket error'
 
-        except:
-            self._connStatus = f'Invalid command {command} was called'
+        except Exception as e:
+            self._connStatus = f'Invalid command {command} was called or connection error {e}'
 
+            if str(e) == 'SSH session not active':
+                #self. _connected = False
+                print("ssh session exception")
+            else:
+                print(f"ss{e}")
         return lines
 
     def closeConnection(self):
