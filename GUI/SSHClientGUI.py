@@ -20,7 +20,7 @@ import pandas as pd
 from SSHConnector import SSHConnector, CMD_GET_DISK_USAGE, CMD_GET_DMESG, CMD_GET_JOURNAL, CMD_GET_PROCESS
 from GUI.charts import ChartWithTimeAxis
 
-SW_VERSION = "V 1.0.0"
+SW_VERSION = "V 1.0.1"
 
 # ---
 # CLASS FOR About dialog
@@ -80,9 +80,11 @@ class MainWindow(Ui_MainWindow):
         self.btnLoadDmesg.clicked.connect(self.getAndAddDmesgToTable)
         self.btnLoadJournal.clicked.connect(self.getAndAddJournalToTable)
 
-        # estabilish connection logic
+        # main toolbar functionality
         self.btnCheckConnection.clicked.connect(self.connectToHostTarget)
         self.btnTakeSnapshot.clicked.connect(self.takeSystemSnapshot)
+        self.btnClearAll.clicked.connect(self.clearAllRecords)
+
 
         # bar menu + logo button
         self.actionAbout.triggered.connect(self._showAbout)
@@ -185,7 +187,8 @@ class MainWindow(Ui_MainWindow):
         processUsageHeader, processUsageRows = self._linuxSSHConnector.getCmdByLinesWithHeader(CMD_GET_PROCESS)
 
         # add them to GUI
-        self._updateTableWidget(processUsageHeader, processUsageRows, self.tableProcessOverview)
+        if processUsageHeader[1] != "-1":
+            self._updateTableWidget(processUsageHeader, processUsageRows, self.tableProcessOverview)
 
         # update all elements in GUI
         self._updateGUI()
@@ -214,7 +217,8 @@ class MainWindow(Ui_MainWindow):
         diskUsageHeader, diskUsageRows = self._linuxSSHConnector.getCmdByLinesWithHeader(CMD_GET_DISK_USAGE)
 
         # add them to GUI
-        self._updateTableWidget(diskUsageHeader, diskUsageRows, self.tableDiskUsage)
+        if diskUsageHeader[1] != "-1":
+            self._updateTableWidget(diskUsageHeader, diskUsageRows, self.tableDiskUsage)
 
         # update all elements in GUI
         self._updateGUI()
@@ -255,8 +259,6 @@ class MainWindow(Ui_MainWindow):
 
         if list[1] != "-1":
             self._addRowToMemoryTable(list)
-        elif self._timerMemoryLogging.isActive():
-            self._timerMemoryLogging.stop()
 
         self._updateGUI()
 
@@ -300,7 +302,8 @@ class MainWindow(Ui_MainWindow):
          Method call command
         """
         list = self._linuxSSHConnector.getCmdByLines(self.edCommand.text())
-        self._addRowsToTable(list, self.tableCommand)
+        if list[1] != "-1":
+            self._addRowsToTable(list, self.tableCommand)
 
     def _copyCommand(self):
         """
@@ -336,7 +339,8 @@ class MainWindow(Ui_MainWindow):
 
         list = self._linuxSSHConnector.getCmdByLines(CMD_GET_JOURNAL)
 
-        self._addRowsToTable(list, self.tableJournalList)
+        if list[1] != "-1":
+            self._addRowsToTable(list, self.tableJournalList)
 
     # ----------------------
     # TAB DMESG LOG OVERVIEW
@@ -349,7 +353,8 @@ class MainWindow(Ui_MainWindow):
 
         list = self._linuxSSHConnector.getCmdByLines(CMD_GET_DMESG)
 
-        self._addRowsToTable(list, self.tableDmesgList)
+        if list[1] != "-1":
+            self._addRowsToTable(list, self.tableDmesgList)
 
     # ----------------------
     # GENERAL GUI METHODS
@@ -360,12 +365,12 @@ class MainWindow(Ui_MainWindow):
         """
 
         # create pandas dataframe from each table
-        df1 = self._createDataFrame(self.tablewMemoryOverview)
-        df2 = self._createDataFrame(self.tableDiskUsage)
-        df3 = self._createDataFrame(self.tableProcessOverview)
-        df4 = self._createDataFrame(self.tableDmesgList)
-        df5 = self._createDataFrame(self.tableJournalList)
-        df6 = self._createDataFrame(self.tableCommand)
+        df1 = self._createPandasDataFrame(self.tablewMemoryOverview)
+        df2 = self._createPandasDataFrame(self.tableDiskUsage)
+        df3 = self._createPandasDataFrame(self.tableProcessOverview)
+        df4 = self._createPandasDataFrame(self.tableDmesgList)
+        df5 = self._createPandasDataFrame(self.tableJournalList)
+        df6 = self._createPandasDataFrame(self.tableCommand)
 
         # generate file name - e.g. 15_03_17_14_22_ssh.xlsx
         fileName = datetime.now().strftime('%d_%m_%H_%M_%S') + "_ssh.xlsx"
@@ -386,7 +391,7 @@ class MainWindow(Ui_MainWindow):
         directory = os.getcwd()
         subprocess.Popen(fr'explorer /open,{directory}')
 
-    def _createDataFrame(self, table):
+    def _createPandasDataFrame(self, table):
         """
          internal Method for creation data frame,call exportToExcel() instead
         """
@@ -751,11 +756,23 @@ class MainWindow(Ui_MainWindow):
         """
          Method connected to button TAKE SNAPSHOT signal in visu
         """
-        self.getAndAddDmesgToTable()
-        self.getAndAddJournalToTable()
-        self.getAndAddMemorySnapshotToTable()
-        self.getAndAddDiskUsageTable()
-        self.getAndAddProcessUsageTable()
+        if self._linuxSSHConnector.isConnected():
+
+            self.getAndAddDmesgToTable()
+            self.getAndAddJournalToTable()
+            self.getAndAddMemorySnapshotToTable()
+            self.getAndAddDiskUsageTable()
+            self.getAndAddProcessUsageTable()
+        else:
+            self._linuxSSHConnector.closeConnection()
+            self._timerMemoryLogging.stop()
+            self._updateGUI()
+
+    def clearAllRecords(self):
+        self.clearCommandTable()
+        self.clearMemoryTable()
+        self.clearDiskUsageTable()
+        self.clearProcessUsageTable()
 
     def cyclicLogicHandler(self):
         """

@@ -683,7 +683,7 @@ QHeaderView {
      </layout>
     </item>
     <item row="0" column="0" colspan="2">
-     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,0,1,0,0,0,0,0,0">
+     <layout class="QHBoxLayout" name="hlayoutTop" stretch="0,0,0,1,0,0,0,0,0,0,0,0">
       <property name="spacing">
        <number>6</number>
       </property>
@@ -952,6 +952,54 @@ QHeaderView {
         </property>
         <property name="value">
          <number>10</number>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_6">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btnClearAll">
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Roboto</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>clear all</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/test/pictures/trash-2.svg</normaloff>:/test/pictures/trash-2.svg</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -1248,7 +1296,7 @@ QHeaderView {
              </font>
             </property>
             <property name="text">
-             <string>clear all</string>
+             <string>clear</string>
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
@@ -1434,7 +1482,7 @@ QHeaderView {
              </font>
             </property>
             <property name="text">
-             <string>clear all</string>
+             <string>clear</string>
             </property>
             <property name="icon">
              <iconset>
@@ -1644,7 +1692,7 @@ QHeaderView {
              </font>
             </property>
             <property name="text">
-             <string>clear all</string>
+             <string>clear</string>
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">
@@ -2129,7 +2177,7 @@ align-self: center;</string>
              </font>
             </property>
             <property name="text">
-             <string>clear all</string>
+             <string>clear</string>
             </property>
             <property name="icon">
              <iconset resource="resources.qrc">

@@ -125,6 +125,16 @@ class SSHConnector:
         """
         returns information if client is connected or not to host
         """
+        if self._connected:
+            bhostisreachable = True
+            try:
+                stdin, stdout, stderr = self._ssh.exec_command(CMD_GET_MEMORY)
+
+            except Exception as e:
+                bhostisreachable = False
+
+            self._connected = bhostisreachable
+
         return self._connected
 
     def getConnectionStatus(self):
@@ -160,7 +170,7 @@ class SSHConnector:
         Returns response from host in lines [list] format. This are basically raw data from host without anymodification on the client side.
         """
 
-        lines = []
+        lines = ['-1', '-1']
 
         if (self._connected == True):
             lines = self._executeCmd(command)
@@ -172,8 +182,8 @@ class SSHConnector:
         Returns response from host in lines [list] and header [list] format. Raw data from host are splitted to header and lines on the client side.
         """
 
-        header = []
-        lines = []
+        header = ['-1', '-1']
+        lines = ['-1', '-1']
 
         if (self._connected == True):
             receivedList = self._executeCmd(command)

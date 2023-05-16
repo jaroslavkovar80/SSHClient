@@ -41,7 +41,7 @@ class ChartWithTimeAxis(QMainWindow):
         self._axis_x.setTitleVisible(True)
         self._axis_x.setTickCount(5)
         self._axis_x.setLabelsAngle(0)
-        self._axis_x.setFormat("h:mm:ss")
+        self._axis_x.setFormat("dd.mm h:mm:ss")
         self._axis_x.setMin(QDateTime.currentDateTime())
         self._axis_x.setMax(QDateTime.currentDateTime().addSecs(1))
 
