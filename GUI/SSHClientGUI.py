@@ -20,7 +20,7 @@ import pandas as pd
 from SSHConnector import SSHConnector, CMD_GET_DISK_USAGE, CMD_GET_DMESG, CMD_GET_JOURNAL, CMD_GET_PROCESS
 from GUI.charts import ChartWithTimeAxis
 
-SW_VERSION = "V 1.0.1"
+SW_VERSION = "V 1.0.2"
 
 # ---
 # CLASS FOR About dialog
@@ -187,7 +187,7 @@ class MainWindow(Ui_MainWindow):
         processUsageHeader, processUsageRows = self._linuxSSHConnector.getCmdByLinesWithHeader(CMD_GET_PROCESS)
 
         # add them to GUI
-        if processUsageHeader[1] != "-1":
+        if processUsageHeader[0] != '-1':
             self._updateTableWidget(processUsageHeader, processUsageRows, self.tableProcessOverview)
 
         # update all elements in GUI
@@ -217,7 +217,7 @@ class MainWindow(Ui_MainWindow):
         diskUsageHeader, diskUsageRows = self._linuxSSHConnector.getCmdByLinesWithHeader(CMD_GET_DISK_USAGE)
 
         # add them to GUI
-        if diskUsageHeader[1] != "-1":
+        if diskUsageHeader[0] != '-1':
             self._updateTableWidget(diskUsageHeader, diskUsageRows, self.tableDiskUsage)
 
         # update all elements in GUI
