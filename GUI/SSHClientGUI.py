@@ -20,7 +20,7 @@ import pandas as pd
 from SSHConnector import SSHConnector, CMD_GET_DISK_USAGE, CMD_GET_DMESG, CMD_GET_JOURNAL, CMD_GET_PROCESS
 from GUI.charts import ChartWithTimeAxis
 
-SW_VERSION = "V 1.0.4"
+SW_VERSION = "V 1.0.5"
 
 # ---
 # CLASS FOR About dialog
