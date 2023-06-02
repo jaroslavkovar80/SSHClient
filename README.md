@@ -7,7 +7,7 @@
 <a name="Introduction"></a>
 ## Introduction
 
-![](UML/pic/dmesg.png)
+![](UML/pic/memory_usage.png)
 
 <a name="Features"></a>
 ## Features
