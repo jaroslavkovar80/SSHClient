@@ -29,7 +29,7 @@ This is an SSH client developed to simplify the investigation of possible troubl
 SSH PPT image must be installed on a target, for more info ask at 2nd level HMI support.
 Implementation itself is based on
 * Python 3.9 + packages
-* PyQT 5
+* PyQT 5 + PyQTChart
 * Paramiko (SSH client)
 
 <a name="Revision-History"></a>
