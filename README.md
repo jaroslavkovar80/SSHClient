@@ -29,9 +29,15 @@ This is an SSH client developed to simplify the investigation of possible troubl
 SSH PPT image must be installed on a target, for more info ask at 2nd level HMI support.
 Implementation itself is based on
 * Python 3.9 + packages
+
+
 * PyQT 5 + PyQTChart
 * Paramiko (SSH client)
 
 <a name="Revision-History"></a>
 #### Version 1.0.3
 - First public release
+
+  https://jaroslavkovar80.github.io/SSHClient/
+https://docusaurus.io/
+https://github.com/br-automation-community/X20-Edge-UseCases
