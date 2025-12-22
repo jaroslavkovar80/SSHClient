@@ -1,0 +1,21 @@
+site_name: mapp Framework 6
+site_description: Public mapp Framework documentation
+site_author: B&R Automation Community
+
+repo_url: https://github.com/br-automation-community/mapp-Framework-6
+repo_name: mapp-Framework-6
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.instant
+    - search.highlight
+    - content.code.copy
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Installation: installation.md
+  - Architecture: architecture.md
+  - Examples: examples.md
