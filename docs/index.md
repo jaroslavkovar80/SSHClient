@@ -7,3 +7,6 @@ Public framework for building modular and scalable mappView applications.
 - Architecture overview
 - Installation steps
 - Practical examples
+
+## Test deploy
+It works 🎉
