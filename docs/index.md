@@ -1,12 +1,9 @@
-# mapp Framework 6
+# mapp Framework
 
-Public framework for building modular and scalable mappView applications.
+To get started with the mapp Framework, proceed to the [General information section](docs/general/index.md). 
 
-## What you will find here
-- Getting started guide
-- Architecture overview
-- Installation steps
-- Practical examples
+![Framework overview][def]
 
-## Test deploy
-It works 🎉
+IMPORTANT: Every mapp Framework Help section has a page titled "Required Modifications". The steps on this page must be executed in order to get the Framework into a functional state! 
+
+[def]: images/mappFramework.png
