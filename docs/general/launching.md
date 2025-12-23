@@ -11,7 +11,7 @@ Then navigate to Tools → mapp Framework Importer:
 
 
 Notes: 
-• If you don't see this menu option after installing the Framework, then please close and re-open Automation Studio. 
-• If this menu option is grayed out, then the version number has not yet been set in Change Runtime Versions. 
-• It is recommended to close all open tabs before launching the importer. 
-• You can only import mapp Framework components to the active configuration. 
+If you don't see this menu option after installing the Framework, then please close and re-open Automation Studio. 
+If this menu option is grayed out, then the version number has not yet been set in Change Runtime Versions. 
+It is recommended to close all open tabs before launching the importer. 
+You can only import mapp Framework components to the active configuration. 
