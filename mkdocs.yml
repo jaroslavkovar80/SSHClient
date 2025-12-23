@@ -7,12 +7,8 @@ repo_url: https://github.com/br-automation-community/mapp-Framework
 theme:
   name: material
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
-    - navigation.instant
-    - navigation.tracking
-    - toc.integrate
 
 nav:
   - mappFramework:
