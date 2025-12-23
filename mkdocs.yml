@@ -23,7 +23,8 @@ nav:
           - Launching the Importer: general/launching.md
           - User Partion Handling: general/user_partition.md
           - Visualization Consideration: general/visualization_consideration.md
-          - Version Information: general/Version_information/index.md
+          - Version Information: 
+            - Overview: general/Version_information/index.md 
             - Version 1.5: general/Version_information/version_1_5.md
       - mapp AlarmX:
           - Introduction & Features: alarmx/index.md
