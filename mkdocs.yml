@@ -11,32 +11,33 @@ theme:
     - navigation.expand
 
 nav:
-    - General Information: 
-      - General Information: general/index.md
-      - Introduction: general/introduction.md
-      - System Requirements: general/system_requirement.md
-      - Prerequisites: general/Prerequisities.md
-      - Launching the Importer: general/launching.md
-      - User Partion Handling: general/user_partition.md
-      - Visualization Consideration: general/visualization_consideration.md
-      - Version Information: 
-        - Overview: general/Version_information/index.md 
-        - Version 1.5: general/Version_information/version_1_5.md
-    - mapp AlarmX:
-        - Introduction & Features: alarmx/index.md
-    - mapp Axis / Cockpit:
-        - Introduction & Features: axis_cockpit/index.md
-    - mapp Backup:
-        - Introduction & Features: backup/index.md
-    - mapp File:
-        - Introduction & Features: file/index.md
-    - mapp Recipe:
-        - Introduction & Features: recipe/index.md
-    - mapp UserX:
-        - Introduction & Features: userx/index.md
-    - mapp Audit:
-        - Introduction & Features: audit/index.md
-    - mapp Report:
-        - Introduction & Features: report/index.md
-    - mapp PackML:
-        - Introduction & Features: packml/index.md
+    - Table of contents: 
+      - General Information: 
+          - General Information: general/index.md
+          - Introduction: general/introduction.md
+          - System Requirements: general/system_requirement.md
+          - Prerequisites: general/Prerequisities.md
+          - Launching the Importer: general/launching.md
+          - User Partion Handling: general/user_partition.md
+          - Visualization Consideration: general/visualization_consideration.md
+          - Version Information: 
+            - Overview: general/Version_information/index.md 
+            - Version 1.5: general/Version_information/version_1_5.md
+      - mapp AlarmX:
+          - Introduction & Features: alarmx/index.md
+      - mapp Axis / Cockpit:
+          - Introduction & Features: axis_cockpit/index.md
+      - mapp Backup:
+          - Introduction & Features: backup/index.md
+      - mapp File:
+          - Introduction & Features: file/index.md
+      - mapp Recipe:
+          - Introduction & Features: recipe/index.md
+      - mapp UserX:
+          - Introduction & Features: userx/index.md
+      - mapp Audit:
+          - Introduction & Features: audit/index.md
+      - mapp Report:
+          - Introduction & Features: report/index.md
+      - mapp PackML:
+          - Introduction & Features: packml/index.md
