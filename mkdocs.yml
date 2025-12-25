@@ -42,18 +42,61 @@ nav:
             - Inhibit Alarms: alarmx/Optional_Modification/inhibit.md
             - Add Queries: alarmx/Optional_Modification/add_queries.md
       - mapp Axis / Cockpit:
-          - Introduction & Features: axis_cockpit/index.md
+          - General: axis_cockpit/index.md
+          - Features: axis_cockpit/features.md
+          - Task Overview: axis_cockpit/task_overview.md
+          - Required Modification: axis_cockpit/required_modification.md
+          - Optional modification: 
+            - Overview: axis_cockpit/Optional_Modification/index.md 
+            - Add aditional axis: axis_cockpit/Optional_Modification/page1.md
+            - Rename AppAxis_1: axis_cockpit/Optional_Modification/page2.md
+            - SLO Trace Configuration: axis_cockpit/Optional_Modification/page3.md
       - mapp Backup:
-          - Introduction & Features: backup/index.md
+          - General: backup/index.md
+          - Features: backup/features.md
+          - Task Overview: backup/task_overview.md
+          - Required Modification: backup/required_modification.md
+          - Optional Modification: backup/optional_modification.md
       - mapp File:
-          - Introduction & Features: file/index.md
+          - General: file/index.md
+          - Features: file/features.md
+          - Task Overview: file/task_overview.md
+          - Required Modification: file/required_modification.md
+          - Optional Modification: file/optional_modification.md
+          - FIFO: file/fifo.md
       - mapp Recipe:
-          - Introduction & Features: recipe/index.md
+          - General: recipe/index.md
+          - Features: recipe/features.md
+          - Recipe System Design: recipe/system.md
+          - Task Overview: recipe/task_overview.md
+          - Required Modification: recipe/required_modification.md
+          - Optional modification: 
+            - Overview: recipe/Optional_Modification/index.md 
+            - Change Recipe Format: recipe/Optional_Modification/page1.md
       - mapp UserX:
-          - Introduction & Features: userx/index.md
+          - General: userx/index.md
+          - Features: userx/features.md
+          - Task Overview: userx/task_overview.md
+          - Required Modification: userx/required_modification.md
+          - Optional Modification: userx/optional_modification.md
       - mapp Audit:
-          - Introduction & Features: audit/index.md
+          - General: audit/index.md
+          - Features: audit/features.md
+          - Task Overview: audit/task_overview.md
+          - Required Modification: audit/required_modification.md
+          - Optional Modification: audit/optional_modification.md
       - mapp Report:
-          - Introduction & Features: report/index.md
+          - General: report/index.md
+          - Features: report/features.md
+          - Task Overview: report/task_overview.md
+          - Required Modification: report/required_modification.md
+          - Optional Modification: report/optional_modification.md
       - mapp PackML:
-          - Introduction & Features: packml/index.md
+          - General: packml/index.md
+          - Features: packml/features.md
+          - packml System Design: packml/system.md
+          - Task Overview: packml/task_overview.md
+          - Required Modification: packml/required_modification.md
+          - Optional modification: 
+            - Overview: packml/Optional_Modification/index.md 
+            - Change packml Format: packml/Optional_Modification/page1.md
