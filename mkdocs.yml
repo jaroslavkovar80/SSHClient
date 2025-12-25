@@ -31,10 +31,10 @@ nav:
             - Version 1.0: general/Version_information/version_1_0.md
       - mapp AlarmX:
           - General: alarmx/index.md
-          - General: alarmx/features.md
-          - General: alarmx/task_overview.md
-          - General: alarmx/script.md
-          - General: alarmx/required_modification.md
+          - Features: alarmx/features.md
+          - Task Overview: alarmx/task_overview.md
+          - Script: alarmx/script.md
+          - Required Modification: alarmx/required_modification.md
           - Optional modification: 
             - Overview: alarmx/Optional_Modification/index.md 
             - Add or Delete alarms: alarmx/Optional_Modification/add_alarm.md

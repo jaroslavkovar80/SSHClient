@@ -1,15 +1,23 @@
-# Version Information
-This section describes the new features in each version of the mapp Framework. The mapp Framework versioning system follows the versioning scheme of mapp Technology: 
+## Inhibiting Monitoring Alarms
 
->
-> **Major.Minor.Bugfix**
+Decide whether each monitoring alarm should be inhibited at any point.
 
-**Topics in this section:**
+If so, proceed as follows:
 
-* [Version 1.5](version_1_5.md)
-* [Version 1.4](version_1_4.md)
-* [Version 1.3](version_1_3.md)
-* [Version 1.2](version_1_2.md)
-* [Version 1.1](version_1_1.md)
-* [Version 1.0](version_1_0.md)
+1. Assign an Inhibit PV to the alarm within the Alarm List of the AlarmXCfg.mpalarmxcore configuration file.
+   - This is an advanced parameter, so remember to click the advanced settings icon.
+
+2. In the AlarmHandling.st action, write an IF statement to set the Inhibit PV according to a specific condition.
+   - It is common to use the same Inhibit PV to inhibit multiple alarms.
+   - For example, a maintenance mode bit set to True can simultaneously inhibit alarms that should not be monitored during machine maintenance.
+
+An example of using the Inhibit PV is built into Alarm0.
+
+The condition for setting CommissioningModeActive to True is not yet defined in AlarmHandling.st and must be implemented based on the application logic.
+
+![inhibit1][def]
+![inhibit2][def2]
+
+[def]: images/inhibit1.png
+[def2]: images/inhibit2.png
 
