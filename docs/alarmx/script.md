@@ -21,9 +21,11 @@ This script allows you to export the AlarmX configuration to Excel and then re-i
    ![script1][def]
 
 2. Click on "Environment Variables".
+
    ![script2][def1]
 
 3. Click on "Path" and then "Edit".
+
    ![script3][def2]
 
 4. Add the following two paths to the list:
@@ -46,11 +48,15 @@ This script allows you to export the AlarmX configuration to Excel and then re-i
 1. Open the command prompt (Start menu, cmd.exe).
 
 2. Change directory to:
-   - <directory of project>\Logical\Infrastructure\AlarmX
+
+```
+  ..directory of project..\Logical\Infrastructure\AlarmX
+```
 
 3. Edit the following command according to your configuration name and PLC name, and then run it in the command line:
+```
    - python AlarmImportExport.py --export True --csv-file .\Alarmx.csv --mpalarmxcore "..\..\..\Physical\{ConfigName}\{PLCname}\mappServices\AlarmX\AlarmXCfg.mpalarmxcore"
-
+```
    > Note:  
    > During Python installation, if you associated .py files with the Python executable, then remove the word "python" 
    > from the beginning of the command.
@@ -71,13 +77,17 @@ This script allows you to export the AlarmX configuration to Excel and then re-i
 2. Open the command prompt (Start menu, cmd.exe).
 
 3. Change directory to:
+```
    - <directory of project>\Logical\Infrastructure\AlarmX
-
+```
 4. Edit the following command according to your configuration name and PLC name, and then run it in the command line.
 
    Note that any changes made to the alarm configuration file in Automation Studio after exporting to Excel will be overwritten by this import.
 
+```
    - python AlarmImportExport.py --csv-file .\Alarmx.csv --mpalarmxcore "..\..\..\Physical\{ConfigName}\{PLCname}\mappServices\AlarmX\AlarmXCfg.mpalarmxcore"
+
+```
 
    > Note:  
    > During Python installation, if you associated .py files with the Python executable, then remove the word "python" 
