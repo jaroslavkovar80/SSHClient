@@ -14,7 +14,7 @@ nav:
     - Table of contents: 
       - mapp Framework: index.md
       - General Information: 
-          - General Information: general/index.md
+          - General: general/index.md
           - Introduction: general/introduction.md
           - System Requirements: general/system_requirement.md
           - Prerequisites: general/Prerequisities.md
