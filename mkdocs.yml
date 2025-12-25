@@ -11,14 +11,10 @@ theme:
     - navigation.expand
 
 nav:
-  - Table of contents:
-      - icon: material/book-open-page-variant
-        name: mapp Framework
-        link: index.md
+  - 📘 Table of contents:
+      - 📘 mapp Framework: index.md
 
-      - icon: material/information-outline
-        name: 1. General Information
-        children:
+      - ℹ️ 1. General Information:
           - General: general/index.md
           - Introduction: general/introduction.md
           - System Requirements: general/system_requirement.md
@@ -35,9 +31,7 @@ nav:
               - Version 1.1: general/Version_information/version_1_1.md
               - Version 1.0: general/Version_information/version_1_0.md
 
-      - icon: material/alarm-light-outline
-        name: 2. mapp AlarmX
-        children:
+      - 🚨 2. mapp AlarmX:
           - General: alarmx/index.md
           - Features: alarmx/features.md
           - Task Overview: alarmx/task_overview.md
@@ -50,9 +44,7 @@ nav:
               - Inhibit Alarms: alarmx/Optional_Modification/inhibit.md
               - Add Queries: alarmx/Optional_Modification/add_queries.md
 
-      - icon: material/axis-arrow
-        name: 3. mapp Axis / Cockpit
-        children:
+      - 🧭 3. mapp Axis / Cockpit:
           - General: axis_cockpit/index.md
           - Features: axis_cockpit/features.md
           - Task Overview: axis_cockpit/task_overview.md
@@ -63,18 +55,14 @@ nav:
               - Rename AppAxis_1: axis_cockpit/Optional_Modification/page2.md
               - SLO Trace Configuration: axis_cockpit/Optional_Modification/page3.md
 
-      - icon: material/backup-restore
-        name: 4. mapp Backup
-        children:
+      - 💾 4. mapp Backup:
           - General: backup/index.md
           - Features: backup/features.md
           - Task Overview: backup/task_overview.md
           - Required Modification: backup/required_modification.md
           - Optional Modification: backup/optional_modification.md
 
-      - icon: material/file-outline
-        name: 5. mapp File
-        children:
+      - 📂 5. mapp File:
           - General: file/index.md
           - Features: file/features.md
           - Task Overview: file/task_overview.md
@@ -82,9 +70,7 @@ nav:
           - Optional Modification: file/optional_modification.md
           - FIFO: file/fifo.md
 
-      - icon: material/playlist-edit
-        name: 6. mapp Recipe
-        children:
+      - 📝 6. mapp Recipe:
           - General: recipe/index.md
           - Features: recipe/features.md
           - Recipe System Design: recipe/system.md
@@ -94,36 +80,28 @@ nav:
               - Overview: recipe/Optional_Modification/index.md
               - Change Recipe Format: recipe/Optional_Modification/page1.md
 
-      - icon: material/account-group-outline
-        name: 7. mapp UserX
-        children:
+      - 👥 7. mapp UserX:
           - General: userx/index.md
           - Features: userx/features.md
           - Task Overview: userx/task_overview.md
           - Required Modification: userx/required_modification.md
           - Optional Modification: userx/optional_modification.md
 
-      - icon: material/shield-check-outline
-        name: 8. mapp Audit
-        children:
+      - 🛡️ 8. mapp Audit:
           - General: audit/index.md
           - Features: audit/features.md
           - Task Overview: audit/task_overview.md
           - Required Modification: audit/required_modification.md
           - Optional Modification: audit/optional_modification.md
 
-      - icon: material/file-chart-outline
-        name: 9. mapp Report
-        children:
+      - 📊 9. mapp Report:
           - General: report/index.md
           - Features: report/features.md
           - Task Overview: report/task_overview.md
           - Required Modification: report/required_modification.md
           - Optional Modification: report/optional_modification.md
 
-      - icon: material/state-machine
-        name: 10. mapp PackML
-        children:
+      - 🔁 10. mapp PackML:
           - General: packml/index.md
           - Features: packml/features.md
           - PackML System Design: packml/system.md
