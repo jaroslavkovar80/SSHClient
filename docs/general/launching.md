@@ -1,3 +1,5 @@
+# Launching the importer
+
 IMPORTANT: After installing the mapp Framework, close and re-open Automation Studio before you try to launch the importer. 
 
 You must close the software configuration and CPU configuration before performing an import.
