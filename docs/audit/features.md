@@ -14,7 +14,7 @@ The following features and functionality are included in the mapp Audit Framewor
 
 **A mapp View content to view the audit list**
 
-    * The audit systems use separate display texts, meaning the text shown on the HMI is different than the text that gets exported to the file. This allows you to show a succinct message in the message column on the HMI, and optionally add in the timestamp column / user column / etc to show additional context as needed. Then the exported audit file contains more information directly in the message.
+  * The audit systems use separate display texts, meaning the text shown on the HMI is different than the text that gets exported to the file. This allows you to show a succinct message in the message column on the HMI, and optionally add in the timestamp column / user column / etc to show additional context as needed. Then the exported audit file contains more information directly in the message.
 
 **The ability to export an audit archive and choose your export format via the HMI**
 
