@@ -1,11 +1,11 @@
 ## AlarmMgr Task Overview
 
-The AlarmMgr task contains all of the provided Framework code for mapp AlarmX.
+The **AlarmMgr** task contains all of the provided Framework code for mapp AlarmX.
 
 This task is located in the Logical View within the Infrastructure package.  
 The chart below provides a description of the main task and each action file.
 
-The AlarmMgr task is deployed to Task Class 1 by the Import Tool.
+The **AlarmMgr** task is deployed to Task Class 1 by the Import Tool.
 
 ---
 

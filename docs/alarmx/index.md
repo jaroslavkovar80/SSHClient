@@ -2,7 +2,8 @@
 
 This section describes the mapp AlarmX Framework. For full details on mapp AlarmX itself, see [here](). 
 
-> IMPORTANT: The steps on the "Required Modifications" page must be executed in order to get the Framework into a 
+> IMPORTANT:
+> The steps on the "Required Modifications" page must be executed in order to get the Framework into a 
 > functional state!
 
 **Topics in this section:**

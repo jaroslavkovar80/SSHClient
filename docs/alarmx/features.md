@@ -15,7 +15,7 @@ The following features and functionality are included in the mapp AlarmX Framewo
 
 The following examples are embedded into the Framework:
 
-* Examples for each type of monitoring alarm.Details are provided in the comments in the AlarmSamples.st action file, starting on line 5.
+* Examples for each type of monitoring alarm.Details are provided in the comments in the **AlarmSamples.st** action file, starting on line 5.
   - Alarm names:
     - LevelMonitoringExample
     - DeviationMonitoringExample
@@ -26,4 +26,4 @@ The following examples are embedded into the Framework:
 
 * Example of using MpAlarmXAlarmControl to manually set and reset an alarm from code
   - Alarm name: MpAlarmXControlExample
-  - The supporting code is shown in the AlarmSamples.st action file on lines 24–32
+  - The supporting code is shown in the **AlarmSamples.st** action file on lines 24–32
