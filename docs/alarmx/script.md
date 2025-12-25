@@ -10,7 +10,7 @@ This script allows you to export the AlarmX configuration to Excel and then re-i
 
 ### 1.Download and Install Python
 
-- [Download](https://www.python.org/downloads/) and Install Python
+-> [Download](https://www.python.org/downloads/) and Install Python
 
 ---
 
