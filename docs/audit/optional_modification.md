@@ -8,17 +8,17 @@ This section summarizes some **optional modifications** that are commonly done t
   These audit events correspond to the **custom event audit trail**.  
   The full process is as follows:
 
-  1.Increase the value of **MAX_CUSTOM_EVENTS** within **AuditMgr.var** according to how many custom events you will use.
+      1.Increase the value of **MAX_CUSTOM_EVENTS** within **AuditMgr.var** according to how many custom events you will use.
 
-  2.Define the text for the **type**, **message**, and **comment** of each custom audit event in the **CustomEvent** variable structure.This is done in the initialization program of **AuditMgr.st** starting on line **35**. Alternatively, this can be done directly in the **Value** column of **AuditMgr.var**. These texts are used when calling the **MpAuditCustomEvent()** function block.
-  
-  >
-  > Note that the texts can only be provided in **one language** and are **not localizable**.
+      2.Define the text for the **type**, **message**, and **comment** of each custom audit event in the **CustomEvent** variable structure.This is done in the initialization program of **AuditMgr.st** starting on line **35**. Alternatively, this can be done directly in the **Value** column of **AuditMgr.var**. These texts are used when calling the **MpAuditCustomEvent()** function block.
+      
+      >
+      > Note that the texts can only be provided in **one language** and are **not localizable**.
 
-  3.Trigger the custom events throughout the application. Examples of how to do this are shown starting on line **75** of **AuditMgr.st**.
+      3.Trigger the custom events throughout the application. Examples of how to do this are shown starting on line **75** of **AuditMgr.st**.
 
 - The **localizable text files** for **mapp Services audit events** are provided in the **Infrastructure/Audit** package of the **Logical View**. These files were originally taken from the **MpAudit** library and were expanded for the Framework. Edit the text entries as needed.
 
 - In the **CPU configuration**, modify the **mappAuditFiles** file device to the desired storage medium.  
   By default, this corresponds to the **User partition** (**F:\Audit**).
-  - If you do, modify or delete lines **10–16** of the **AuditMgr.st INIT** program, which creates the directory **F:\Audit** if it does not already exist.
+    - If you do, modify or delete lines **10–16** of the **AuditMgr.st INIT** program, which creates the directory **F:\Audit** if it does not already exist.
