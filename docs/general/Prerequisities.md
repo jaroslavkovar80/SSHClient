@@ -1,4 +1,4 @@
-# Prerequisites
+## Prerequisites
 
 It is expected that the user has a base knowledge of Automation Studio and mapp Technology before utilizing the mapp Framework. Therefore, the following training courses are recommended as prerequisites: 
 

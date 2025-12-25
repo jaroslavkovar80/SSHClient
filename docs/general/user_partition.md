@@ -4,5 +4,7 @@ The Framework contains a few default files (e.g. recipe files) that need to be t
 
 (If the user changed the mapp Framework file devices to correspond to a location other than the user partition, then these files need to be placed in that new location instead.)
 
-![Visu import][images/userpartion1.png]
+![Visu import][def]
+
+[def]: images/userpartion1.png
 

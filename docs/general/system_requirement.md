@@ -1,8 +1,8 @@
-## Supported Versions
+**Supported Versions**
 
 The mapp Framework is supported in the following versions.
 
-### mapp Technologies and Automation Studio
+**mapp Technologies and Automation Studio**
 
 | mapp Technologies | Automation Studio |
 |-------------------|-------------------|
