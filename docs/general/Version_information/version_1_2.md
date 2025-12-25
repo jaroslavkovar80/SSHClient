@@ -1,10 +1,14 @@
-# v1.2.0
+### v1.2.0
 
 | Framework / Component | Description |
 |----------------------|-------------|
-| **mapp Audit** | Improved the usability of the audit configuration dialog box |
-| **mapp Axis / Cockpit** | The AxisMgr template task is now not added to the software configuration. Previously it was added automatically but disabled. |
-| **mapp File** | Improved the usability of the FIFO dialog box |
-| **mapp Recipe** | General reorganization and optimization to make the recipe system more robust and easier to extend |
-| **Import Tool** | - Import file device definitions depending on the AR version<br>- Support for AR &lt; A4.91 (`F:\`) and AR ≥ A4.91 (`USER_PATH`)<br>- Allow mixing mapp versions starting from 5.24<br>- Improved error message when import fails after `git reset`<br>- Detect `.vis` files also in sub-packages of the mapp View package |
-| **Misc** | Updated to the new mapp Framework logo |
+| **mapp Audit** | - Fixed the automatic archive implementation<br>- Made the automatic archive settings persistent |
+| **mapp Axis / Cockpit** | Reorganized the `MoveVelocity` parameter |
+| **mapp Backup** | - Fixed permissions issue with the Create button when no backups existed on the file device<br>- Improved the behavior of the info box on the mapp View content<br>- Made the automatic backup settings persistent |
+| **mapp File** | Improved the FIFO state machine |
+| **mapp Report** | New framework component |
+| **mapp UserX** | Automatically refresh the UserX content after importing a user list |
+| **mapp View** | - Improved some German translations and text visibility<br>- Added the new B&R logo as the boot logo |
+| **Import Tool** | - Optimizations to reduce the `.exe` file size<br>- Changes to reduce the likelihood of import errors:<br>&nbsp;&nbsp;- “The process cannot access the file '...Visualizat.vis' because it is being used by another process.”<br>&nbsp;&nbsp;- “Error adding, Operation failed 0” |
+| **Miscellaneous** | - Unified tabs vs. spaces implementation (tabs)<br>- Removed `MachineGrp.mpcomgroup` |
+
