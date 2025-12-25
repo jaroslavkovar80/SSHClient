@@ -12,8 +12,7 @@ The following list of modifications is required to get the Framework into a **fu
 
 ### 1. Transfer the Report package to the file device
 
-The **UserPartition\Report** package in the **Logical View** must be transferred to the **mappReportFiles** file device  
-(which by default is **USER_PATH:\Report**).
+The **UserPartition\Report** package in the **Logical View** must be transferred to the **mappReportFiles** file device (which by default is **USER_PATH:\Report**).
 
 For example, this can be done via an **initial installation**.
 
@@ -25,8 +24,7 @@ For example, this can be done via an **initial installation**.
 
 Update the provided **report configurations** with meaningful data from the application.
 
-By default, the reports display **sample data**.  
-For more details, see here.
+By default, the reports display **sample data**. For more details, see here.
 
 The screenshot at the bottom of this page shows the general connection between **process variables**, the **report configuration**, and the **output report**.
 
@@ -50,21 +48,18 @@ If you imported the **mapp View front end** with the Framework:
 1.Assign the **mapp View content**  
    (content ID = **Report_content**) to an area on a page within your visualization.
 
-2.The ability to **delete a report** on the **mapp View HMI** is restricted to the **Administrators** or **Service** role.  
-   Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
+2.The ability to **delete a report** on the **mapp View HMI** is restricted to the **Administrators** or **Service** role. 
+Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
 
-3.If you are using **mapp View 5.16 or 5.17**, change **usePlugin** to **false** on the **PDFViewer** widget on **ReportDialog_View_content**.  
-   This configures the widget to use the browser’s internal PDF viewer rather than the JavaScript plugin.  
-   Otherwise, reports will not display correctly on the mapp View HMI.
+3.If you are using **mapp View 5.16 or 5.17**, change **usePlugin** to **false** on the **PDFViewer** widget on ReportDialog_View_content. This configures the widget to use the browser’s internal PDF viewer rather than the JavaScript plugin. Otherwise, reports will not display correctly on the mapp View HMI.
 
-   An improvement to the JavaScript plugin was made in **mapp View 5.18**.
+An improvement to the JavaScript plugin was made in **mapp View 5.18**.
 
 ---
 
 ### 5. Integrate the HMI without mapp View
 
-If you did **not** import the mapp View front end with the Framework, connect the **HmiReport** structure elements to your visualization accordingly  
-(see here for more details).
+If you did **not** import the mapp View front end with the Framework, connect the **HmiReport** structure elements to your visualization accordingly (see general information for more details).
 
 ![report2][def2]
 

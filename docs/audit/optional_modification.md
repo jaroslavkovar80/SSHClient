@@ -1,73 +1,28 @@
-## Required Modifications
+## ⚙️ Optional Modifications
 
-The Framework provides a solid foundation by default.  
-However, to fully integrate it into an application, several modifications are required.
+The Framework can be adjusted as needed for the application in any way necessary.
 
-The following steps must be completed to bring the Framework into a functional state within the application.
+This section summarizes some **optional modifications** that are commonly done to the Framework.
 
-> IMPORTANT:  
-> The steps on this page must be executed in order to get the Framework into a functional state.
->
+- **Implement custom audit events** throughout the application as needed for debugging during development.  
+  These audit events correspond to the **custom event audit trail**.  
+  The full process is as follows:
 
----
+  1. Increase the value of **MAX_CUSTOM_EVENTS** within **AuditMgr.var** according to how many custom events you will use.
 
-### 1. Define the condition to trigger each alarm
+  2. Define the text for the **type**, **message**, and **comment** of each custom audit event in the **CustomEvent** variable structure.  
+     This is done in the initialization program of **AuditMgr.st** starting on line **35**.  
+     Alternatively, this can be done directly in the **Value** column of **AuditMgr.var**.  
+     These texts are used when calling the **MpAuditCustomEvent()** function block.  
+     Note that the texts can only be provided in **one language** and are **not localizable**.
 
-* The AlarmMgr task contains a Boolean array called Alarms. Each index of the array corresponds to the monitored PV for one of the 100 predefined alarms in the AlarmX configuration.
-* For each of these alarms, set the corresponding Alarms[] bit equal to the alarm condition relevant to the application.This is done in the **AlarmHandling.st action** file.
+  3. Trigger the custom events throughout the application.  
+     Examples of how to do this are shown starting on line **75** of **AuditMgr.st**.
 
-Example:  
-If Alarms[0] should trigger when the light curtain is interrupted and the system is not in maintenance mode, then the alarm condition must reflect this logic.
+- The **localizable text files** for **mapp Services audit events** are provided in the **Infrastructure/Audit** package of the **Logical View**.  
+  These files were originally taken from the **MpAudit** library and were expanded for the Framework.  
+  Edit the text entries as needed.
 
-**Alarms[0] := LightCurtainInterrupted AND NOT MaintentanceMode**
-
----
-
-### 2. Define the alarm text for each alarm
-
-* Define a unique alarm text for each alarm in the Alarms.tmx file.
-* Alarms.tmx is located in the Logical View under the Infrastructure package and the AlarmX package.
-* Text ID Alarm.0 corresponds to Alarm0 (Alarms[0]).Text ID Alarm.1 corresponds to Alarm1 (Alarms[1]), and so on.
-* Define the alarm text for all languages relevant to the application.
-
----
-
-### 3. Assign a severity to each alarm
-
-* Assign an appropriate severity to each alarm in the Alarm List according to the alarm mapping.
-* This is done in the AlarmXCfg.mpalarmxcore configuration file. The configuration file is located in the Configuration View under the CPU package, the mapp Services package, and the AlarmX package.
-* By default, all alarms have a severity of 1, which corresponds to the Info reaction.
-* The selected severity determines which alarm reaction is triggered.
-
-![alarm][def]
-
----
-
-### 4. Define the application response to alarm reactions
-
-* Define how the application should respond to each alarm reaction.
-* This is done using the MpAlarmXCheckReaction function calls in AlarmMgr.st, starting at line 66.
-* Within each IF condition, add application-specific logic to define the machine response.
-* For example:
-  - Error reaction: stop all axes
-  - Warning reaction: stop the machine after the next cycle
-  - Info reaction: show an information popup on the HMI
-* For more details on optional changes related to alarm reactions and alarm mapping, see the corresponding documentation [here](Optional_Modification/alarm_mapping.md). 
-
----
-
-### 5. Change default user passwords
-
-* Change the passwords for the Admin, Operator, and Service_Tech users. This is done in the User.user file located in the Configuration View under AccessAndSecurity, UserRoleSystem, and User.user. If users with the same names already existed in the project before importing the Framework, those users remain unchanged and the passwords do not need to be updated.
-
----
-
-### 6. Integrate the HMI content
-
-* If the mapp View front end was imported with the Framework:
-  - Assign the provided mapp View content with content ID AlarmX_content to an area on a visualization page.
-* If the mapp View front end was not imported:
-  - Connect the elements of the HmiAlarmX structure to the visualization accordingly.
-  - Refer to the relevant documentation for further details. [here](general/visualization_consideration.md)
-
-  [def]: images/alarm3.png
+- In the **CPU configuration**, modify the **mappAuditFiles** file device to the desired storage medium.  
+  By default, this corresponds to the **User partition** (**F:\Audit**).
+  - If you do, modify or delete lines **10–16** of the **AuditMgr.st INIT** program, which creates the directory **F:\Audit** if it does not already exist.
