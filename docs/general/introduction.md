@@ -1,4 +1,4 @@
-## Overview
+**## Overview**
 
 mapp Technology is the overarching term for the ready-made, modular software products at B&R. This technology enables you to implement complex or tedious features (such as a recipe system) with just a few mapp function blocks and configuration settings rather than creating it from scratch with PLCopen.
 
@@ -10,55 +10,55 @@ The Framework includes programming tasks and supporting configuration files with
 
 ---
 
-## Motivation and Goals
+**## Motivation and Goals**
 
 The overall goal of the mapp Framework is to streamline and simplify your mapp Services and Axis implementation.
 
 More specifically, the goals are:
 
-### Quality
+**### Quality**
 - The Framework is designed with best practices in mind, which have been vetted by several experienced application engineers
 - The goal is to set each mapp user up for success
 
-### Time Savings
+**### Time Savings**
 - By giving users a reliable starting point, the learning curve of mapp Technology is reduced
 - New engineers can ramp up faster
 - Quicker time to market
 
-### Simplicity
+**### Simplicity**
 - The mapp Framework is modular without being overly complex
 - With a standardized approach to mapp Technology, application support, hand-off, and code maintenance become more straightforward
 - The framework is scalable according to the needs of the application
 
-### Cost Savings
+**### Cost Savings**
 - Use of the Framework results in cost savings for the machine due to reduced application engineering time
 
 ---
 
-## Community Driven Resource
+**## Community Driven Resource**
 
 The mapp Framework is a community driven and open source resource. Input from the community is used to continually refine and improve the mapp Framework. It is not an official product from B&R.
 
 The GitHub repository that holds the Framework source project is available at:
-https://github.com/br-automation-community/mapp-Framework
+[link](https://github.com/br-automation-community/mapp-Framework)
 
 Application engineers can suggest modifications or new functionality directly via GitHub. In this way, the mapp Framework is constantly evolving and improving through community input.
 
 The mapp Framework uses standard mapp components, and general questions about mapp should continue to be directed to first level or second level support.
 
-Because the Framework itself is community driven, questions related specifically to the mapp Framework should be asked in the B&R Community forum - https://community.br-automation.com/c/community-projects/mapp-framework/16. Use the tag "mapp-framework" to ask a question or report a bug.
+Because the Framework itself is community driven, questions related specifically to the mapp Framework should be asked in the B&R Community forum - [link](https://community.br-automation.com/c/community-projects/mapp-framework/16). Use the tag "mapp-framework" to ask a question or report a bug.
 
 ---
 
-## YouTube Tutorial Videos
+**## YouTube Tutorial Videos**
 
-Short tutorial videos for each component of the mapp Framework are available in a dedicated playlist on the B&R YouTube channel - https://www.youtube.com/c/brautomation.
+Short tutorial videos for each component of the mapp Framework are available in a dedicated playlist on the B&R YouTube channel - [link](https://www.youtube.com/c/brautomation).
 
 These tutorial videos supplement the written documentation.
 
 ---
 
-## Availability
+**## Availability**
 
 A mapp Framework is currently available for the following mapp Technologies:
 
@@ -76,7 +76,7 @@ A corresponding HMI is available in mapp View and VC4.
 
 ---
 
-## Framework Contents
+**## Framework Contents**
 
 Each mapp Framework contains the following:
 
@@ -98,7 +98,7 @@ For details on the fundamentals of mapp Technology, refer to the respective Help
 
 ---
 
-## MIT License
+**## MIT License**
 
 Copyright (c) 2022 B&R Industrial Automation
 
