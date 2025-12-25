@@ -2,15 +2,17 @@
 
 The following features and functionality are included in the mapp Audit Framework:
 
-* Two audit systems:
+Two audit systems:
 
-   1.mapp Services events
+  * mapp Services events
 
      * This audit trail captures all built-in events related to the other mapp Services frameworks that are included in the project
 
-   2.Custom events
+  * Custom events
 
      * This audit trail can be used for debugging and troubleshooting the application. The intention with these custom events is that you can leave “breadcrumbs” throughout the application which can help you track down bugs in the application code. For example, if you are troubleshooting a page fault, you could trigger a custom audit event at the top of every task or in several places throughout a task to narrow down where the page fault occurs. The text for the custom audit event is provided directly to the MpAuditCustomEvent() function. For more details, see here.
+
+----
 
 * A mapp View content to view the audit list
 
