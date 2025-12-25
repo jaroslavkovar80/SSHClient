@@ -4,11 +4,11 @@ The following features and functionality are included in the mapp Audit Framewor
 
 * Two audit systems:
 
-  1. mapp Services events
+   1.mapp Services events
 
      * This audit trail captures all built-in events related to the other mapp Services frameworks that are included in the project
 
-  2. Custom events
+   2.Custom events
 
      * This audit trail can be used for debugging and troubleshooting the application. The intention with these custom events is that you can leave “breadcrumbs” throughout the application which can help you track down bugs in the application code. For example, if you are troubleshooting a page fault, you could trigger a custom audit event at the top of every task or in several places throughout a task to narrow down where the page fault occurs. The text for the custom audit event is provided directly to the MpAuditCustomEvent() function. For more details, see here.
 
@@ -28,11 +28,11 @@ An example of setting up a variable monitoring audit event is provided within th
 
 * You can choose to record the value change events of specific variables by adding them to the “Variable Monitor” list in the mapp Audit Configuration
 
-  * The provided example uses variable ::AuditMgr:VariableMonitorExample
+    * The provided example uses variable ::AuditMgr:VariableMonitorExample
 
 * The localizable text definition for these events is defined in the TxtDatapoints.tmx files
 
-     * Namespace MpAudit/DP for the exported text, and namespace MpAudit/Display/DP for the displayed text
+    * Namespace MpAudit/DP for the exported text, and namespace MpAudit/Display/DP for the displayed text
     * The text ID must be equal to the fully resolved variable name (::AuditMgr:VariableMonitorExample in this case)
 
 ---
