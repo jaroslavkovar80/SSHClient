@@ -73,7 +73,8 @@ The default administrative user is **Admin.**
 
 The default password is **123ABc.**
 
->Important
+>Important:
+>
 >The password must be changed after import.
 
 [def]: images/visu1.png
