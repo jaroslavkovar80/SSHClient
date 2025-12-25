@@ -30,7 +30,17 @@ nav:
             - Version 1.1: general/Version_information/version_1_1.md
             - Version 1.0: general/Version_information/version_1_0.md
       - mapp AlarmX:
-          - Introduction & Features: alarmx/index.md
+          - General: alarmx/index.md
+          - General: alarmx/features.md
+          - General: alarmx/task_overview.md
+          - General: alarmx/script.md
+          - General: alarmx/required_modification.md
+          - Optional modification: 
+            - Overview: alarmx/Optional_Modification/index.md 
+            - Add or Delete alarms: alarmx/Optional_Modification/add_alarm.md
+            - Alarm mapping: alarmx/Optional_Modification/alarm_mapping.md
+            - Inhibit Alarms: alarmx/Optional_Modification/inhibit.md
+            - Add Queries: alarmx/Optional_Modification/add_queries.md
       - mapp Axis / Cockpit:
           - Introduction & Features: axis_cockpit/index.md
       - mapp Backup:

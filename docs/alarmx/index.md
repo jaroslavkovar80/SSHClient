@@ -1,23 +1,15 @@
-# mapp AlarmX
+**mapp alarmX Framework**
 
-## Introduction
-mapp AlarmX is a framework module providing centralized alarm handling,
-visualization, and lifecycle management for mapp-based applications.
+This section describes the mapp AlarmX Framework. For full details on mapp AlarmX itself, see [here](https://help.br-automation.com/#/en/4/mapptechnology/mapp_services/mpalarmx/mpalarmx.html).
 
-## Key Features
-- Central alarm management
-- Severity and priority handling
-- Integration with mappView
-- Configurable acknowledgment logic
+> IMPORTANT: The steps on the "Required Modifications" page must be executed in order to get the Framework into a 
+> functional state! 
+>
 
-## Typical Use Cases
-- Machine alarm visualization
-- Operator guidance
-- Service diagnostics
+**Topics in this section:**
 
-## Architecture Overview
-```mermaid
-graph TD
-  App --> AlarmX
-  AlarmX --> AlarmCore
-  AlarmX --> mappView
+* [Features](features.md)
+* [Task Overview](task_overview.md)
+* [Script](script.md)
+* [Required modification](required_modification.md)
+* [Optional Modification](Optional_Modification/index.md)

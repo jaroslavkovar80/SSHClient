@@ -9,8 +9,8 @@ This section contains information that is relevant for all of the mapp Framework
 
 * [Introduction](introduction.md)
 * [System Requirements](system_requirement.md)
-* [Prerequisites](general/Prerequisities.md)
-* [Launching the Importer](docs/general/launching.md)
-* [User Partition Handling](docs/general/user_partition.md)
-* [Visualization Considerations](docs/general/visualization_consideration.md)
+* [Prerequisites](Prerequisities.md)
+* [Launching the Importer](launching.md)
+* [User Partition Handling](user_partition.md)
+* [Visualization Considerations](visualization_consideration.md)
 * [Version Information](Version_Information/index.md)
