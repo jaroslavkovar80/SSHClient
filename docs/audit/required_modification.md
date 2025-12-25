@@ -16,9 +16,9 @@ The steps on this page must be executed in order to get the Framework into a fun
 
 3. If you imported the **mapp View front end** with the Framework:
 
-   1. Assign the **mapp View content**  (content ID = **Audit_content**) to an area on a page within your visualization.
+     1. Assign the **mapp View content**  (content ID = **Audit_content**) to an area on a page within your visualization.
 
-   2. The ability to **configure automatic archive export** is restricted to the **Administrators** role, and the ability to **create an immediate export** is restricted to the **Administrators** or **Service** role.  Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
+     2. The ability to **configure automatic archive export** is restricted to the **Administrators** role, and the ability to **create an immediate export** is restricted to the **Administrators** or **Service** role.  Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
 
 4. If you did **not** import the mapp View front end, connect the **HmiAudit** structure elements  
    to your visualization accordingly (see here for more details).
