@@ -1,6 +1,6 @@
 # mapp Framework
 
-To get started with the mapp Framework, proceed to the [General information section](docs/general/index.md). 
+To get started with the mapp Framework, proceed to the [General information section](general/index.md). 
 
 ![Framework overview][def]
 
