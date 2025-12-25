@@ -1,29 +1,25 @@
-## mapp AlarmX Framework Features
+## 📊 mapp Report Framework Features
 
-The following features and functionality are included in the mapp AlarmX Framework:
+The following features and functionality are included in the **mapp Report Framework**:
 
-* 100 ready-made discrete value monitoring alarms and a Boolean array to trigger each alarm
-* Localizable text for each alarm
-* Alarm mapping by severity with reactions
-* A query along with the supporting state machine to query large amounts of data
-* mapp View content to display current alarms, alarm history, and the alarm query
-* The ability to acknowledge and export alarms from the HMI
+* **Two report configurations**:
+   **Simple Report**
+    - Alarm History
+    - OEE summary
+    - Temperature sample data
+   **Advanced Report**, which contains all of the Simple Report information plus:
+    - Audit summary
+    - A place for a signature
+    - Batch number information
+
+* The ability to **view a list of all available reports** on the **HMI**
+* The ability to **create, delete, and view a report** on the **HMI**
 
 ---
 
-## Embedded Examples
+### 🔐 Access Rights
 
-The following examples are embedded into the Framework:
+The ability to **delete a report** on the **mapp View HMI** is restricted to the **Administrators** or **Service** role.
 
-* Examples for each type of monitoring alarm.Details are provided in the comments in the **AlarmSamples.st** action file, starting on line 5.
-  - Alarm names:
-    - LevelMonitoringExample
-    - DeviationMonitoringExample
-    - RateOfChangeExample
-
-* Example for incorporating a snippet into an alarm. This example is provided to allow easy copy and paste of the syntax for referencing a snippet in the mapp AlarmX configuration.
-  - Alarm name: SnippetExample
-
-* Example of using MpAlarmXAlarmControl to manually set and reset an alarm from code
-  - Alarm name: MpAlarmXControlExample
-  - The supporting code is shown in the **AlarmSamples.st** action file on lines 24–32
+The default administrative user is **Admin** with the default password **123ABc**.  
+The password **must be changed after import**.

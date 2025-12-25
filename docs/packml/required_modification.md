@@ -35,8 +35,8 @@ If you did not import the mapp View front end, connect the **HmiPackML** structu
 The action file **StateMachine_Main.st** under **PackMLMgr** contains an **empty state machine** that the user may fill out.
 
 This state machine contains:
-- Actions for each **PackML state** of the **PackMLMain** module
-- A line of code indicating which states require a **StateComplete** command to move on to the next state
+* Actions for each **PackML state** of the **PackMLMain** module
+* A line of code indicating which states require a **StateComplete** command to move on to the next state
 
 The user should add actions for each state **before** a **StateComplete** command is sent.
 

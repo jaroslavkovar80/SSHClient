@@ -104,7 +104,6 @@ nav:
       - 🔁 10. mapp PackML:
           - 🧩General: packml/index.md
           - 📄Features: packml/features.md
-          - 📄PackML System Design: packml/system.md
           - 📄Task Overview: packml/task_overview.md
           - 📄Required Modification: packml/required_modification.md
           - 📁 Optional Modification:

@@ -1,20 +1,24 @@
-## AlarmMgr Task Overview
+## 📊 ReportMgr Task Overview
 
-The **AlarmMgr** task contains all of the provided Framework code for mapp AlarmX.
+The **ReportMgr** task contains all of the provided Framework code for **mapp Report**.  
+This task is located in the **Logical View** within the **Infrastructure package**.
 
-This task is located in the Logical View within the Infrastructure package.  
 The chart below provides a description of the main task and each action file.
 
-The **AlarmMgr** task is deployed to Task Class 1 by the Import Tool.
+The **ReportMgr** task is deployed to **Task Class 8** by the **Import Tool**.
 
----
-
-## AlarmMgr Task Files
+### 📄 Task Files
 
 | Filename | Type | Description |
 |---------|------|-------------|
-| AlarmMgr.st | Main task code | General mapp function block handling.<br>Handles alarm acknowledgment.<br>Handles alarm history export.<br>Checks if any reactions are active.<br>Calls all actions. |
-| AlarmHandling.st | Action | Defines the conditions which trigger each alarm.<br>The AlarmMgr task contains a Boolean array called Alarms. Each index of the array corresponds to the Monitored PV for each of the 100 predefined alarms in the AlarmX configuration.<br>This is also the designated place to define the conditions under which alarms should be inhibited, if inhibiting is required in the application. |
-| HMIActions.st | Action | Shows the alarm backtrace information on the HMI.<br>Typically, the backtrace action (GetBacktraceInformation) does not need to be modified.<br>Also sets up the table configuration for the query table. |
-| ExecuteQuery.st | Action | Executes a query.<br>Includes the supporting state machine used to query large amounts of data. |
-| AlarmSamples.st | Action | Calls the variables for the examples built into the Framework.<br>Contains comments explaining each example. |
+| **ReportMgr.st** | Main task code | General **mapp function block** handling.<br>Calls all actions.<br>Populates sample data. |
+| **HMIActions.st** | Action | Supporting code for **HMI functionality**.<br>Handles the selection between **simple** and **advanced** reports.<br>Manages the **report file explorer**. |
+
+---
+
+### ⚙️ Localizable Alarm Texts
+
+A **localizable text file** for the **mapp Report alarms** is included within the **Report package**  
+(**ReportAlarms.tmx**).
+
+These alarm texts are referenced in the **mapp Report configuration** instead of the default alarm texts provided by **mapp Services**, which makes it easier to expand the texts to include the **language of your choice**.

@@ -1,7 +1,7 @@
 ## 🔁 mapp PackML Framework
 
 This section describes the **mapp PackML Framework**.  
-For full details on **mapp PackML** itself, see here.
+For full details on **mapp PackML** itself, see [here](https://help.br-automation.com/#/en/4/mapptechnology/mapp_services/mppackml/mppackml.html).
 
 > 🚨 **IMPORTANT:**  
 > The steps on the **Required Modifications** page must be executed in order to get the Framework into a functional state.

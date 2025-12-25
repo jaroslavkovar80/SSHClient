@@ -1,73 +1,72 @@
-## Required Modifications
+## 🔧 Required Modifications
 
-The Framework provides a solid foundation by default.  
-However, to fully integrate it into an application, several modifications are required.
+The Framework by default provides a **solid foundation**, but in order to integrate it fully into your application, a few modifications must be made.
 
-The following steps must be completed to bring the Framework into a functional state within the application.
+The following list of modifications is required to get the Framework into a **functional state** within the application.
 
-> IMPORTANT:  
+> 🚨 **IMPORTANT:**  
 > The steps on this page must be executed in order to get the Framework into a functional state.
 >
 
 ---
 
-### 1. Define the condition to trigger each alarm
+### 1. Transfer the Report package to the file device
 
-* The AlarmMgr task contains a Boolean array called Alarms. Each index of the array corresponds to the monitored PV for one of the 100 predefined alarms in the AlarmX configuration.
-* For each of these alarms, set the corresponding Alarms[] bit equal to the alarm condition relevant to the application.This is done in the **AlarmHandling.st action** file.
+The **UserPartition\Report** package in the **Logical View** must be transferred to the **mappReportFiles** file device  
+(which by default is **USER_PATH:\Report**).
 
-Example:  
-If Alarms[0] should trigger when the light curtain is interrupted and the system is not in maintenance mode, then the alarm condition must reflect this logic.
+For example, this can be done via an **initial installation**.
 
-**Alarms[0] := LightCurtainInterrupted AND NOT MaintentanceMode**
-
----
-
-### 2. Define the alarm text for each alarm
-
-* Define a unique alarm text for each alarm in the Alarms.tmx file.
-* Alarms.tmx is located in the Logical View under the Infrastructure package and the AlarmX package.
-* Text ID Alarm.0 corresponds to Alarm0 (Alarms[0]).Text ID Alarm.1 corresponds to Alarm1 (Alarms[1]), and so on.
-* Define the alarm text for all languages relevant to the application.
+![report][def]
 
 ---
 
-### 3. Assign a severity to each alarm
+### 2. Update report configurations with application data
 
-* Assign an appropriate severity to each alarm in the Alarm List according to the alarm mapping.
-* This is done in the AlarmXCfg.mpalarmxcore configuration file. The configuration file is located in the Configuration View under the CPU package, the mapp Services package, and the AlarmX package.
-* By default, all alarms have a severity of 1, which corresponds to the Info reaction.
-* The selected severity determines which alarm reaction is triggered.
+Update the provided **report configurations** with meaningful data from the application.
 
-![alarm][def]
+By default, the reports display **sample data**.  
+For more details, see here.
 
----
-
-### 4. Define the application response to alarm reactions
-
-* Define how the application should respond to each alarm reaction.
-* This is done using the MpAlarmXCheckReaction function calls in AlarmMgr.st, starting at line 66.
-* Within each IF condition, add application-specific logic to define the machine response.
-* For example:
-  - Error reaction: stop all axes
-  - Warning reaction: stop the machine after the next cycle
-  - Info reaction: show an information popup on the HMI
-* For more details on optional changes related to alarm reactions and alarm mapping, see the corresponding documentation [here](Optional_Modification/alarm_mapping.md). 
+The screenshot at the bottom of this page shows the general connection between **process variables**, the **report configuration**, and the **output report**.
 
 ---
 
-### 5. Change default user passwords
+### 3. Change default user passwords
 
-* Change the passwords for the Admin, Operator, and Service_Tech users. This is done in the User.user file located in the Configuration View under AccessAndSecurity, UserRoleSystem, and User.user. If users with the same names already existed in the project before importing the Framework, those users remain unchanged and the passwords do not need to be updated.
+Change the passwords for the **Admin**, **Operator**, and **Service_Tech** users.
+
+This is done in the **User.user** file in the **Configuration View**  
+(**AccessAndSecurity → UserRoleSystem → User.user**).
+
+If users with the same names already existed in the project prior to importing the Framework, those users will remain unchanged and the passwords do not need to be updated.
 
 ---
 
-### 6. Integrate the HMI content
+### 4. Integrate the mapp View front end (if imported)
 
-* If the mapp View front end was imported with the Framework:
-  - Assign the provided mapp View content with content ID AlarmX_content to an area on a visualization page.
-* If the mapp View front end was not imported:
-  - Connect the elements of the HmiAlarmX structure to the visualization accordingly.
-  - Refer to the relevant documentation for further details. [here](general/visualization_consideration.md)
+If you imported the **mapp View front end** with the Framework:
 
-  [def]: images/alarm3.png
+1.Assign the **mapp View content**  
+   (content ID = **Report_content**) to an area on a page within your visualization.
+
+2.The ability to **delete a report** on the **mapp View HMI** is restricted to the **Administrators** or **Service** role.  
+   Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
+
+3.If you are using **mapp View 5.16 or 5.17**, change **usePlugin** to **false** on the **PDFViewer** widget on **ReportDialog_View_content**.  
+   This configures the widget to use the browser’s internal PDF viewer rather than the JavaScript plugin.  
+   Otherwise, reports will not display correctly on the mapp View HMI.
+
+   An improvement to the JavaScript plugin was made in **mapp View 5.18**.
+
+---
+
+### 5. Integrate the HMI without mapp View
+
+If you did **not** import the mapp View front end with the Framework, connect the **HmiReport** structure elements to your visualization accordingly  
+(see here for more details).
+
+![report2][def2]
+
+[def]: images/report1.png
+[def2]: images/report2.png
