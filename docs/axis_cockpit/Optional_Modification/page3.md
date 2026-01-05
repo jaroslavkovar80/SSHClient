@@ -1,46 +1,22 @@
-## Adding Additional Queries
+## SLO Trace configuration
 
-The **ExecuteQuery.st action** file contains the programming required to execute the query that comes with the Framework, the ActivateAlarms query.
+Two trace configurations are included in the Axis framework - one for position and the other for speed. Since only one trace configuration can be included in the mapp Cockpit package in the Configuration View at a time, these two trace configurations are delivered via the UserPartition\Axis package in the Logical View:
 
-It also contains the supporting state machine that is used to query large amounts of data.
+![pic31](images/pic31.png)
 
----
+To use these files (one at a time), follow these steps: 
 
-If you would like to add an additional query, the following steps are required.
+1. From Windows Explorer, copy the preconfigured .tracecfg file that you'd like to use to the mappCockpit folder in the Configuration View. (AS won't allow you to copy the file directly)
 
-### 1. AlarmMgr.var
+![pic32](images/pic32.png)
 
-1. Copy and paste the variable declaration for QueryActiveAlarms and give it a unique name.  
-   Each query needs a dedicated function block instance.
+2. Open up the trace configuration file within the mappCockpit package. Update the "Data point" station address entries according to the drive you want to trace. 
 
-2. Copy and paste the variable declaration for AlarmQuery and give it a unique name.
+![pic33](images/pic33.png)
 
----
+3. The rest of the trace implementation is done in mapp Cockpit. See here and here. In short, select "Autotune" (for either the speed controller or position controller, depending on which trace configuration you're using) and then turn the "Signal order" up to 11. 
 
-### 2. AlarmXCfg.mpalarmxcore configuration file
+![pic34](images/pic34.png)
 
-1. Define the new query in the Data Queries section at the bottom of the configuration file.  
-   Give it a unique name.
-
-2. Use the new query variable created in step 1.2 for the process variable connections and update count.
-
----
-
-### 3. ExecuteQuery.st
-
-Copy and paste lines 3–47 of ExecuteQuery.st to duplicate the code.Then within the copied code:
-
-1. Replace every instance of QueryActiveAlarms with the new function block name created in step 1.1.
-2. Replace the query name assignment with the name of the new query created in step 2.1.
-      - NewQueryFUB.Name := ADR('NewQueryNameFromStep2.1');
-3. Replace every instance of AlarmQuery with the new variable name created in step 1.2.
-
-4. If you would like the new query to run only based on a button press:
-   - Add a new boolean within HmiAlarmX.Commands for the new trigger.
-   - Update the IF statement accordingly within the ACTIVE_ALARM_WAIT state.
-
----
-
-Repeat these steps for all additional queries.
-
+4. To use the second preconfigured trace file, delete the first file you traced from the mappCockpit package and then start over from step 1. 
 

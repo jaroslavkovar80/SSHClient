@@ -1,42 +1,16 @@
-## Alarm Reactions
+## Rename AppAxis_1
 
-The Framework establishes three alarm reactions by default within the alarm mapping.
+Here are the steps to rename the provided AppAxis_1 to something more specific to the application: 
 
-1. Info (severity 1–9)
-2. Warning (severity 10–19)
-3. Error (severity 20–29)
+1. Choose a name that is 10 characters or less.
+2. Do a replace-in-files (Edit→ Find and Replace → Replace in Files) to replace all instances of AppAxis_1 with your new name. Make sure the box for "Whole words only" is NOT checked, and the file types filter is set to *.*.
 
-![alarm1][def]
+![pic21](images/pic21.png)
 
-The **MpAlarmXCheckReaction()** function is called for each reaction within the **AlarmMgr** task.
-
-![alarm2][def2]
----
-
-## Optional Changes
-
-The following optional changes should be considered to align the Framework with the application requirements.
-
-* Adjust the severity ranges
-  - This is done in the AlarmXCfg.mpalarmxcore configuration file
-
-* Rename the reactions
-  - This is done in the AlarmXCfg.mpalarmxcore configuration file
-  - If you do this, remember to change the name in the **MpAlarmXCheckReaction()** function calls in **AlarmMgr.st** to the new name, starting at line 68
-  - Examples of alternative reaction names:
-    - SlowDownConveyor
-    - HydraulicMotorOff
-    - StopAllMotion
-    - YellowLamp
-
-* Add or remove reactions
-  - This is done in the AlarmXCfg.mpalarmxcore configuration file
-  - If you do this, remember to add or remove function calls of **MpAlarmXCheckReaction()** in **AlarmMgr.st** accordingly, starting at line 68
-
-* Check for the reactions elsewhere in code
-  - Typically, the **MpAlarmXCheckReaction()** function is called from other tasks within the application
-  - For example, the axis control task might check for the Error reaction to determine whether to send a stop command to the axes. Copy and paste the IF statements containing  **MpAlarmXCheckReaction()** from **AlarmMgr.st** as needed throughout the application
-
-[def]: images/alarm1.png
-[def2]: images/alarm2.png
-
+3. Manually rename the following files/packages in the Logical View → MachineControl package to your new name:
+  1. AppAxis_1 package
+  2. AppAxis_1 task
+  3. AppAxis_1_Info.tmx
+  4. AppAxis_1_Alarms.tmx
+4. In the Configuration View → Connectivity → OpcUA, open up Axis.uad in a text editor. On line 36, replace AppAxis_1 with your new name. 
+5. In the Configuration View → TextSystem, open up TC.textconfig in a text editor. Replace all instances of AppAxis_1 with your new name (4 instances total). 

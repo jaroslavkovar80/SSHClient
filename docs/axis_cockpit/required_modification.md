@@ -1,73 +1,61 @@
-## Required Modifications
+## 🔧 Required Modifications
 
-The Framework provides a solid foundation by default.  
-However, to fully integrate it into an application, several modifications are required.
+The Framework by default provides a solid foundation, but in order to integrate it fully into your application there are a few modifications that must be made.  
+The following list of modifications are required to get the Framework in a functional state within the application.
 
-The following steps must be completed to bring the Framework into a functional state within the application.
-
-> IMPORTANT:  
-> The steps on this page must be executed in order to get the Framework into a functional state.
+> 🚨 **IMPORTANT:**  
+>  The steps on this page must be executed in order to get the Framework into a functional state!
 >
 
 ---
 
-### 1. Define the condition to trigger each alarm
+1. If you plan to run the axis on **physical hardware** (not via a pure virtual), do the following:
 
-* The AlarmMgr task contains a Boolean array called Alarms. Each index of the array corresponds to the monitored PV for one of the 100 predefined alarms in the AlarmX configuration.
-* For each of these alarms, set the corresponding Alarms[] bit equal to the alarm condition relevant to the application.This is done in the **AlarmHandling.st action** file.
+   1. Add the **drive** which will control the axis to the **Physical View**.
 
-Example:  
-If Alarms[0] should trigger when the light curtain is interrupted and the system is not in maintenance mode, then the alarm condition must reflect this logic.
+   2. In the drive configuration, set the **axis reference** to the **MpLink** from the single axis configuration file.
 
-**Alarms[0] := LightCurtainInterrupted AND NOT MaintentanceMode**
+   3. Delete the **VAppAxis1.purevaxcfg** file.
 
----
+   4. Change the value of  
+      **MC_BR_ProcessConfig_ACP.DataType** from **mcCFG_PURE_V_AX** to **mcCFG_ACP_AX**  
+      in the **ConfigurationInit** action  
+      (line 16 of **ChangeConfiguration.st** in the **AxisTemplate** package).
 
-### 2. Define the alarm text for each alarm
+   If at any point you need to simulate this axis after configuring it to run on real hardware,  
+   be sure to set a **version number for McAcpSim** within **Change Runtime Versions**  
+   (check the **Advanced** box and then expand **mapp Motion**).
 
-* Define a unique alarm text for each alarm in the Alarms.tmx file.
-* Alarms.tmx is located in the Logical View under the Infrastructure package and the AlarmX package.
-* Text ID Alarm.0 corresponds to Alarm0 (Alarms[0]).Text ID Alarm.1 corresponds to Alarm1 (Alarms[1]), and so on.
-* Define the alarm text for all languages relevant to the application.
+2. Implement **Automatic Mode** for the axis.  
+   This is done within the **AxisAutomatic** action of the **AxisControlModes.st** file.  
+   After importing the Framework, automatic mode is **empty** and must be programmed according to the needs of the application.
 
----
+3. Edit the **SimulationControl.st**, **AxisMgr.st**, **ManualCommand.st**, and **AutomaticCommand.st** files according to the unique application requirements of your axis.  
+   For details about what these files are intended for, see here.
 
-### 3. Assign a severity to each alarm
+4. The **axis task(s)** should run in **cyclic 1**, and the maximum allowed cycle time is **20 ms**.  
+   Adjust the **TC1 cycle time** accordingly.
 
-* Assign an appropriate severity to each alarm in the Alarm List according to the alarm mapping.
-* This is done in the AlarmXCfg.mpalarmxcore configuration file. The configuration file is located in the Configuration View under the CPU package, the mapp Services package, and the AlarmX package.
-* By default, all alarms have a severity of 1, which corresponds to the Info reaction.
-* The selected severity determines which alarm reaction is triggered.
+5. Change the passwords for the **Admin**, **Operator**, and **Service_Tech** users.  
+   This is done in the **User.user** file in the **Configuration View**  
+   (**AccessAndSecurity → UserRoleSystem → User.user**).  
+   Note that if you already had users in your project with these same names prior to import,  
+   your existing users will remain unchanged and you do not need to update the passwords.
 
-![alarm][def]
+6. If you imported the **mapp View front end** with the Framework:
 
----
+   1. Assign the **mapp View content**  
+      (content ID = **Axis_content**) to an area on a page within your visualization.
 
-### 4. Define the application response to alarm reactions
+   2. The ability to interact with the **axis faceplate** on the **mapp View HMI** is restricted to the  
+      **Administrators**, **Service**, and **Operators** roles.  
+      Therefore, add a way to **log in on the HMI**  
+      (for example, by importing the **mapp UserX** framework).
 
-* Define how the application should respond to each alarm reaction.
-* This is done using the MpAlarmXCheckReaction function calls in AlarmMgr.st, starting at line 66.
-* Within each IF condition, add application-specific logic to define the machine response.
-* For example:
-  - Error reaction: stop all axes
-  - Warning reaction: stop the machine after the next cycle
-  - Info reaction: show an information popup on the HMI
-* For more details on optional changes related to alarm reactions and alarm mapping, see the corresponding documentation [here](Optional_Modification/alarm_mapping.md). 
+   Note that on the **mapp View HMI**, a button to **activate synchronization** is provided on the **Auto** mode tab.  
+   Since only **one axis** is included by default in the Framework, this button has **no effect**.  
+   This button is provided in case you add additional axes, since **synchronization is often required**.
 
----
-
-### 5. Change default user passwords
-
-* Change the passwords for the Admin, Operator, and Service_Tech users. This is done in the User.user file located in the Configuration View under AccessAndSecurity, UserRoleSystem, and User.user. If users with the same names already existed in the project before importing the Framework, those users remain unchanged and the passwords do not need to be updated.
-
----
-
-### 6. Integrate the HMI content
-
-* If the mapp View front end was imported with the Framework:
-  - Assign the provided mapp View content with content ID AlarmX_content to an area on a visualization page.
-* If the mapp View front end was not imported:
-  - Connect the elements of the HmiAlarmX structure to the visualization accordingly.
-  - Refer to the relevant documentation for further details. [here](general/visualization_consideration.md)
-
-  [def]: images/alarm3.png
+7. If you did **not** import the mapp View front end with the Framework,  
+   connect the **HmiAxis** structure elements to your visualization accordingly  
+   (see here for more details).

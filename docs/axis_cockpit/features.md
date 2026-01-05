@@ -1,29 +1,60 @@
-## mapp AlarmX Framework Features
+## 🧭 mapp Axis Framework – Topic Title
 
-The following features and functionality are included in the mapp AlarmX Framework:
+The following features and functionality are included in the **mapp Axis Framework**:  
 
-* 100 ready-made discrete value monitoring alarms and a Boolean array to trigger each alarm
-* Localizable text for each alarm
-* Alarm mapping by severity with reactions
-* A query along with the supporting state machine to query large amounts of data
-* mapp View content to display current alarms, alarm history, and the alarm query
-* The ability to acknowledge and export alarms from the HMI
+• **Single-axis implementation** which can be repeated for multiple axes.  
+  Includes basic commands, **manual/automatic modes**, and an overarching **state machine** for axis control  
+
+• **Cyclic data exchange** for current, lag error, and motor temperature  
+
+• **Detailed alarm integration** with **mapp AlarmX**  
+
+• **Automatic setup** of **mapp Cockpit**  
+
+• **mapp View content** to show the **axis faceplate**  
 
 ---
 
-## Embedded Examples
+The **mapp Axis Framework** is designed so that the main axis control code within the **AxisTemplate** package is reused for all axes that you add. This makes it easy to update the overall process for **all axes simultaneously**.
 
-The following examples are embedded into the Framework:
+Any modifications made to the following files within this package will apply to **all axes**:
 
-* Examples for each type of monitoring alarm.Details are provided in the comments in the **AlarmSamples.st** action file, starting on line 5.
-  - Alarm names:
-    - LevelMonitoringExample
-    - DeviationMonitoringExample
-    - RateOfChangeExample
+• **AxisMgr.var**  
+• **AxisStateMachine.st**  
+• **ChangeConfiguration.st**  
+• **Recipe.st**  
 
-* Example for incorporating a snippet into an alarm. This example is provided to allow easy copy and paste of the syntax for referencing a snippet in the mapp AlarmX configuration.
-  - Alarm name: SnippetExample
+The Framework comes with the **AxisTemplate** package as well as **one application axis** set up for you in the **AppAxis_1** package. To add additional axes, see [here](Optional_Modification\page1.md).
 
-* Example of using MpAlarmXAlarmControl to manually set and reset an alarm from code
-  - Alarm name: MpAlarmXControlExample
-  - The supporting code is shown in the **AlarmSamples.st** action file on lines 24–32
+---
+
+**Axis-specific code** is written within a **dedicated package** for that axis.For more details, see [here](required_modification.md).
+
+---
+
+### 🔐 Access Rights
+
+The ability to interact with the **axis faceplate** on the **mapp View HMI** is restricted to the  
+**Administrators**, **Service**, and **Operators** roles.
+
+The default administrative user is **Admin** with default password **123ABc**.  
+The password **must be changed after import**.
+
+---
+
+### 🏠 Homing Behavior
+
+The homing mode is **mcHOMING_RESTORE_POSITION**.
+
+• If you power on and a **homing position exists and is valid**, it is **automatically restored**.  
+
+• If you power on and a **homing position does not exist**, an **alarm will trigger** to notify you.  
+  At that point, you must execute a **homing command**, which corresponds to **mcHOMING_DIRECT**.
+
+---
+
+### ⚠️ Automatic Mode Behavior
+
+Please note that in **Automatic mode**, **active alarms** will prevent the axis from running.
+
+To start running the axis in **Automatic mode**, **all alarms must be acknowledged**.
