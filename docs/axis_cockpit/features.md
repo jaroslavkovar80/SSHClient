@@ -1,4 +1,4 @@
-## 🧭 mapp Axis Framework – Topic Title
+## 🧭 mapp Axis Framework
 
 The following features and functionality are included in the **mapp Axis Framework**:  
 
@@ -24,7 +24,7 @@ Any modifications made to the following files within this package will apply to 
 • **ChangeConfiguration.st**  
 • **Recipe.st**  
 
-The Framework comes with the **AxisTemplate** package as well as **one application axis** set up for you in the **AppAxis_1** package. To add additional axes, see [here](Optional_Modification\page1.md).
+The Framework comes with the **AxisTemplate** package as well as **one application axis** set up for you in the **AppAxis_1** package. To add additional axes, see [here](axis_cockpit\Optional_Modification\page1).
 
 ---
 
