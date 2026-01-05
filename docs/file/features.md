@@ -1,29 +1,19 @@
-## mapp AlarmX Framework Features
+## 📁 mapp File Framework Features
 
-The following features and functionality are included in the mapp AlarmX Framework:
+The following features and functionality are included in the **mapp File Framework**:  
 
-* 100 ready-made discrete value monitoring alarms and a Boolean array to trigger each alarm
-* Localizable text for each alarm
-* Alarm mapping by severity with reactions
-* A query along with the supporting state machine to query large amounts of data
-* mapp View content to display current alarms, alarm history, and the alarm query
-* The ability to acknowledge and export alarms from the HMI
+• **General file explorer functionality** on the **HMI**
+
+  o Create / delete / sort / rename / search / copy / etc
+
+• The ability to **enable a FIFO** for one file device.For more details, see [here](fifo.md).
 
 ---
 
-## Embedded Examples
+### 🔐 Access Rights
 
-The following examples are embedded into the Framework:
+The ability to **cut / delete a file** and **configure the FIFO** on the **mapp View HMI**  
+is restricted to the **Administrators** or **Service** role.
 
-* Examples for each type of monitoring alarm.Details are provided in the comments in the **AlarmSamples.st** action file, starting on line 5.
-  - Alarm names:
-    - LevelMonitoringExample
-    - DeviationMonitoringExample
-    - RateOfChangeExample
-
-* Example for incorporating a snippet into an alarm. This example is provided to allow easy copy and paste of the syntax for referencing a snippet in the mapp AlarmX configuration.
-  - Alarm name: SnippetExample
-
-* Example of using MpAlarmXAlarmControl to manually set and reset an alarm from code
-  - Alarm name: MpAlarmXControlExample
-  - The supporting code is shown in the **AlarmSamples.st** action file on lines 24–32
+The default administrative user is **Admin** with default password **123ABc**.  
+The password **must be changed after import**.
