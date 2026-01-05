@@ -19,4 +19,4 @@ In the **User.user** file, set new passwords for **Admin**, **Operator**, and **
 
 In the **CPU configuration**, modify the **mappUserXFiles** file device to the desired storage medium.  By default, this corresponds to the **User partition** (**F:\UserX**).
 
-  ▪ If you do, modify or delete lines **10–16** of the **UserXMgr.st INIT** program, which creates the directory **F:\UserX** if it does not already exist.
+   -> If you do, modify or delete lines **10–16** of the **UserXMgr.st INIT** program, which creates the directory **F:\UserX** if it does not already exist.
