@@ -32,7 +32,7 @@ Here are the steps to add a new axis to the project using the provided axis temp
     1. Rename the .mpalarmxcore file accordingly. Within this file, re-name the MpLink. Then in AxisMgr.st on line 42, paste this new MpLink.  
     ![pic10](images/pic9.png)
     ![pic11](images/pic10.png)
-    2. Rename the .mpcomgroup file accordingly. Within this file:
+    2. Rename the .mpcomgroup file accordingly. Within this file:  
       **1.**Rename the MpLink of the group accordingly.  
       **2.**Change the Child 1 element to match the new MpLink from step 7.a.   
       **3.**Change the Child 2 element to match the new MpLink name you created step 10.a.  

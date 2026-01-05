@@ -1,12 +1,13 @@
-# mapp Framework 6
+## 💾 mapp Backup Framework
 
-Public framework for building modular and scalable mappView applications.
+This section describes the **mapp Backup Framework**. For full details on **mapp Backup** itself, see [here](https://help.br-automation.com/#/en/4/mapptechnology%2Fmapp_services%2Fmpbackup%2Fmpbackup.html).
 
-## What you will find here
-- Getting started guide
-- Architecture overview
-- Installation steps
-- Practical examples
+> 🚨 **IMPORTANT:**  
+> The steps on the **Required Modifications** page must be executed in order to get the Framework into a functional state.
 
-## Test deploy
-It works 🎉
+**Topics in this section:**
+
+* [Features](features.md)
+* [Task Overview](task_overview.md)
+* [Required Modification](required_modification.md)
+* [Optional Modification](Optional_Modification/index.md)

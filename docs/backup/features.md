@@ -1,29 +1,26 @@
-## mapp AlarmX Framework Features
+## 💾 mapp Backup Framework Features
 
-The following features and functionality are included in the mapp AlarmX Framework:
+The following features and functionality are included in the **mapp Backup Framework**:  
 
-* 100 ready-made discrete value monitoring alarms and a Boolean array to trigger each alarm
-* Localizable text for each alarm
-* Alarm mapping by severity with reactions
-* A query along with the supporting state machine to query large amounts of data
-* mapp View content to display current alarms, alarm history, and the alarm query
-* The ability to acknowledge and export alarms from the HMI
+• **Easily create and restore a backup** from the **HMI**  
+
+• **View a list of all available backups** from the **HMI**  
+
+• Choose whether to **automatically back up** the project at a **certain interval**  
 
 ---
 
-## Embedded Examples
+### 🔐 Access Rights
 
-The following examples are embedded into the Framework:
+The ability to **restore a backup** or **change the automatic backup settings** on the **mapp View HMI** is restricted to the **Administrators** role.  
 
-* Examples for each type of monitoring alarm.Details are provided in the comments in the **AlarmSamples.st** action file, starting on line 5.
-  - Alarm names:
-    - LevelMonitoringExample
-    - DeviationMonitoringExample
-    - RateOfChangeExample
+The ability to **delete a backup** is restricted to the **Administrators** or **Service** role.  
 
-* Example for incorporating a snippet into an alarm. This example is provided to allow easy copy and paste of the syntax for referencing a snippet in the mapp AlarmX configuration.
-  - Alarm name: SnippetExample
+The default administrative user is **Admin** with default password **123ABc**.  
+The password **must be changed after import**.  
 
-* Example of using MpAlarmXAlarmControl to manually set and reset an alarm from code
-  - Alarm name: MpAlarmXControlExample
-  - The supporting code is shown in the **AlarmSamples.st** action file on lines 24–32
+---
+
+### ℹ️ Note
+
+Note that the list of available backups **only updates when the Backup_content is loaded**.
