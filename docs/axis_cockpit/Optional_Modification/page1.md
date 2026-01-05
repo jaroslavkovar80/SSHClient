@@ -33,12 +33,12 @@ Here are the steps to add a new axis to the project using the provided axis temp
     ![pic10](images/pic9.png)
     ![pic11](images/pic10.png)
     2. Rename the .mpcomgroup file accordingly. Within this file:
-      1.Rename the MpLink of the group accordingly.
-      2.Change the Child 1 element to match the new MpLink from step 7.a. 
-      3.Change the Child 2 element to match the new MpLink name you created step 10.a.
+      **1.**Rename the MpLink of the group accordingly.  
+      **2.**Change the Child 1 element to match the new MpLink from step 7.a.   
+      **3.**Change the Child 2 element to match the new MpLink name you created step 10.a.  
       ![pic12](images/pic11.png)  
 11. If you are not running a virtual axis, then in the Physical View, in the drive configuration that corresponds to this axis, set the axis reference to the MpLink you named in step 7.1. 
    ![pic13](images/pic12.png)
-   
+
 Note that in a future version of the Framework, this process will be more automated. 
 
