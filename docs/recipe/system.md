@@ -1,73 +1,36 @@
-## Required Modifications
+There are **two recipe categories** in this recipe system: **"Parameters"** and **"Machine Configuration"**.
 
-The Framework provides a solid foundation by default.  
-However, to fully integrate it into an application, several modifications are required.
+* Each category gets saved to its **own recipe file**.
 
-The following steps must be completed to bring the Framework into a functional state within the application.
+* One **structure variable** is registered to each category.
 
-> IMPORTANT:  
-> The steps on this page must be executed in order to get the Framework into a functional state.
->
+  o **Parameters_type** holds the **product data**.
 
+  o **MachineSettings_type** holds the **machine data**.
+
+* **Three variables of each datatype** are used in order to accomplish the **preview functionality**  
+  and the ability to **edit a recipe without formally loading it**.   
+  For example, let’s focus on the **parameters structure**: 
+
+  o The variable **Parameters** is the actual variable structure that holds the **active recipe**,  
+    which should be used throughout the application.This variable is **not directly registered** to the recipe. 
+
+  o The variable **ParametersPreview** is the **only variable registered** to the **Product** category of the recipe.  
+    This allows you to **load and preview recipes** without activating them in the application. If a recipe should be loaded to the application, then the **Parameters** structure is set equal to  
+    the **ParametersPreview** structure by the Framework. 
+
+  o The variable **ParametersEdit** is used as an **intermediary structure** to allow editing a recipe  
+    without loading it into the application. It also acts as a **buffer** between the registered variable, allowing you to **discard changes** while editing if needed. 
+    ![alt text](pic2.png)
+  o The **custom compound widgets** used to display **Active** and **Preview** values also incorporate a  
+  **value compare feature**.The widget compares the selected **recipe preview values** with the **active recipe values**, and if they differ, changes the **background of the preview value**. This background change is accomplished by modifying the **style of the standard widget** using the **modifiedStyle** setting under **Appearance** of the compound widget. 
+  ![alt text](pic3.png)
 ---
 
-### 1. Define the condition to trigger each alarm
+ℹ️ **Note**
 
-* The AlarmMgr task contains a Boolean array called Alarms. Each index of the array corresponds to the monitored PV for one of the 100 predefined alarms in the AlarmX configuration.
-* For each of these alarms, set the corresponding Alarms[] bit equal to the alarm condition relevant to the application.This is done in the **AlarmHandling.st action** file.
+Note that the **Recipe Framework** contains some **While loops** in the **Initialization program**, whereas the other Frameworks do not.
 
-Example:  
-If Alarms[0] should trigger when the light curtain is interrupted and the system is not in maintenance mode, then the alarm condition must reflect this logic.
+The reason for this is that the Framework **loads the default recipes** in the Initialization program. As a result, the supporting **function blocks must be active** before the load command can be successfully triggered. 
 
-**Alarms[0] := LightCurtainInterrupted AND NOT MaintentanceMode**
-
----
-
-### 2. Define the alarm text for each alarm
-
-* Define a unique alarm text for each alarm in the Alarms.tmx file.
-* Alarms.tmx is located in the Logical View under the Infrastructure package and the AlarmX package.
-* Text ID Alarm.0 corresponds to Alarm0 (Alarms[0]).Text ID Alarm.1 corresponds to Alarm1 (Alarms[1]), and so on.
-* Define the alarm text for all languages relevant to the application.
-
----
-
-### 3. Assign a severity to each alarm
-
-* Assign an appropriate severity to each alarm in the Alarm List according to the alarm mapping.
-* This is done in the AlarmXCfg.mpalarmxcore configuration file. The configuration file is located in the Configuration View under the CPU package, the mapp Services package, and the AlarmX package.
-* By default, all alarms have a severity of 1, which corresponds to the Info reaction.
-* The selected severity determines which alarm reaction is triggered.
-
-![alarm][def]
-
----
-
-### 4. Define the application response to alarm reactions
-
-* Define how the application should respond to each alarm reaction.
-* This is done using the MpAlarmXCheckReaction function calls in AlarmMgr.st, starting at line 66.
-* Within each IF condition, add application-specific logic to define the machine response.
-* For example:
-  - Error reaction: stop all axes
-  - Warning reaction: stop the machine after the next cycle
-  - Info reaction: show an information popup on the HMI
-* For more details on optional changes related to alarm reactions and alarm mapping, see the corresponding documentation [here](Optional_Modification/alarm_mapping.md). 
-
----
-
-### 5. Change default user passwords
-
-* Change the passwords for the Admin, Operator, and Service_Tech users. This is done in the User.user file located in the Configuration View under AccessAndSecurity, UserRoleSystem, and User.user. If users with the same names already existed in the project before importing the Framework, those users remain unchanged and the passwords do not need to be updated.
-
----
-
-### 6. Integrate the HMI content
-
-* If the mapp View front end was imported with the Framework:
-  - Assign the provided mapp View content with content ID AlarmX_content to an area on a visualization page.
-* If the mapp View front end was not imported:
-  - Connect the elements of the HmiAlarmX structure to the visualization accordingly.
-  - Refer to the relevant documentation for further details. [here](general/visualization_consideration.md)
-
-  [def]: images/alarm3.png
+The default recipes are loaded in the **Initialization program** rather than the **Cyclic program** to avoid the need for a **global variable across the Frameworks** to indicate when the recipes have finished loading.

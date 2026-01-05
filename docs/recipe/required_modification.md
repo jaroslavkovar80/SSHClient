@@ -1,73 +1,65 @@
-## Required Modifications
+## 🔧 Required Modifications
 
-The Framework provides a solid foundation by default.  
-However, to fully integrate it into an application, several modifications are required.
+The Framework by default provides a solid foundation, but in order to integrate it fully into your application there are a few modifications that must be made.  
+The following list of modifications are required to get the Framework in a functional state within the application.
 
-The following steps must be completed to bring the Framework into a functional state within the application.
-
-> IMPORTANT:  
-> The steps on this page must be executed in order to get the Framework into a functional state.
+> 🚨 **IMPORTANT:**  
+>  The steps on this page must be executed in order to get the Framework into a functional state!
 >
 
 ---
 
-### 1. Define the condition to trigger each alarm
+1. **Two default recipes** (**"Machine.mcfg"** for machine settings and **"Default.par"** for product data) must exist in the **mappRecipeFiles** file device at startup.Initial versions of these files are provided for reference in the **Logical View**  (**UserPartition → Recipe → CSVformat** and **UserPartition → Recipe → XMLformat**). Only the files that are directly in the **UserPartition → Recipe** package will be loaded by the recipe system (which by default is the **XML** file format).
 
-* The AlarmMgr task contains a Boolean array called Alarms. Each index of the array corresponds to the monitored PV for one of the 100 predefined alarms in the AlarmX configuration.
-* For each of these alarms, set the corresponding Alarms[] bit equal to the alarm condition relevant to the application.This is done in the **AlarmHandling.st action** file.
+2. Modify the **structure types** within **RecipeMgr.typ** for each registered variable to suit the needs of the application. 
 
-Example:  
-If Alarms[0] should trigger when the light curtain is interrupted and the system is not in maintenance mode, then the alarm condition must reflect this logic.
+   o **Parameters_type** is used to hold the **product data**   
+   o **MachineSettings_type** is used to hold the **machine settings / commissioning data** 
 
-**Alarms[0] := LightCurtainInterrupted AND NOT MaintentanceMode**
+   Further information about the design of the recipe system is provided here. 
 
----
+3. Create new **default recipes** that contain the updated structure types from step **2**.   
+   To do so:
 
-### 2. Define the alarm text for each alarm
+   1. **Transfer** to the target. 
+   2. On the **HMI**, log in as **Admin**. 
+   3. On the **Recipe content**, create a **new recipe**.   
+      Do not worry about populating values at this step. 
+   4. Navigate to the **mappRecipeFiles** file device  (by default, **USER_PATH:\Recipe**). Open the newly created recipe in a text editor and edit the **default values** for the recipe parameters as needed. Then **copy / paste** this recipe file into the **UserPartition** package in the **Logical View**.  
+   5. Delete the existing **default recipe** present in the **UserPartition** package in the **Logical View**  (either **Default.par** or **Machine.mcfg**). Then rename your new file to the appropriate default recipe name (either **Default.par** or **Machine.mcfg**). 
+   6. Perform an **initial transfer**, taking care to transfer the contents of **\Logical\UserPartition** to the **USER** partition.  
+   ![alt text](pic1.png)
 
-* Define a unique alarm text for each alarm in the Alarms.tmx file.
-* Alarms.tmx is located in the Logical View under the Infrastructure package and the AlarmX package.
-* Text ID Alarm.0 corresponds to Alarm0 (Alarms[0]).Text ID Alarm.1 corresponds to Alarm1 (Alarms[1]), and so on.
-* Define the alarm text for all languages relevant to the application.
+4. The **Recipe Framework** uses **retained variables**, which require **nonzero remanent memory**. This must be configured in the **CPU memory configuration** if it is not already configured. 
 
----
+5. Change the passwords for the **Admin**, **Operator**, and **Service_Tech** users.This is done in the **User.user** file in the **Configuration View** (**AccessAndSecurity → UserRoleSystem → User.user**). Note that if you already had users in your project with these same names prior to import, your existing users will remain unchanged and you do not need to update the passwords. 
 
-### 3. Assign a severity to each alarm
+6. If you imported the **mapp View front end** with the Framework: 
 
-* Assign an appropriate severity to each alarm in the Alarm List according to the alarm mapping.
-* This is done in the AlarmXCfg.mpalarmxcore configuration file. The configuration file is located in the Configuration View under the CPU package, the mapp Services package, and the AlarmX package.
-* By default, all alarms have a severity of 1, which corresponds to the Info reaction.
-* The selected severity determines which alarm reaction is triggered.
+   o Assign the **mapp View content** (content ID = **Recipe_content**) to an area on a page within your visualization. 
 
-![alarm][def]
+   o On **RecipePars.content** and **RecipeMachConfig.content**, each recipe parameter is linked to one of **three compound widgets**  (Boolean, Numeric Values, and String).These widgets contain elements for **active parameters**, **preview values**, and **inputs for editing values**. These contents are loaded into the **Preview window** on **Recipe.content**, depending on the category selection.
 
----
+   o Several changes must be made on these two contents:
 
-### 4. Define the application response to alarm reactions
+     ▪ Change the text for the **compound widget label** to provide a meaningful description of the recipe parameter.  
+       The texts are located in **RecipeParTexts.tmx**. 
 
-* Define how the application should respond to each alarm reaction.
-* This is done using the MpAlarmXCheckReaction function calls in AlarmMgr.st, starting at line 66.
-* Within each IF condition, add application-specific logic to define the machine response.
-* For example:
-  - Error reaction: stop all axes
-  - Warning reaction: stop the machine after the next cycle
-  - Info reaction: show an information popup on the HMI
-* For more details on optional changes related to alarm reactions and alarm mapping, see the corresponding documentation [here](Optional_Modification/alarm_mapping.md). 
+     ▪ Confirm that the **widgets match the datatype** of your recipe parameter. If not, exchange them with a matching compound widget. 
 
----
+     ▪ Adjust the **bindings on the output widgets** to connect to your recipe variables. Keep in mind the **recipe system design**. 
 
-### 5. Change default user passwords
+     ▪ If you need to display **more than five recipe parameters**, add additional compound widgets from the **Toolbox**  
+       and **RecipeWidgetLib** for each additional parameter and create texts / bindings as described above. 
 
-* Change the passwords for the Admin, Operator, and Service_Tech users. This is done in the User.user file located in the Configuration View under AccessAndSecurity, UserRoleSystem, and User.user. If users with the same names already existed in the project before importing the Framework, those users remain unchanged and the passwords do not need to be updated.
+     ▪ Each **Recipe compound widget** is designed to be configured like a standard widget. You can configure standard properties such as **format**, **unit**, and **min / max value**. 
 
----
+   o **RecipeDialog_NewPars.content** and **RecipeDialogEditPars.content** are used to create and edit **parameter recipes**. Both use a **ContentControl widget** reusing **RecipePars.content**, therefore all settings, labels, and bindings are the same. The visibility of **Edit inputs** versus **Preview and Active outputs** is controlled through behavior inputs of the compound widget. 
 
-### 6. Integrate the HMI content
+   o **RecipeDialog_NewMachConfig.content** and **RecipeDialog_EditMachConfig.content** are used to create and edit  
+     **machine settings recipes**. Both use a **ContentControl widget** reusing **RecipeMachConfig.content**, therefore all settings, labels, and bindings are the same. The visibility of **Edit inputs** versus **Preview and Active outputs** is controlled through behavior inputs of the compound widget. 
 
-* If the mapp View front end was imported with the Framework:
-  - Assign the provided mapp View content with content ID AlarmX_content to an area on a visualization page.
-* If the mapp View front end was not imported:
-  - Connect the elements of the HmiAlarmX structure to the visualization accordingly.
-  - Refer to the relevant documentation for further details. [here](general/visualization_consideration.md)
+   o The ability to **create / delete / edit a recipe** on the **mapp View HMI** is restricted to the  
+     **Administrators** or **Service** roles.The ability to **load a recipe** is restricted to the **Administrators**, **Service**, or **Operators** roles. Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
 
-  [def]: images/alarm3.png
+7. If you did **not** import the mapp View front end with the Framework,  connect the **HmiRecipe** structure elements to your visualization accordingly.

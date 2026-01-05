@@ -1,29 +1,29 @@
-## mapp AlarmX Framework Features
+## 🧾 mapp Recipe Framework
 
-The following features and functionality are included in the mapp AlarmX Framework:
+The following features and functionality are included in the **mapp Recipe Framework**:  
 
-* 100 ready-made discrete value monitoring alarms and a Boolean array to trigger each alarm
-* Localizable text for each alarm
-* Alarm mapping by severity with reactions
-* A query along with the supporting state machine to query large amounts of data
-* mapp View content to display current alarms, alarm history, and the alarm query
-* The ability to acknowledge and export alarms from the HMI
+• The infrastructure to set up **two distinct recipe files**, with a structure variable registered to each  
+
+• The ability to **save recipes to a USB drive**  
+
+• The ability to **preview and edit a recipe** on the **HMI** before loading it  
+
+• The recipe system is set up in the **XML format**. (To convert to a **CSV recipe system**, see here.)
+
+   1. Both the **RecipeXML.mprecipexml** and **RecipeCSV.mprecipecsv** configuration files are already included in the Framework to enable the ability to easily switch back and forth. Only **one** of these configuration files is used at a time (i.e. the **MpLink** from only one of these files is referenced in the application).
 
 ---
 
-## Embedded Examples
+### 🔐 Access Rights
 
-The following examples are embedded into the Framework:
+The ability to **create / delete / edit a recipe** on the **mapp View HMI** is restricted to the **Administrators** or **Service** roles.
 
-* Examples for each type of monitoring alarm.Details are provided in the comments in the **AlarmSamples.st** action file, starting on line 5.
-  - Alarm names:
-    - LevelMonitoringExample
-    - DeviationMonitoringExample
-    - RateOfChangeExample
+The ability to **load a recipe** is restricted to the **Administrators**, **Service**, or **Operators** roles.
 
-* Example for incorporating a snippet into an alarm. This example is provided to allow easy copy and paste of the syntax for referencing a snippet in the mapp AlarmX configuration.
-  - Alarm name: SnippetExample
+The default administrative user is **Admin** with default password **123ABc**. The password **must be changed after import**.
 
-* Example of using MpAlarmXAlarmControl to manually set and reset an alarm from code
-  - Alarm name: MpAlarmXControlExample
-  - The supporting code is shown in the **AlarmSamples.st** action file on lines 24–32
+---
+
+### ℹ️ Note
+
+Note that if you **edit the active recipe**, the **PLC will begin using the updated values immediately**. You do **not** have to perform a **load command** after editing the active recipe.
