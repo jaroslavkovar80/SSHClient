@@ -3,7 +3,7 @@
 Here are the steps to rename the provided AppAxis_1 to something more specific to the application: 
 
 1. Choose a name that is 10 characters or less.
-2. Do a replace-in-files (Edit→ Find and Replace → Replace in Files) to replace all instances of AppAxis_1 with your new name. Make sure the box for "Whole words only" is NOT checked, and the file types filter is set to *.*.
+2. Do a replace-in-files (Edit→ Find and Replace → Replace in Files) to replace all instances of AppAxis_1 with your new name. Make sure the box for "Whole words only" is NOT checked, and the file types filter is set to *.*.Check the picture   
 ![pic21](images/pic21.png)
 3. Manually rename the following files/packages in the Logical View → MachineControl package to your new name:
     1. AppAxis_1 package
