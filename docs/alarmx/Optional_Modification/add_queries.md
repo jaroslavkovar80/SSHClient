@@ -35,9 +35,7 @@ Copy and paste lines 3–47 of ExecuteQuery.st to duplicate the code.Then within
       - NewQueryFUB.Name := ADR('NewQueryNameFromStep2.1');
 3. Replace every instance of AlarmQuery with the new variable name created in step 1.2.
 
-4. If you would like the new query to run only based on a button press:
-   - Add a new boolean within HmiAlarmX.Commands for the new trigger.
-   - Update the IF statement accordingly within the ACTIVE_ALARM_WAIT state.
+4. If you would like the new query to run only based on a button press.Add a new boolean within HmiAlarmX.Commands for the new trigger. Update the IF statement accordingly within the ACTIVE_ALARM_WAIT state. 
 
 ---
 
