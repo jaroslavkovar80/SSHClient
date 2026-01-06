@@ -25,15 +25,15 @@ Further information about the design of the recipe system is provided here.
 
 To do so: 
 
-* 1. **Transfer** to the target. 
+* 1.**Transfer** to the target. 
 
-* 2. On the **HMI**, log in as **Admin**. 
+* 2.On the **HMI**, log in as **Admin**. 
 
-* 3. On the **Recipe content**, create a **new recipe**. Do not worry about populating values at this step. 
+* 3.On the **Recipe content**, create a **new recipe**. Do not worry about populating values at this step. 
 
-* 4. Navigate to the **mappRecipeFiles** file device  (by default, **USER_PATH:\Recipe**). Open the newly created recipe in a text editor and edit the **default values** for the recipe parameters as needed. Then **copy / paste** this recipe file into the **UserPartition** package in the **Logical View**. 
+* 4.Navigate to the **mappRecipeFiles** file device  (by default, **USER_PATH:\Recipe**). Open the newly created recipe in a text editor and edit the **default values** for the recipe parameters as needed. Then **copy / paste** this recipe file into the **UserPartition** package in the **Logical View**. 
 
-* 5. Delete the existing **default recipe** present in the **UserPartition** package in the **Logical View**  (either **Default.par** or **Machine.mcfg**). Then rename your new file to the appropriate default recipe name (either **Default.par** or **Machine.mcfg**). 
+* 5.Delete the existing **default recipe** present in the **UserPartition** package in the **Logical View**  (either **Default.par** or **Machine.mcfg**). Then rename your new file to the appropriate default recipe name (either **Default.par** or **Machine.mcfg**). 
 
 * 6.Perform an **initial transfer**, taking care to transfer the contents of **\Logical\UserPartition** to the **USER** partition.
 
@@ -51,15 +51,15 @@ To do so:
 
 * Several changes must be made on these two contents: 
 
----* Change the text for the **compound widget label** to provide a meaningful description of the recipe parameter.   The texts are located in **RecipeParTexts.tmx**. 
+   * --- Change the text for the **compound widget label** to provide a meaningful description of the recipe parameter.   The texts are located in **RecipeParTexts.tmx**. 
 
----* Confirm that the **widgets match the datatype** of your recipe parameter. If not, exchange them with a matching compound widget. 
+   * ---* Confirm that the **widgets match the datatype** of your recipe parameter. If not, exchange them with a matching compound widget. 
 
----* Adjust the **bindings on the output widgets** to connect to your recipe variables. Keep in mind the **recipe system design**. 
+   * ---* Adjust the **bindings on the output widgets** to connect to your recipe variables. Keep in mind the **recipe system design**. 
 
----* If you need to display **more than five recipe parameters**, add additional compound widgets from the **Toolbox**   and **RecipeWidgetLib** for each additional parameter and  create texts / bindings as described above. 
+   * ---* If you need to display **more than five recipe parameters**, add additional compound widgets from the **Toolbox**   and **RecipeWidgetLib** for each additional parameter and  create texts / bindings as described above. 
 
----* Each **Recipe compound widget** is designed to be configured like a standard widget. You can configure standard properties such as **format**, **unit**, and **min / max value**. 
+   * ---* Each **Recipe compound widget** is designed to be configured like a standard widget. You can configure standard properties such as **format**, **unit**, and **min / max value**. 
 
 * RecipeDialog_NewPars.content and RecipeDialogEditPars.content are used to create and edit parameter recipes. Both are using a ContentControl widget reusing the RecipePars.content, therefore all settings, labels and bindings are the same. The visibility of Edit inputs vs Preview and Active outputs are controlled through behavior inputs of the compound widget 
 
