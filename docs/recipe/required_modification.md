@@ -51,15 +51,15 @@ To do so:
 
 * Several changes must be made on these two contents: 
 
-   * --- Change the text for the **compound widget label** to provide a meaningful description of the recipe parameter.   The texts are located in **RecipeParTexts.tmx**. 
+    * -> Change the text for the **compound widget label** to provide a meaningful description of the recipe parameter.   The texts are located in **RecipeParTexts.tmx**. 
 
-   * ---* Confirm that the **widgets match the datatype** of your recipe parameter. If not, exchange them with a matching compound widget. 
+    * -> Confirm that the **widgets match the datatype** of your recipe parameter. If not, exchange them with a matching compound widget. 
 
-   * ---* Adjust the **bindings on the output widgets** to connect to your recipe variables. Keep in mind the **recipe system design**. 
+    * -> Adjust the **bindings on the output widgets** to connect to your recipe variables. Keep in mind the **recipe system design**. 
 
-   * ---* If you need to display **more than five recipe parameters**, add additional compound widgets from the **Toolbox**   and **RecipeWidgetLib** for each additional parameter and  create texts / bindings as described above. 
+    * -> If you need to display **more than five recipe parameters**, add additional compound widgets from the **Toolbox**   and **RecipeWidgetLib** for each additional parameter and  create texts / bindings as described above. 
 
-   * ---* Each **Recipe compound widget** is designed to be configured like a standard widget. You can configure standard properties such as **format**, **unit**, and **min / max value**. 
+    * -> Each **Recipe compound widget** is designed to be configured like a standard widget. You can configure standard properties such as **format**, **unit**, and **min / max value**. 
 
 * RecipeDialog_NewPars.content and RecipeDialogEditPars.content are used to create and edit parameter recipes. Both are using a ContentControl widget reusing the RecipePars.content, therefore all settings, labels and bindings are the same. The visibility of Edit inputs vs Preview and Active outputs are controlled through behavior inputs of the compound widget 
 
