@@ -3,8 +3,9 @@
 This section describes the **mapp Report Framework**.  
 For full details on **mapp Report** itself, see [here](https://help.br-automation.com/#/en/4/mapptechnology/mapp_services/mpreport/mpreport.html).
 
-> 🚨 **IMPORTANT:**  
-> The steps on the **Required Modifications** page must be executed in order to get the Framework into a functional state.
+> IMPORTANT:
+> The steps on the **"Required Modifications"** page must be executed in order to get the Framework into a 
+> functional state!
 
 **Topics in this section:**
 

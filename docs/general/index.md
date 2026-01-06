@@ -2,8 +2,9 @@
 
 This section contains information that is relevant for all of the mapp Frameworks. 
 
-> IMPORTANT: Every mapp Framework Help section has a page titled "Required Modifications". The steps on this page must be executed in order to get the Framework into a functional state! 
->
+> IMPORTANT:
+> The steps on the **"Required Modifications"** page must be executed in order to get the Framework into a 
+> functional state!
 
 **Topics in this section:**
 
