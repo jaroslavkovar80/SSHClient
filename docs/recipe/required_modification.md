@@ -9,29 +9,26 @@ The following list of modifications are required to get the Framework in a funct
 
 ---
 
-1. **Two default recipes** (**"Machine.mcfg"** for machine settings and **"Default.par"** for product data) must exist in the **mappRecipeFiles** file device at startup.Initial versions of these files are provided for reference in the **Logical View**  (**UserPartition → Recipe → CSVformat** and **UserPartition → Recipe → XMLformat**). Only the files that are directly in the **UserPartition → Recipe** package will be loaded by the recipe system (which by default is the **XML** file format).
+1. **Two default recipes** (**"Machine.mcfg"** for machine settings and **"Default.par"** for product data) must exist in the **mappRecipeFiles** file device at startup.Initial versions of these files are provided for reference in the **Logical View**  (**UserPartition → Recipe → CSVformat** and **UserPartition → Recipe → XMLformat**).
+ Only the files that are directly in the **UserPartition → Recipe** package will be loaded by the recipe system (which by default is the **XML** file format).
 
-2. Modify the **structure types** within **RecipeMgr.typ** for each registered variable to suit the needs of the application. 
+2. Modify the **structure types** within **RecipeMgr.typ** for each registered variable to suit the needs of the application.
+
    -> **Parameters_type** is used to hold the **product data**   
    -> **MachineSettings_type** is used to hold the **machine settings / commissioning data** 
-
    Further information about the design of the recipe system is provided here. 
-
 3. Create new **default recipes** that contain the updated structure types from step **2**.   
    To do so: 
    1.**Transfer** to the target. 
    2.On the **HMI**, log in as **Admin**. 
-   3.On the **Recipe content**, create a **new recipe**.   
-      Do not worry about populating values at this step. 
+   3.On the **Recipe content**, create a **new recipe**. Do not worry about populating values at this step. 
    4.Navigate to the **mappRecipeFiles** file device  (by default, **USER_PATH:\Recipe**). Open the newly created recipe in a text editor and edit the **default values** for the recipe parameters as needed. Then **copy / paste** this recipe file into the **UserPartition** package in the **Logical View**.  
-   5.Delete the existing **default recipe** present in the **UserPartition** package in the **Logical View**  (either **Default.par** or **Machine.mcfg**). Then rename your new file to the appropriate default recipe name (either **Default.par** or **Machine.mcfg**). 
+   5.Delete the existing **default recipe** present in the **UserPartition** package in the **Logical View**  (either **Default.par** or **Machine.mcfg**). Then rename 
+   your new file to the appropriate default recipe name (either **Default.par** or **Machine.mcfg**). 
    6.Perform an **initial transfer**, taking care to transfer the contents of **\Logical\UserPartition** to the **USER** partition.  
    ![alt text](images/pic1.png)
-
 4. The **Recipe Framework** uses **retained variables**, which require **nonzero remanent memory**. This must be configured in the **CPU memory configuration** if it is not already configured. 
-
 5. Change the passwords for the **Admin**, **Operator**, and **Service_Tech** users.This is done in the **User.user** file in the **Configuration View** (**AccessAndSecurity → UserRoleSystem → User.user**). Note that if you already had users in your project with these same names prior to import, your existing users will remain unchanged and you do not need to update the passwords. 
-
 6. If you imported the **mapp View front end** with the Framework: 
    -> Assign the **mapp View content** (content ID = **Recipe_content**) to an area on a page within your visualization. 
 
