@@ -21,10 +21,10 @@ There are **two recipe categories** in this recipe system: **"Parameters"** and 
 
   o The variable **ParametersEdit** is used as an **intermediary structure** to allow editing a recipe  
     without loading it into the application. It also acts as a **buffer** between the registered variable, allowing you to **discard changes** while editing if needed. 
-    ![alt text](pic2.png)
+    ![alt text](images/pic2.png)
   o The **custom compound widgets** used to display **Active** and **Preview** values also incorporate a  
   **value compare feature**.The widget compares the selected **recipe preview values** with the **active recipe values**, and if they differ, changes the **background of the preview value**. This background change is accomplished by modifying the **style of the standard widget** using the **modifiedStyle** setting under **Appearance** of the compound widget. 
-  ![alt text](pic3.png)
+  ![alt text](images/pic3.png)
 ---
 
 ℹ️ **Note**
