@@ -24,10 +24,10 @@ The following optional changes should be considered to align the Framework with 
     1. This is done in the AlarmXCfg.mpalarmxcore configuration file
     2. If you do this, remember to change the name in the **MpAlarmXCheckReaction()** function calls in **AlarmMgr.st** to the new name, starting at line 68
     3. Examples of alternative reaction names:  
-      -> SlowDownConveyor
-      -> HydraulicMotorOff
-      -> StopAllMotion
-      -> YellowLamp
+      -> SlowDownConveyor 
+      -> HydraulicMotorOff 
+      -> StopAllMotion 
+      -> YellowLamp 
 
 * Add or remove reactions 
     1. This is done in the AlarmXCfg.mpalarmxcore configuration file 
