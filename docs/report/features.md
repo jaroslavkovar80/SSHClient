@@ -3,14 +3,16 @@
 The following features and functionality are included in the **mapp Report Framework**:
 
 * **Two report configurations**:
-   **Simple Report**
-    - Alarm History
-    - OEE summary
-    - Temperature sample data
+
+   **Simple Report** 
+     - Alarm History
+     - OEE summary
+     - Temperature sample data
+
    **Advanced Report**, which contains all of the Simple Report information plus:
-    - Audit summary
-    - A place for a signature
-    - Batch number information
+     - Audit summary
+     - A place for a signature
+     - Batch number information
 
 * The ability to **view a list of all available reports** on the **HMI**
 * The ability to **create, delete, and view a report** on the **HMI**
