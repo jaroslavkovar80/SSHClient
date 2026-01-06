@@ -9,6 +9,7 @@ This section contains information that is relevant for all of the mapp Framework
 **Topics in this section:**
 
 * [Introduction](introduction.md)
+* [Support & B&R Community project](Support.md)
 * [System Requirements](system_requirement.md)
 * [Prerequisites](Prerequisities.md)
 * [Launching the Importer](launching.md)
