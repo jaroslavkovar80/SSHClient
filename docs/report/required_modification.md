@@ -45,11 +45,11 @@ If users with the same names already existed in the project prior to importing t
 
 If you imported the **mapp View front end** with the Framework:
 
-   1.Assign the **mapp View content** (content ID = **Report_content**) to an area on a page within your visualization.
+   a.Assign the **mapp View content** (content ID = **Report_content**) to an area on a page within your visualization.
 
-   2.The ability to **delete a report** on the **mapp View HMI** is restricted to the **Administrators** or **Service** role. Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
+   b.The ability to **delete a report** on the **mapp View HMI** is restricted to the **Administrators** or **Service** role. Therefore, add a way to **log in on the HMI** (for example, by importing the **mapp UserX** framework).
 
-   3.If you are using **mapp View 5.16 or 5.17**, change **usePlugin** to **false** on the **PDFViewer** widget on ReportDialog_View_content. This configures the widget to use the browser’s internal PDF viewer rather than the JavaScript plugin. Otherwise, reports will not display correctly on the mapp View HMI. An improvement to the JavaScript plugin was made in **mapp View 5.18** .
+   c.If you are using **mapp View 5.16 or 5.17**, change **usePlugin** to **false** on the **PDFViewer** widget on ReportDialog_View_content. This configures the widget to use the browser’s internal PDF viewer rather than the JavaScript plugin. Otherwise, reports will not display correctly on the mapp View HMI. An improvement to the JavaScript plugin was made in **mapp View 5.18** .
 
 ---
 
