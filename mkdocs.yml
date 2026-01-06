@@ -17,6 +17,7 @@ nav:
       - ℹ️ 1. General Information:
           - General: general/index.md
           - 📄Introduction: general/introduction.md
+          - 📄Support/Community project: general/Support.md
           - 📄System Requirements: general/system_requirement.md
           - 📄Prerequisites: general/Prerequisities.md
           - 📄Launching the Importer: general/launching.md
