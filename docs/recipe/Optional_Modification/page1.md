@@ -10,6 +10,7 @@ The steps are as follows:
 2. In RecipeMgr.st:
     * Go to Edit → Find and Replace → Replace
     * Replace all instances of **gMpLinkRecipeXml** with **gMpLinkRecipeCsv** in the whole file. There are 8 occurrences total. 
+    
     ![alt text](images/pic1.png)
 3. Delete or move any existing .mcfg and .par files out of the Recipe file device (by default this is F:\Recipe), since these will be the XML format. 
 4. Copy the default recipe files that are provided in the CSV format (Logical View → UserPartition → Recipe → CSVformat) to the root directory of the Recipe file device. Now the recipe system will load the CSV format versions of the files by default. 
