@@ -10,4 +10,4 @@ The Framework can be adjusted as needed for the application in any way necessary
 
 * The localizable text files for mapp Services audit events are provided in the Infrastructure/Audit package of the Logical View. These files were originally taken from the MpAudit library, but they were expanded upon for the framework. Edit the text entries as needed. 
 * In the CPU configuration, modify the “mappAuditFiles” file device to the desired storage medium. By default, this corresponds to the User partition (F:\\Audit). 
-  *  If you do, modify or delete lines 10-16 of the AuditMgr.st INIT program, which creates the directory F:\\Audit if it does not already exist.
+   *  If you do, modify or delete lines 10-16 of the AuditMgr.st INIT program, which creates the directory F:\\Audit if it does not already exist.
