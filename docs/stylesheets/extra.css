@@ -1,4 +1,4 @@
-/* Hide page title taken from nav (icon + name) */
-.md-content__inner > .md-content__title {
+/* Hide first H1 inside page content (page title from nav) */
+.md-content__inner.md-typeset > h1:first-of-type {
   display: none !important;
 }
