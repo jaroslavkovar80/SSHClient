@@ -10,6 +10,9 @@ theme:
     - navigation.sections
     - navigation.indexes
 
+extra_css:
+  - stylesheets/extra.css
+  
 nav:
   - 📘 Table of contents:
       - 📘 mapp Framework: index.md
