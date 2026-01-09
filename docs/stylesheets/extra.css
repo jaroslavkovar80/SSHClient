@@ -1,4 +1,7 @@
-/* Force-hide page title (icon + text) in Material for MkDocs */
-header.md-header nav.md-header__inner .md-header__title .md-header__topic {
-  display: none !important;
+/* Hide page title (from nav) but keep site title */
+header.md-header
+  nav.md-header__inner
+  .md-header__title
+  .md-header__topic[data-md-component="header-topic"] {
+    display: none !important;
 }
