@@ -8,3 +8,6 @@
   display: none;
 }
 
+body {
+  outline: 5px solid red;
+}
