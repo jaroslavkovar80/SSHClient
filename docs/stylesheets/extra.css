@@ -3,3 +3,8 @@
   display: none;
 }
 
+/* Hide only the page title text and icon */
+.md-header__topic {
+  display: none;
+}
+
