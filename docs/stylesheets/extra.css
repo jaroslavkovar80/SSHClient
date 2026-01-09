@@ -1,3 +1,7 @@
+html {
+  background-color: magenta !important;
+}
+
 /* Hide page title (icon + text) */
 .md-header__title {
   display: none;
