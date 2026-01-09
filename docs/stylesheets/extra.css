@@ -1,4 +1,4 @@
-/* Hide page title from nav, keep site title */
-header.md-header .md-header__topic:not([data-md-component="logo"]) {
+/* Hide page title taken from nav (icon + name) */
+.md-content__inner > .md-content__title {
   display: none !important;
 }
