@@ -1,3 +1,4 @@
-.md-header__title .md-header__topic {
+/* Force-hide page title (icon + text) in Material for MkDocs */
+header.md-header nav.md-header__inner .md-header__title .md-header__topic {
   display: none !important;
 }
