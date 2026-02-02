@@ -3,7 +3,7 @@ name: Build MkDocs PDF
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   pdf:
