@@ -13,6 +13,15 @@ theme:
     - navigation.sections
     - navigation.indexes
 
+plugins:
+  - search
+  - pdf-export:
+      combined: true
+      combined_output_path: docs/mapp-framework-6.pdf
+      cover_title: "mapp Framework 6"
+      cover_subtitle: "Public documentation"
+      cover_author: "B&R Community"
+
 nav:
   - 📘 Table of contents:
       - 📘 mapp Framework: index.md
