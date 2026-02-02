@@ -1,12 +1,12 @@
-site_name: mapp Framework
-site_description: Public documentation for mapp Framework
+site_name: mapp Framework 6
+site_description: Public documentation for mapp Framework 6
 site_author: B&R Community
 
-repo_url: https://github.com/br-automation-community/mapp-Framework
+repo_url: https://github.com/br-automation-community/mapp-Framework-6
 
 extra_css:
   - stylesheets/extra.css
-
+  
 theme:
   name: material
   features:
@@ -24,12 +24,12 @@ plugins:
 
 nav:
   - 📘 Table of contents:
-      - 📘 mapp Framework: index.md
+      - 📘 mapp Framework 6: index.md
 
       - ℹ️ 1. General Information:
           - General: general/index.md
           - 📄Introduction: general/introduction.md
-          - 📄Support/Community project: general/Support.md
+          - 📄Support/Community: general/Support.md
           - 📄System Requirements: general/system_requirement.md
           - 📄Prerequisites: general/Prerequisities.md
           - 📄Launching the Importer: general/launching.md
@@ -37,12 +37,7 @@ nav:
           - 📄Visualization Consideration: general/visualization_consideration.md
           - 📁 Version Information:
               - 📄Overview: general/Version_information/index.md
-              - 📄Version 1.5: general/Version_information/version_1_5.md
-              - 📄Version 1.4: general/Version_information/version_1_4.md
-              - 📄Version 1.3: general/Version_information/version_1_3.md
-              - 📄Version 1.2: general/Version_information/version_1_2.md
-              - 📄Version 1.1: general/Version_information/version_1_1.md
-              - 📄Version 1.0: general/Version_information/version_1_0.md
+              - 📄Version 6.5: general/Version_information/version_6_0.md
 
       - 🚨 2. mapp AlarmX:
           - General: alarmx/index.md
